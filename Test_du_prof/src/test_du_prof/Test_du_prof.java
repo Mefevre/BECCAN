@@ -17,6 +17,7 @@ public class Test_du_prof {
     public static void main(String[] args) {
         Membre tuteur = new Membre("LEROUX", "Stéphane", 200);
         Membre unicorn = new Membre("LEFEVRE", "Nathan", 19);
+        Membre test = new Membre("TEST", "Test", 600);
         
         //Inserez un nouvel object a votre nom
         
