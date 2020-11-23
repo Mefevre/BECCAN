@@ -26,6 +26,7 @@ public class Test_du_prof {
         //rajouter le méthode toString() sur moi
 
         System.out.println(Anto.toString);
+        System.out.println("4848"+44);
 
     }
     
