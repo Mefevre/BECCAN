@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="489.0" prefWidth="785.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.panell">
+   <children>
+      <Pane prefHeight="489.0" prefWidth="785.0">
+         <children>
+            <RadioButton fx:id="dButton" layoutX="177.0" layoutY="284.0" mnemonicParsing="false" text="DIRECTION" />
+            <RadioButton fx:id="udButton" layoutX="459.0" layoutY="284.0" mnemonicParsing="false" text="UN_DIRECTION" />
+            <Button fx:id="panelNext" layoutX="290.0" layoutY="186.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="114.0" text="NEXT" />
+            <RadioButton fx:id="wButton" layoutX="171.0" layoutY="337.0" mnemonicParsing="false" text="POID" />
+            <RadioButton fx:id="uwButton" layoutX="453.0" layoutY="354.0" mnemonicParsing="false" text="NO_POID" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
