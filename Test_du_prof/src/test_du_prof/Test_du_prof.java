@@ -17,17 +17,19 @@ public class Test_du_prof {
     public static void main(String[] args) {
         Membre tuteur = new Membre("LEROUX", "Stéphane", 200);
         Membre unicorn = new Membre("LEFEVRE", "Nathan", 19);
+        Membre test = new Membre("TEST", "Test", 600);
         Membre emolga=new Membre("BOUHANA","Coralie",21);
+        Membre Antonin = new Membre("ANtonin","me" , 45);
         
         //Inserez un nouvel object a votre nom
         
         
-        
+        System.out.println("Vous etes beau ! ");
         //rajouter le méthode toString() sur vous
         System.out.println(tuteur.toString());
+        System.out.println(Antonin.toString());
         System.out.println(unicorn.toString());
-        System.out.println(emolga);
-
     }
     
 }
+>>>>>>> ANTONIN
