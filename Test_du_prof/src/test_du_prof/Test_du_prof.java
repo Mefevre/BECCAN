@@ -36,6 +36,12 @@ public class Test_du_prof {
         System.out.println(unicorn.toString());
         System.out.println(ClemLePacifiste.toString());
         System.out.println(Bastien.toString());
+        //Ajouter un nom de projet au tableau
+        emolga.AddProject("Ptut_graphe");
+        emolga.AddProject("Project_IHM");
+        emolga.AddProject("CVDA");
+        // le nombre de projet d'un membre
+        System.out.println("Coralie travaille sur "+ emolga.NbProject());
     }
     
 }
