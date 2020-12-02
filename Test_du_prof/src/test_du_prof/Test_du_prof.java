@@ -20,7 +20,9 @@ public class Test_du_prof {
         Membre test = new Membre("TEST", "Test", 600);
         Membre emolga=new Membre("BOUHANA","Coralie",21);
         Membre Antonin = new Membre("ANtonin","me" , 45);
+        Membre Bastien = new Membre("Perrin","Bastien" , 19);
         
+
         //Inserez un nouvel object a votre nom
         
         
@@ -29,6 +31,7 @@ public class Test_du_prof {
         System.out.println(tuteur.toString());
         System.out.println(Antonin.toString());
         System.out.println(unicorn.toString());
+        System.out.println(Bastien.toString());
     }
     
 }
