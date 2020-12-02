@@ -5,6 +5,8 @@
  */
 package test_du_prof;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Maître
@@ -13,16 +15,24 @@ public class Membre {
     private String nom;
     private String prenom;
     private int age;
+    private ArrayList<Membre> listProject;
     
     public Membre(String n, String p, int a)
     {
         nom = n;
         prenom = p;
         age = a;
+         = new ArrayList<>();
     }
     
     public String toString()
     {
         return nom + " " + prenom + ", vie depuis " + age;
+    }
+    public void AddProject(String s){
+        listProject.add(s);
+    }
+    public int NbProject(){
+        return listProject.size();
     }
 }
