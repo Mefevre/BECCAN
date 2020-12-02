@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -20,15 +21,22 @@ public class Test_du_prof {
         Membre test = new Membre("TEST", "Test", 600);
         Membre emolga=new Membre("BOUHANA","Coralie",21);
         Membre Antonin = new Membre("ANtonin","me" , 45);
+        Membre ClemLePacifiste = new Membre("Clément","Turbo" , 12);
+        Membre remind_commit = new Membre("commit", "commit", 0);
+        Membre Bastien = new Membre("Perrin","Bastien" , 19);
         
+
         //Inserez un nouvel object a votre nom
         
         
         System.out.println("Vous etes beau ! ");
+        System.out.println("Esteban was here ! ");
         //rajouter le méthode toString() sur vous
         System.out.println(tuteur.toString());
         System.out.println(Antonin.toString());
         System.out.println(unicorn.toString());
+        System.out.println(ClemLePacifiste.toString());
+        System.out.println(Bastien.toString());
     }
     
 }
