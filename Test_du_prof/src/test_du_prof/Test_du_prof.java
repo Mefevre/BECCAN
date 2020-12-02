@@ -22,7 +22,6 @@ public class Test_du_prof {
         Membre emolga=new Membre("BOUHANA","Coralie",21);
         Membre Antonin = new Membre("ANtonin","me" , 45);
         Membre ClemLePacifiste = new Membre("Clément","Turbo" , 12);
-        Membre remind_commit = new Membre("commit", "commit", 0);
         Membre Bastien = new Membre("Perrin","Bastien" , 19);
         
 
