@@ -13,15 +13,19 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.effect.BlendMode;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Shape;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import sample.Algo.Dsatur.Arret;
 import sample.Algo.Dsatur.GrapheDSat;
@@ -114,6 +118,42 @@ public class PanelPlan implements Initializable, ChangeListener {
         }
         //time = temp;
         //System.out.println(time);
+    }
+    public void aide()
+    {
+        Label secondLabel;
+
+        secondLabel = new Label("Page d'aide pour Premiere page :"+"\n"
+                +"Page D'accueil : Le button centrale lance le logicile ."+"\n"+"\n"
+                +"Page de choix : Vous devais decidé les type de votre graph un choix possible pour les poids"+"\n"
+                +"et pour l'orientation."+"\n"+"\n"
+                +"Page de la matrice : Vous deviez tout d'abord mettre le Nb de sommet puis remplir la matrice"+"\n"
+                +"avec passe à l'etape du plan pour mettre en meouvre les algo."+"\n"+"\n"
+                +"Page de plan : Cette page affiche le graph et sert a le modifier , on peut applique des algorithme"+"\n"
+                +"sur le graph afficher."+"\n");
+
+        StackPane secondaryLayout = new StackPane();
+        secondaryLayout.getChildren().add(secondLabel);
+
+        Scene secondScene = new Scene(secondaryLayout, 650, 400);
+
+        // New window (Stage)
+        Stage newWindow = new Stage();
+        newWindow.setTitle("Fenetre D'aide");
+        newWindow.setScene(secondScene);
+
+
+        // Specifies the modality for new window.
+        newWindow.initModality(Modality.WINDOW_MODAL);
+
+        // Specifies the owner Window (parent) for new window
+        newWindow.initOwner(Main.primaryStage);
+
+        // Set position of second window, related to primary window.
+        newWindow.setX(Main.primaryStage.getX() + 200);
+        newWindow.setY(Main.primaryStage.getY() + 100);
+
+        newWindow.show();
     }
 
     public void handle(MouseEvent ev) {
