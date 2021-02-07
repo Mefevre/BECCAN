@@ -3,10 +3,7 @@ import java.awt.Point;
 import java.net.URL;
 import java.util.*;
 
-import javafx.animation.FadeTransition;
-import javafx.animation.FillTransition;
-import javafx.animation.SequentialTransition;
-import javafx.animation.StrokeTransition;
+import javafx.animation.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -16,8 +13,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.effect.BlendMode;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -35,9 +30,7 @@ import sample.Algo.Dsatur.Sommet;
 import sample.Control.Control_Choix;
 import sample.Control.Control_Matrix;
 import sample.Control.Control_Matrix_one;
-import sample.Other.BellmanFord;
-
-import javax.swing.*;
+import sample.Algo.BellmanFord.BellmanFord;
 
 public class PanelPlan implements Initializable, ChangeListener {
 
@@ -92,9 +85,9 @@ public class PanelPlan implements Initializable, ChangeListener {
         edge.setDisable(false);
         node.setDisable(false);
         //SLider
-        Image img = new Image("sample/vitesse.png");
-        ImageView view = new ImageView(img);
-        vitesse.setGraphic(view);
+        //Image img = new Image("sample/vitesse.png");
+        //ImageView view = new ImageView(img);
+        //vitesse.setGraphic(view);
         slider.setMin(10);
         slider.setMax(1000);
         slider.setValue(500);
@@ -191,13 +184,19 @@ public class PanelPlan implements Initializable, ChangeListener {
     public void handle(MouseEvent ev) {
 
         if (addNode) {
-            if (true) {
+            if (ev.getEventType() == MouseEvent.MOUSE_CLICKED && ev.getButton() == MouseButton.PRIMARY) {
 
                 nNode++;
 
                 NodeFX circle = new NodeFX(ev.getX(), ev.getY(), 10, String.valueOf(nNode), nNode);
                 canvasGroup.getChildren().add(circle);
                 circle.setOnMousePressed(mouseHandler);
+                //Easter eggs
+                /*ScaleTransition tr = new ScaleTransition(Duration.millis(100), circle);
+                tr.setByX(10f);
+                tr.setByY(10f);
+                tr.setInterpolator(Interpolator.EASE_OUT);
+                tr.play();*/
             }
         }
     }

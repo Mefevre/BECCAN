@@ -1,4 +1,4 @@
-package sample.Other;
+package sample.Algo.BellmanFord;
 
 import java.util.Scanner;
 
