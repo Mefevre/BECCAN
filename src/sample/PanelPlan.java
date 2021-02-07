@@ -16,6 +16,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.effect.BlendMode;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -49,6 +51,8 @@ public class PanelPlan implements Initializable, ChangeListener {
     private ComboBox List;
     @FXML
     private TextArea MatriX;
+    @FXML
+    private Button vitesse;
     @FXML
     private Slider slider = new Slider();
     private Line edgeLine;
@@ -84,8 +88,20 @@ public class PanelPlan implements Initializable, ChangeListener {
     int nNode = 0;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        //Togglebutton
         edge.setDisable(false);
         node.setDisable(false);
+        //SLider
+        Image img = new Image("sample/vitesse.png");
+        ImageView view = new ImageView(img);
+        vitesse.setGraphic(view);
+        slider.setMin(10);
+        slider.setMax(1000);
+        slider.setValue(500);
+        slider.setShowTickLabels(true);
+        slider.setShowTickMarks(true);
+
+        //Combobox
         if (true)//teste de la combobox
         {
             ListALgo.add("color");
@@ -101,7 +117,22 @@ public class PanelPlan implements Initializable, ChangeListener {
 
         }
     }
-    @Override
+    @FXML
+    //Gere l'affichage de slider
+    private void HandleV ()
+    {
+
+        vitesse.setOnMouseClicked((event) -> {
+
+            vitesse.setVisible(false);
+            slider.setVisible(true);
+
+        });
+
+
+
+    }
+        @Override
     public void changed(ObservableValue observable, Object oldValue, Object newValue) {
         int temp = (int) slider.getValue();
 
@@ -119,6 +150,7 @@ public class PanelPlan implements Initializable, ChangeListener {
         //time = temp;
         //System.out.println(time);
     }
+
     public void aide()
     {
         Label secondLabel;
@@ -157,6 +189,7 @@ public class PanelPlan implements Initializable, ChangeListener {
     }
 
     public void handle(MouseEvent ev) {
+
         if (addNode) {
             if (true) {
 
@@ -165,7 +198,6 @@ public class PanelPlan implements Initializable, ChangeListener {
                 NodeFX circle = new NodeFX(ev.getX(), ev.getY(), 10, String.valueOf(nNode), nNode);
                 canvasGroup.getChildren().add(circle);
                 circle.setOnMousePressed(mouseHandler);
-
             }
         }
     }
