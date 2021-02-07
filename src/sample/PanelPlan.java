@@ -3,6 +3,7 @@ import java.awt.Point;
 import java.net.URL;
 import java.util.*;
 
+import com.sun.javafx.geom.Edge;
 import javafx.animation.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -40,6 +41,7 @@ public class PanelPlan implements Initializable, ChangeListener {
     NodeFX selectedNode = null;
     private Label sourceText = new Label("Source"), weight;
     private ARROW arrow;
+    private ARROW_courbe Arrow_cou;
     @FXML
     private ComboBox List;
     @FXML
@@ -200,6 +202,14 @@ public class PanelPlan implements Initializable, ChangeListener {
             }
         }
     }
+    boolean edgeExists(NodeFX u, NodeFX v) {
+        for (EEDGE e : realEdges) {
+            if (e.source == u.node && e.target == v.node || e.source == v.node && e.target == u.node) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     EventHandler<MouseEvent> mouseHandler = new EventHandler<MouseEvent>() {
 
@@ -211,8 +221,10 @@ public class PanelPlan implements Initializable, ChangeListener {
             if (mouseEvent.getEventType() == MouseEvent.MOUSE_PRESSED && mouseEvent.getButton() == MouseButton.PRIMARY && addEdge == true) {
                 if (!circle.isSelected) {
                     if (selectedNode != null) {
+                        weight = new Label();
+                        if (!edgeExists(selectedNode, circle))
+                        {
 
-                            weight = new Label();
                             System.out.println("Adding Edge");
                             //DESINE LES LIGNE OU FLECHE ENTRE LES POINTS
                             if (undirected) {
@@ -230,6 +242,25 @@ public class PanelPlan implements Initializable, ChangeListener {
 
 
                             }
+                        }
+                        else
+                        {
+                            System.out.println("Adding Edge courbé");
+                            //DESINE LES LIGNE OU FLECHE ENTRE LES POINTS
+                            if (undirected) {
+                                //Line edgeLine = new Line(selectedNode.point.x, selectedNode.point.y, circle.point.x, circle.point.y);
+                                //canvasGroup.getChildren().add(edgeLine);
+                                //edgeLine.setId("line");
+                                g.ajouterArret(new Arret(selectedNode.nodeBIS, circle.nodeBIS));
+
+
+                            } else if (directed) {
+                                Arrow_cou = new ARROW_courbe(selectedNode.point.x, selectedNode.point.y, circle.point.x, circle.point.y);
+                                canvasGroup.getChildren().add(Arrow_cou);
+                                arrow.setId("arrow");
+                                g.ajouterArret(new Arret(selectedNode.nodeBIS, circle.nodeBIS));
+                        }
+                        }
                             if (weighted) {
                                 weight.setLayoutX(((selectedNode.point.x) + (circle.point.x)) / 2);
                                 weight.setLayoutY(((selectedNode.point.y) + (circle.point.y)) / 2);
