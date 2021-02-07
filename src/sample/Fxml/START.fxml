@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Control.Control_Start">
+   <children>
+      <Pane prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <Button fx:id="nextSTART" layoutX="205.0" layoutY="180.0" mnemonicParsing="false" prefHeight="77.0" prefWidth="172.0" text="START" />
+            <Button fx:id="aide" layoutX="557.0" layoutY="14.0" mnemonicParsing="false" text="?" />
+            <Label graphicTextGap="7.0" layoutX="176.0" layoutY="63.0" prefHeight="98.0" prefWidth="230.0" text="PROJET NAC-BEC">
+               <font>
+                  <Font size="28.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

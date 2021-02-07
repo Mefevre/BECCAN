@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Control.Control_Matrix_one">
+   <children>
+      <Pane prefHeight="400.0" prefWidth="600.0">
+         <children>
+             <Button fx:id="saisir" layoutX="218.0" layoutY="35.0" mnemonicParsing="false" text="Saisir" />
+             <TextField layoutX="34.0" layoutY="35.0" />
+             
+             <Button fx:id="Effacer" layoutX="465.0" layoutY="282.0" mnemonicParsing="false" text="Effacer" />
+             <Button fx:id="retour" layoutX="34.0" layoutY="341.0" mnemonicParsing="false" text="RETOUR" />
+             <Button fx:id="plan" layoutX="484.0" layoutY="341.0" mnemonicParsing="false" text="PLAN" />
+            <ToggleButton fx:id="A1" layoutX="86.0" layoutY="100.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
+             <ToggleButton fx:id="A2" layoutX="160.0" layoutY="100.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
+             <ToggleButton fx:id="A3" layoutX="218.0" layoutY="100.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
+             <ToggleButton fx:id="A4" layoutX="291.0" layoutY="100.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
+             <ToggleButton fx:id="A5" layoutX="381.0" layoutY="100.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
+             <ToggleButton fx:id="B1" layoutX="86.0" layoutY="156.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
+             <ToggleButton fx:id="B2" layoutX="160.0" layoutY="156.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
+             <ToggleButton fx:id="B3" layoutX="218.0" layoutY="156.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
+             <ToggleButton fx:id="B4" layoutX="300.0" layoutY="150.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
+             <ToggleButton fx:id="B5" layoutX="381.0" layoutY="150.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
+             <ToggleButton fx:id="C1" layoutX="86.0" layoutY="210.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
+             <ToggleButton fx:id="C2" layoutX="151.0" layoutY="210.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
+             <ToggleButton fx:id="C3" layoutX="221.0" layoutY="209.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
+             <ToggleButton fx:id="C4" layoutX="300.0" layoutY="209.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
+             <ToggleButton fx:id="C5" layoutX="381.0" layoutY="209.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
+             <ToggleButton fx:id="D1" layoutX="86.0" layoutY="258.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
+             <ToggleButton fx:id="D2" layoutX="151.0" layoutY="258.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
+             <ToggleButton fx:id="D3" layoutX="221.0" layoutY="258.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
+             <ToggleButton fx:id="D4" layoutX="300.0" layoutY="258.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
+             <ToggleButton fx:id="D5" layoutX="381.0" layoutY="258.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
+             <ToggleButton fx:id="E1" layoutX="79.0" layoutY="308.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
+             <ToggleButton fx:id="E2" layoutX="151.0" layoutY="308.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
+             <ToggleButton fx:id="E3" layoutX="221.0" layoutY="308.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
+             <ToggleButton fx:id="E4" layoutX="300.0" layoutY="308.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
+             <ToggleButton fx:id="E5" layoutX="381.0" layoutY="308.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
+            <Button fx:id="aide" layoutX="517.0" layoutY="23.0" mnemonicParsing="false" text="?" />
+            <Label layoutX="88.0" layoutY="83.0" text="Note : on fait que sur des 1-graph">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+
+         </children></Pane>
+   </children>
+</AnchorPane>

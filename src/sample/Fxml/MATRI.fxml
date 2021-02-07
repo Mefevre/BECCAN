@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Control.Control_Matrix">
+   <children>
+      <Pane layoutX="1.0" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <Button fx:id="Saisir" layoutX="256.0" layoutY="32.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="52.0" text="Saisir" />
+            <TextField fx:id="NBSommet" layoutX="34.0" layoutY="35.0" promptText="Nombre de sommet" />
+            <TextField fx:id="A1" layoutX="144.0" layoutY="105.0" prefHeight="31.0" prefWidth="39.0" />
+             <TextField fx:id="A2" layoutX="199.0" layoutY="105.0" prefHeight="31.0" prefWidth="39.0" />
+             <TextField fx:id="A3" layoutX="262.0" layoutY="105.0" prefHeight="31.0" prefWidth="39.0" />
+             <TextField fx:id="A4" layoutX="315.0" layoutY="105.0" prefHeight="31.0" prefWidth="39.0" />
+             <TextField fx:id="A5" layoutX="376.0" layoutY="105.0" prefHeight="31.0" prefWidth="39.0" />
+             <TextField fx:id="B1" layoutX="144.0" layoutY="163.0" prefHeight="31.0" prefWidth="39.0" />
+             <TextField fx:id="B2" layoutX="199.0" layoutY="163.0" prefHeight="31.0" prefWidth="39.0" />
+             <TextField fx:id="B3" layoutX="262.0" layoutY="163.0" prefHeight="31.0" prefWidth="39.0" />
+             <TextField fx:id="B4" layoutX="315.0" layoutY="163.0" prefHeight="31.0" prefWidth="39.0" />
+             <TextField fx:id="B5" layoutX="376.0" layoutY="163.0" prefHeight="31.0" prefWidth="39.0" />
+             <TextField fx:id="C1" layoutX="144.0" layoutY="210.0" prefHeight="31.0" prefWidth="39.0" />
+             <TextField fx:id="C2" layoutX="199.0" layoutY="210.0" prefHeight="31.0" prefWidth="39.0" />
+             <TextField fx:id="C3" layoutX="262.0" layoutY="210.0" prefHeight="31.0" prefWidth="39.0" />
+             <TextField fx:id="C4" layoutX="315.0" layoutY="210.0" prefHeight="31.0" prefWidth="39.0" />
+             <TextField fx:id="C5" layoutX="376.0" layoutY="210.0" prefHeight="31.0" prefWidth="39.0" />
+             <TextField fx:id="D1" layoutX="144.0" layoutY="263.0" prefHeight="31.0" prefWidth="39.0" />
+             <TextField fx:id="D2" layoutX="199.0" layoutY="263.0" prefHeight="31.0" prefWidth="39.0" />
+             <TextField fx:id="D3" layoutX="262.0" layoutY="263.0" prefHeight="31.0" prefWidth="39.0" />
+             <TextField fx:id="D4" layoutX="315.0" layoutY="263.0" prefHeight="31.0" prefWidth="39.0" />
+             <TextField fx:id="D5" layoutX="376.0" layoutY="266.0" prefHeight="31.0" prefWidth="39.0" />
+             <TextField fx:id="E1" layoutX="144.0" layoutY="322.0" prefHeight="31.0" prefWidth="39.0" />
+             <TextField fx:id="E2" layoutX="205.0" layoutY="322.0" prefHeight="31.0" prefWidth="39.0" />
+             <TextField fx:id="E3" layoutX="270.0" layoutY="322.0" prefHeight="31.0" prefWidth="39.0" />
+             <TextField fx:id="E4" layoutX="315.0" layoutY="322.0" prefHeight="31.0" prefWidth="39.0" />
+             <TextField fx:id="E5" layoutX="376.0" layoutY="322.0" prefHeight="31.0" prefWidth="39.0" />
+            <Button fx:id="Effacer" layoutX="441.0" layoutY="251.0" mnemonicParsing="false" text="Effacer" />
+            <Button fx:id="aide" layoutX="534.0" layoutY="14.0" mnemonicParsing="false" text="?" />
+            <Button fx:id="Retour" layoutX="34.0" layoutY="326.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="78.0" text="Retour" />
+            <Button fx:id="Plan" layoutX="484.0" layoutY="326.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="78.0" text="Plan" />
+            <Label layoutX="144.0" layoutY="81.0" text="Note : les graphiques sont toujour des 1-graph">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+
+         </children>
+      </Pane>
+      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>
