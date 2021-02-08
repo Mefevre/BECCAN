@@ -1,6 +1,5 @@
-/Test_du_prof/nbproject/
-/Test_du_prof/test/
-build.xml
-manifest.mf
-.idea/
-out/
+# Les ligne commençant par '#' sont des commentaires.
+# Ignorer tous les fichiers nommés foo.txt
+.idea
+# Ignorer tous les fichiers html
+*.idea
