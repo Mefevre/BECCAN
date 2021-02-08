@@ -17,7 +17,7 @@
             <ComboBox fx:id="Welsh" layoutX="444.0" layoutY="110.0" prefHeight="25.0" prefWidth="192.0" />
                 <ToggleButton fx:id="dijkstraButton" layoutX="706.0" layoutY="59.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#DijkstraHandle" prefHeight="52.0" prefWidth="78.0" text="DISTRA" />
                 <ToggleButton fx:id="BFSS" layoutX="706.0" layoutY="122.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#BFSHandle" prefHeight="52.0" prefWidth="78.0" text="BFS" />
-            <Button fx:id="aide" layoutX="960.0" layoutY="15.0" mnemonicParsing="false" onAction="#aide" prefHeight="36.0" prefWidth="34.0" style="-fx-border-color: #000000;" text="?" />
+            <Button fx:id="aide" layoutX="976.0" layoutY="19.0" mnemonicParsing="false" onAction="#aide" prefHeight="39.0" prefWidth="39.0" style="-fx-border-color: #000000;" text="?" />
          </children></Pane>
       <Pane layoutX="806.0" layoutY="200.0" prefHeight="532.0" prefWidth="235.0">
          <children>

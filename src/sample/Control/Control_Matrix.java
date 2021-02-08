@@ -12,7 +12,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import sample.Control.Control_Choix;
 import sample.Main;
 
 import java.io.IOException;
@@ -42,39 +41,117 @@ public class Control_Matrix {
     public void initialize()
     {
         Saisir.setOnAction(event -> {
-            if (NBSommet.getText().equals("2"))
-                 {
-                    A1.setVisible(true);A2.setVisible(true);A3.setVisible(false);A4.setVisible(false);A5.setVisible(false);
-                    B1.setVisible(true);B2.setVisible(true);B3.setVisible(false);B4.setVisible(false);B5.setVisible(false);
-                    C1.setVisible(false);C2.setVisible(false);C3.setVisible(false);C4.setVisible(false);C5.setVisible(false);
-                    D1.setVisible(false);D2.setVisible(false);D3.setVisible(false);D4.setVisible(false);D5.setVisible(false);
-                    E1.setVisible(false);E2.setVisible(false);E3.setVisible(false);E4.setVisible(false);E5.setVisible(false);
-                 }
-            else if(NBSommet.getText().equals("3"))
-                 {
-                    A1.setVisible(true);A2.setVisible(true);A3.setVisible(true);A4.setVisible(false);A5.setVisible(false);
-                    B1.setVisible(true);B2.setVisible(true);B3.setVisible(true);B4.setVisible(false);B5.setVisible(false);
-                    C1.setVisible(true);C2.setVisible(true);C3.setVisible(true);C4.setVisible(false);C5.setVisible(false);
-                    D1.setVisible(false);D2.setVisible(false);D3.setVisible(false);D4.setVisible(false);D5.setVisible(false);
-                    E1.setVisible(false);E2.setVisible(false);E3.setVisible(false);E4.setVisible(false);E5.setVisible(false);
+            switch (NBSommet.getText()) {
+                case "2":
+                    A1.setVisible(true);
+                    A2.setVisible(true);
+                    A3.setVisible(false);
+                    A4.setVisible(false);
+                    A5.setVisible(false);
+                    B1.setVisible(true);
+                    B2.setVisible(true);
+                    B3.setVisible(false);
+                    B4.setVisible(false);
+                    B5.setVisible(false);
+                    C1.setVisible(false);
+                    C2.setVisible(false);
+                    C3.setVisible(false);
+                    C4.setVisible(false);
+                    C5.setVisible(false);
+                    D1.setVisible(false);
+                    D2.setVisible(false);
+                    D3.setVisible(false);
+                    D4.setVisible(false);
+                    D5.setVisible(false);
+                    E1.setVisible(false);
+                    E2.setVisible(false);
+                    E3.setVisible(false);
+                    E4.setVisible(false);
+                    E5.setVisible(false);
+                    break;
+                case "3":
+                    A1.setVisible(true);
+                    A2.setVisible(true);
+                    A3.setVisible(true);
+                    A4.setVisible(false);
+                    A5.setVisible(false);
+                    B1.setVisible(true);
+                    B2.setVisible(true);
+                    B3.setVisible(true);
+                    B4.setVisible(false);
+                    B5.setVisible(false);
+                    C1.setVisible(true);
+                    C2.setVisible(true);
+                    C3.setVisible(true);
+                    C4.setVisible(false);
+                    C5.setVisible(false);
+                    D1.setVisible(false);
+                    D2.setVisible(false);
+                    D3.setVisible(false);
+                    D4.setVisible(false);
+                    D5.setVisible(false);
+                    E1.setVisible(false);
+                    E2.setVisible(false);
+                    E3.setVisible(false);
+                    E4.setVisible(false);
+                    E5.setVisible(false);
 
-                }
-            else if(NBSommet.getText().equals("4"))
-                {
-                    A1.setVisible(true);A2.setVisible(true);A3.setVisible(true);A4.setVisible(true);A5.setVisible(false);
-                    B1.setVisible(true);B2.setVisible(true);B3.setVisible(true);B4.setVisible(true);B5.setVisible(false);
-                    C1.setVisible(true);C2.setVisible(true);C3.setVisible(true);C4.setVisible(true);C5.setVisible(false);
-                    D1.setVisible(true);D2.setVisible(true);D3.setVisible(true);D4.setVisible(true);D5.setVisible(false);
-                    E1.setVisible(false);E2.setVisible(false);E3.setVisible(false);E4.setVisible(false);E5.setVisible(false);
-                }
-            else if(NBSommet.getText().equals("5"))
-                {
-                    A1.setVisible(true);A2.setVisible(true);A3.setVisible(true);A4.setVisible(true);A5.setVisible(true);
-                    B1.setVisible(true);B2.setVisible(true);B3.setVisible(true);B4.setVisible(true);B5.setVisible(true);
-                    C1.setVisible(true);C2.setVisible(true);C3.setVisible(true);C4.setVisible(true);C5.setVisible(true);
-                    D1.setVisible(true);D2.setVisible(true);D3.setVisible(true);D4.setVisible(true);D5.setVisible(true);
-                    E1.setVisible(true);E2.setVisible(true);E3.setVisible(true);E4.setVisible(true);E5.setVisible(true);
-                }
+                    break;
+                case "4":
+                    A1.setVisible(true);
+                    A2.setVisible(true);
+                    A3.setVisible(true);
+                    A4.setVisible(true);
+                    A5.setVisible(false);
+                    B1.setVisible(true);
+                    B2.setVisible(true);
+                    B3.setVisible(true);
+                    B4.setVisible(true);
+                    B5.setVisible(false);
+                    C1.setVisible(true);
+                    C2.setVisible(true);
+                    C3.setVisible(true);
+                    C4.setVisible(true);
+                    C5.setVisible(false);
+                    D1.setVisible(true);
+                    D2.setVisible(true);
+                    D3.setVisible(true);
+                    D4.setVisible(true);
+                    D5.setVisible(false);
+                    E1.setVisible(false);
+                    E2.setVisible(false);
+                    E3.setVisible(false);
+                    E4.setVisible(false);
+                    E5.setVisible(false);
+                    break;
+                case "5":
+                    A1.setVisible(true);
+                    A2.setVisible(true);
+                    A3.setVisible(true);
+                    A4.setVisible(true);
+                    A5.setVisible(true);
+                    B1.setVisible(true);
+                    B2.setVisible(true);
+                    B3.setVisible(true);
+                    B4.setVisible(true);
+                    B5.setVisible(true);
+                    C1.setVisible(true);
+                    C2.setVisible(true);
+                    C3.setVisible(true);
+                    C4.setVisible(true);
+                    C5.setVisible(true);
+                    D1.setVisible(true);
+                    D2.setVisible(true);
+                    D3.setVisible(true);
+                    D4.setVisible(true);
+                    D5.setVisible(true);
+                    E1.setVisible(true);
+                    E2.setVisible(true);
+                    E3.setVisible(true);
+                    E4.setVisible(true);
+                    E5.setVisible(true);
+                    break;
+            }
         });
 
         Effacer.setOnAction(event -> {
@@ -90,9 +167,7 @@ public class Control_Matrix {
             D1.setText("");D2.setText("");D3.setText("");D4.setText("");D5.setText("");
             E1.setText("");E2.setText("");E3.setText("");E4.setText("");E5.setText("");
         });
-        Retour.setOnAction(e -> {
-            loadNextScene("/sample/Fxml/CHOIX.fxml");
-        });
+        Retour.setOnAction(e -> loadNextScene("/sample/Fxml/CHOIX.fxml"));
         Plan.setOnAction(e -> {
             matrice = new String[][]{
                     {A1.getText(), A2.getText(), A3.getText(), A4.getText(), A5.getText()},
@@ -104,45 +179,41 @@ public class Control_Matrix {
             etat_matrice = true;
             loadNextScene("/sample/Fxml/PLAN.fxml");
         });
-        aide.setOnAction(new EventHandler<ActionEvent>() {
+        aide.setOnAction(event -> {
 
-            @Override
-            public void handle(ActionEvent event) {
+            Label secondLabel;
 
-                Label secondLabel;
+            secondLabel = new Label("Page d'aide pour Premiere page :"+"\n"
+                    +"Page D'accueil : Le button centrale lance le logicile ."+"\n"+"\n"
+                    +"Page de choix : Vous devais decidé les type de votre graph un choix possible pour les poids"+"\n"
+                    +"et pour l'orientation."+"\n"+"\n"
+                    +"Page de la matrice : Vous deviez tout d'abord mettre le Nb de sommet puis remplir la matrice"+"\n"
+                    +"avec passe à l'etape du plan pour mettre en meouvre les algo."+"\n"+"\n"
+                    +"Page de plan : Cette page affiche le graph et sert a le modifier , on peut applique des algorithme"+"\n"
+                    +"sur le graph afficher."+"\n");
 
-                secondLabel = new Label("Page d'aide pour Premiere page :"+"\n"
-                        +"Page D'accueil : Le button centrale lance le logicile ."+"\n"+"\n"
-                        +"Page de choix : Vous devais decidé les type de votre graph un choix possible pour les poids"+"\n"
-                        +"et pour l'orientation."+"\n"+"\n"
-                        +"Page de la matrice : Vous deviez tout d'abord mettre le Nb de sommet puis remplir la matrice"+"\n"
-                        +"avec passe à l'etape du plan pour mettre en meouvre les algo."+"\n"+"\n"
-                        +"Page de plan : Cette page affiche le graph et sert a le modifier , on peut applique des algorithme"+"\n"
-                        +"sur le graph afficher."+"\n");
+            StackPane secondaryLayout = new StackPane();
+            secondaryLayout.getChildren().add(secondLabel);
 
-                StackPane secondaryLayout = new StackPane();
-                secondaryLayout.getChildren().add(secondLabel);
+            Scene secondScene = new Scene(secondaryLayout, 650, 400);
 
-                Scene secondScene = new Scene(secondaryLayout, 650, 400);
-
-                // New window (Stage)
-                Stage newWindow = new Stage();
-                newWindow.setTitle("Fenetre D'aide");
-                newWindow.setScene(secondScene);
+            // New window (Stage)
+            Stage newWindow = new Stage();
+            newWindow.setTitle("Fenetre D'aide");
+            newWindow.setScene(secondScene);
 
 
-                // Specifies the modality for new window.
-                newWindow.initModality(Modality.WINDOW_MODAL);
+            // Specifies the modality for new window.
+            newWindow.initModality(Modality.WINDOW_MODAL);
 
-                // Specifies the owner Window (parent) for new window
-                newWindow.initOwner(Main.primaryStage);
+            // Specifies the owner Window (parent) for new window
+            newWindow.initOwner(Main.primaryStage);
 
-                // Set position of second window, related to primary window.
-                newWindow.setX(Main.primaryStage.getX() + 200);
-                newWindow.setY(Main.primaryStage.getY() + 100);
+            // Set position of second window, related to primary window.
+            newWindow.setX(Main.primaryStage.getX() + 200);
+            newWindow.setY(Main.primaryStage.getY() + 100);
 
-                newWindow.show();
-            }
+            newWindow.show();
         });
 
     }

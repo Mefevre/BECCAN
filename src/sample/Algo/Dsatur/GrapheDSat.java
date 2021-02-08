@@ -5,8 +5,6 @@
 
 package sample.Algo.Dsatur;
 
-import sample.Algo.Dsatur.Graphe;
-
 import java.util.*;
 
 /**

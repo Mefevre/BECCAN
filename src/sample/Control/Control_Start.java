@@ -1,7 +1,5 @@
 package sample.Control;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,9 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import sample.Control.Control_Choix;
 import sample.Main;
-import sample.PanelPlan;
 
 import java.io.IOException;
 import java.util.logging.Level;
@@ -24,56 +20,48 @@ public class Control_Start {
     @FXML
     public Button nextSTART , aide;
 
-    static PanelPlan cref;
-
 
     public void initialize()
     {
-        nextSTART.setOnAction(event -> {
-            loadNextScene_1();
-        });
-        aide.setOnAction(new EventHandler<ActionEvent>() {
+        nextSTART.setOnAction(event -> loadNextScene_1());
+        aide.setOnAction(event -> {
 
-            @Override
-            public void handle(ActionEvent event) {
+            Label secondLabel;
 
-                Label secondLabel;
+            secondLabel = new Label("Page d'aide pour Premiere page :"+"\n"
+            +"Page D'accueil : Le button centrale lance le logicile ."+"\n"+"\n"
 
-                secondLabel = new Label("Page d'aide pour Premiere page :"+"\n"
-                +"Page D'accueil : Le button centrale lance le logicile ."+"\n"+"\n"
+            +"Page de choix : Vous devais decidé les type de votre graph un choix possible pour les poids"+"\n"
+            +"et pour l'orientation."+"\n"+"\n"
 
-                +"Page de choix : Vous devais decidé les type de votre graph un choix possible pour les poids"+"\n"
-                +"et pour l'orientation."+"\n"+"\n"
+            +"Page de la matrice : Vous deviez tout d'abord mettre le Nb de sommet puis remplir la matrice"+"\n"
+            +"avec passe à l'etape du plan pour mettre en meouvre les algo."+"\n"+"\n"
 
-                +"Page de la matrice : Vous deviez tout d'abord mettre le Nb de sommet puis remplir la matrice"+"\n"
-                +"avec passe à l'etape du plan pour mettre en meouvre les algo."+"\n"+"\n"
+            +"Page de plan : Cette page affiche le graph et sert a le modifier , on peut applique des algorithme"+"\n"
+            +"sur le graph afficher."+"\n");
 
-                +"Page de plan : Cette page affiche le graph et sert a le modifier , on peut applique des algorithme"+"\n"
-                +"sur le graph afficher."+"\n");
+            StackPane secondaryLayout = new StackPane();
+            secondaryLayout.getChildren().add(secondLabel);
 
-                StackPane secondaryLayout = new StackPane();
-                secondaryLayout.getChildren().add(secondLabel);
+            Scene secondScene = new Scene(secondaryLayout, 650, 400);
 
-                Scene secondScene = new Scene(secondaryLayout, 650, 400);
-
-                // New window (Stage)
-                Stage newWindow = new Stage();
-                newWindow.setTitle("Fenetre D'aide");
-                newWindow.setScene(secondScene);
+            // New window (Stage)
+            Stage newWindow = new Stage();
+            newWindow.setTitle("Fenetre D'aide");
+            newWindow.setScene(secondScene);
 
 
-                // Specifies the modality for new window.
-                newWindow.initModality(Modality.WINDOW_MODAL);
+            // Specifies the modality for new window.
+            newWindow.initModality(Modality.WINDOW_MODAL);
 
-                // Specifies the owner Window (parent) for new window
-                newWindow.initOwner(Main.primaryStage);
+            // Specifies the owner Window (parent) for new window
+            newWindow.initOwner(Main.primaryStage);
 
-                // Set position of second window, related to primary window.
-                newWindow.setX(Main.primaryStage.getX() + 200);
-                newWindow.setY(Main.primaryStage.getY() + 100);
+            // Set position of second window, related to primary window.
+            newWindow.setX(Main.primaryStage.getX() + 200);
+            newWindow.setY(Main.primaryStage.getY() + 100);
 
-                newWindow.show();
-            }
+            newWindow.show();
         });
     }
     void loadNextScene_1() {
