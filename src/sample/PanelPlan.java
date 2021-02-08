@@ -29,6 +29,7 @@ import sample.Control.Control_Choix;
 import sample.Control.Control_Matrix;
 import sample.Control.Control_Matrix_one;
 import sample.Algo.BellmanFord.BellmanFord;
+import sample.Other.Linearrow_courbé;
 
 public class PanelPlan implements Initializable, ChangeListener {
 
@@ -78,8 +79,11 @@ public class PanelPlan implements Initializable, ChangeListener {
     List<Color> colorName = new ArrayList<Color>();
     List<String> colorCombo = new ArrayList<String>();
     //List<NodeE> ListNode = new ArrayList<>();
-
     int nNode = 0;
+
+    //
+    //Init tout les variable et la combobox
+    //
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //Togglebutton
@@ -123,22 +127,10 @@ public class PanelPlan implements Initializable, ChangeListener {
             List.getItems().addAll(ListALgo);
         }
     }
-    @FXML
-    //Gere l'affichage de slider
-    private void HandleV ()
-    {
-
-        vitesse.setOnMouseClicked((event) -> {
-
-            vitesse.setVisible(false);
-            slider.setVisible(true);
-
-        });
-
-
-
-    }
-        @Override
+    @Override
+    //
+    //Gere le temps du slider pour le temps des algos
+    //
     public void changed(ObservableValue observable, Object oldValue, Object newValue) {
         int temp = (int) slider.getValue();
 
@@ -156,7 +148,9 @@ public class PanelPlan implements Initializable, ChangeListener {
         //time = temp;
         //System.out.println(time);
     }
-
+    //
+    //Fonction qui gere la fenetre AIDE
+    //
     public void aide()
     {
         Label secondLabel;
@@ -193,7 +187,9 @@ public class PanelPlan implements Initializable, ChangeListener {
 
         newWindow.show();
     }
-
+    //
+    //Fonction quand clique sur le pane , Gere le dessin des circle et appel la fonction des ARC ARRET
+    //
     public void handle(MouseEvent ev) {
 
         if (addNode) {
@@ -221,6 +217,9 @@ public class PanelPlan implements Initializable, ChangeListener {
             }
         }
     }
+    //
+    //Empeche les N-graph
+    //
     boolean edgeExists(NodeFX u, NodeFX v) {
         for (EEDGE e : realEdges) {
             if (e.source == u.node && e.target == v.node || e.source == v.node && e.target == u.node) {
@@ -229,7 +228,9 @@ public class PanelPlan implements Initializable, ChangeListener {
         }
         return false;
     }
-
+    //
+    //Fonction qui gere l'affichage des line et le label poids
+    //
     EventHandler<MouseEvent> mouseHandler = new EventHandler<MouseEvent>() {
 
         @Override
@@ -356,6 +357,9 @@ public class PanelPlan implements Initializable, ChangeListener {
             }
         }
     };
+    //
+    //Modifier la valeur en cliquant sur button Edge
+    //
     public void AddEdgeHandle (ActionEvent actionEvent)
     {
         addNode = false;
@@ -365,7 +369,9 @@ public class PanelPlan implements Initializable, ChangeListener {
         selectedNode = null;
     }
 
-
+    //
+    //Modifier la valeur en cliquant sur button NODE
+    //
     public void AddNodeHandle (ActionEvent actionEvent)
     {
         addNode = true;
@@ -375,6 +381,9 @@ public class PanelPlan implements Initializable, ChangeListener {
         selectedNode = null;
     }
     //calcule la matrice du graph dans le plan
+    //
+    //Fonction de calcule de la matrice du graph dessiner utilisé pour Bellman FORD
+    //
     public void MatriceGR()
     {
         matriceBellman = new int[][]{{0,0,0,0,0},{0,0,0,0,0},{0,0,0,0,0},{0,0,0,0,0},{0,0,0,0,0}};
@@ -389,6 +398,9 @@ public class PanelPlan implements Initializable, ChangeListener {
         }
 
     }
+    //
+    //Appel le constructeur de BEllmanford
+    //
     public void AppelBellmanFord()
     {
         int numberofvertices = 0;
@@ -449,11 +461,16 @@ public class PanelPlan implements Initializable, ChangeListener {
         }
 
     }
+    //
+    //Modifier un boolean avec le choix dans la combobox algo
+    //
     public void WelshPowell()
     {
-
         WelABoolean = true;
     }
+    //
+    //Le teste des choix dans la combobox
+    //
     public void ListALgo()
     {
         if (List.getSelectionModel().getSelectedItem().equals("color"))
@@ -484,7 +501,9 @@ public class PanelPlan implements Initializable, ChangeListener {
         }
 
     }
-
+    //
+    //Appel le contructeur de la class COLOR pour colorisé le graph
+    //
     public void COLOR()
     {
 
@@ -512,16 +531,23 @@ public class PanelPlan implements Initializable, ChangeListener {
 
 
 
-
+    //
+    //Modifier la valeur Boolean en cliquand sur button
+    //
     public void DijkstraHandle(ActionEvent actionEvent) {
         dijkstra = true;
         Bfs = false;
     }
+    //
+    //Modifier la valeur Boolean en cliquand sur button
+    //
     public void BFSHandle(ActionEvent actionEvent) {
         Bfs = true;
         dijkstra = false;
     }
-
+    //
+    //Reset a etat au demarage
+    //
     public void ResetHandle(ActionEvent event) //a faire
     {
     }
@@ -559,7 +585,9 @@ public class PanelPlan implements Initializable, ChangeListener {
             System.out.println("ADDing: " + circles.size());
         }
     }
-
+    //
+    //Class ALgo
+    //
     public class Algorithm {
         private NodeE source;
 
