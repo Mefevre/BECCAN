@@ -40,7 +40,7 @@ public class PanelPlan implements Initializable, ChangeListener {
     private ARROW arrow;
     private Linearrow_courbé Arrow_cou;
     @FXML
-    private ComboBox List;
+    private ComboBox List,Welsh;
     @FXML
     private TextArea MatriX;
     @FXML
@@ -57,6 +57,7 @@ public class PanelPlan implements Initializable, ChangeListener {
     public SequentialTransition stcolor;
     public static final int MAX_VALUE = 999; //bellman ford
     public int ValueNBsommet = 0;//bellmanFord
+    public boolean WelABoolean = false;
 
     private boolean directed = Control_Choix.directed, undirected = Control_Choix.undirected , weighted = Control_Choix.weighted, unweighted = Control_Choix.unweighted;
     private String [][]matrice_nb = Control_Matrix.matrice;
@@ -75,6 +76,7 @@ public class PanelPlan implements Initializable, ChangeListener {
     List<EEDGE> mstEdges = new ArrayList<EEDGE>();
     List<EEDGE> realEdges = new ArrayList<EEDGE>();
     List<Color> colorName = new ArrayList<Color>();
+    List<String> colorCombo = new ArrayList<String>();
     //List<NodeE> ListNode = new ArrayList<>();
 
     int nNode = 0;
@@ -92,7 +94,21 @@ public class PanelPlan implements Initializable, ChangeListener {
         slider.setValue(500);
         slider.setShowTickLabels(true);
         slider.setShowTickMarks(true);
-
+        //Color
+        colorName.add(Color.BLUE);
+        colorName.add(Color.RED);
+        colorName.add(Color.GREEN);
+        colorName.add(Color.ORANGE);
+        colorName.add(Color.PINK);
+        colorName.add(Color.YELLOW);
+        colorName.add(Color.VIOLET);
+        colorCombo.add("RED");
+        colorCombo.add("GREEN");
+        colorCombo.add("ORANGE");
+        colorCombo.add("PINK");
+        colorCombo.add("YELLOW");
+        colorCombo.add("VIOLET");
+        Welsh.getItems().addAll(colorCombo);
         //Combobox
         if (true)//teste de la combobox
         {
@@ -105,8 +121,6 @@ public class PanelPlan implements Initializable, ChangeListener {
             ListALgo.add("Prim");
             ListALgo.add("Bellman Ford");
             List.getItems().addAll(ListALgo);
-
-
         }
     }
     @FXML
@@ -183,7 +197,8 @@ public class PanelPlan implements Initializable, ChangeListener {
     public void handle(MouseEvent ev) {
 
         if (addNode) {
-            if (ev.getEventType() == MouseEvent.MOUSE_CLICKED && ev.getButton() == MouseButton.PRIMARY) {
+            if (ev.getEventType() == MouseEvent.MOUSE_CLICKED && WelABoolean == false && ev.getButton() == MouseButton.PRIMARY)
+            {
 
                 nNode++;
 
@@ -196,6 +211,13 @@ public class PanelPlan implements Initializable, ChangeListener {
                 tr.setByY(10f);
                 tr.setInterpolator(Interpolator.EASE_OUT);
                 tr.play();*/
+            }
+            else if (ev.getEventType() == MouseEvent.MOUSE_CLICKED && WelABoolean == true)
+            {
+                for (NodeFX node : circles)
+                {
+                    node.setOnMouseClicked(mouseHandler);
+                }
             }
         }
     }
@@ -213,9 +235,12 @@ public class PanelPlan implements Initializable, ChangeListener {
         @Override
         public void handle(MouseEvent mouseEvent) {
             NodeFX circle = (NodeFX) mouseEvent.getSource();
-
-
-            if (mouseEvent.getEventType() == MouseEvent.MOUSE_PRESSED && mouseEvent.getButton() == MouseButton.PRIMARY && addEdge == true) {
+            if (mouseEvent.getEventType() == MouseEvent.MOUSE_PRESSED && mouseEvent.getButton() == MouseButton.PRIMARY && WelABoolean == true)
+            {
+                FillTransition ft1 = new FillTransition(Duration.millis(300), circle, Color.BLACK, colorName.get(Welsh.getSelectionModel().getSelectedIndex()+1));
+                ft1.play();
+            }
+            else if (mouseEvent.getEventType() == MouseEvent.MOUSE_PRESSED && mouseEvent.getButton() == MouseButton.PRIMARY && addEdge == true) {
                 if (!circle.isSelected) {
                     if (selectedNode != null) {
                         weight = new Label();
@@ -424,6 +449,11 @@ public class PanelPlan implements Initializable, ChangeListener {
         }
 
     }
+    public void WelshPowell()
+    {
+
+        WelABoolean = true;
+    }
     public void ListALgo()
     {
         if (List.getSelectionModel().getSelectedItem().equals("color"))
@@ -447,18 +477,17 @@ public class PanelPlan implements Initializable, ChangeListener {
 
             }
         }
+        else if (List.getSelectionModel().getSelectedItem().equals("Welsh Powell"))
+        {
+            WelshPowell();
+
+        }
 
     }
 
     public void COLOR()
     {
-        colorName.add(Color.BLUE);
-        colorName.add(Color.RED);
-        colorName.add(Color.GREEN);
-        colorName.add(Color.ORANGE);
-        colorName.add(Color.PINK);
-        colorName.add(Color.YELLOW);
-        colorName.add(Color.VIOLET);
+
         int U = 0;
         g.colorier();
         System.out.print(g.toString());

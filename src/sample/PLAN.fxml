@@ -3,9 +3,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="628.0" prefWidth="703.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.PanelPlan">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="628.0" prefWidth="878.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.PanelPlan">
     <children>
-        <Pane fx:id="canvasGroup" layoutX="1.0" layoutY="1.0" onMouseClicked="#handle" prefHeight="627.0" prefWidth="702.0" style="-fx-background-color: #E0E0E0;">
+        <Pane fx:id="canvasGroup" onMouseClicked="#handle" prefHeight="628.0" prefWidth="878.0" style="-fx-background-color: #E0E0E0;">
             <children>
                 <ToggleButton fx:id="edge" layoutX="26.0" layoutY="40.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#AddEdgeHandle" prefHeight="52.0" prefWidth="78.0" text="EDGE" />
                 <ToggleButton fx:id="node" layoutX="128.0" layoutY="40.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#AddNodeHandle" prefHeight="52.0" prefWidth="78.0" text="NODE" />
@@ -14,9 +14,10 @@
                 <ToggleButton fx:id="dijkstraButton" layoutX="297.0" layoutY="14.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#DijkstraHandle" prefHeight="52.0" prefWidth="78.0" text="DISTRA" />
                 <ToggleButton fx:id="BFSS" layoutX="386.0" layoutY="14.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#BFSHandle" prefHeight="52.0" prefWidth="78.0" text="BFS" />
                 <Slider fx:id="slider" layoutX="26.0" layoutY="146.0" prefHeight="52.0" prefWidth="255.0" />
-            <Button fx:id="aide" layoutX="636.0" layoutY="16.0" mnemonicParsing="false" onAction="#aide" text="?" />
+            <Button fx:id="aide" layoutX="835.0" layoutY="16.0" mnemonicParsing="false" onAction="#aide" text="?" />
             <ComboBox fx:id="List" layoutX="425.0" layoutY="80.0" onAction="#ListALgo" prefWidth="150.0" />
-            <TextArea fx:id="MatriX" layoutX="475.0" layoutY="146.0" prefHeight="200.0" prefWidth="200.0" />
+            <TextArea fx:id="MatriX" layoutX="657.0" layoutY="98.0" prefHeight="200.0" prefWidth="200.0" />
+            <ComboBox fx:id="Welsh" layoutX="657.0" layoutY="348.0" prefHeight="25.0" prefWidth="200.0" />
             </children>
         </Pane>
 
