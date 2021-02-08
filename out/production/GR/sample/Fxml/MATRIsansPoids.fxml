@@ -1,44 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Control.Control_Matrix_one">
+<AnchorPane prefHeight="568.0" prefWidth="786.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Control.Control_Matrix_one">
    <children>
-      <Pane prefHeight="400.0" prefWidth="600.0">
+      <Pane prefHeight="568.0" prefWidth="786.0" style="-fx-background-color: #caccd1;">
          <children>
-             <Button fx:id="saisir" layoutX="218.0" layoutY="35.0" mnemonicParsing="false" text="Saisir" />
-             <TextField layoutX="34.0" layoutY="35.0" />
+             <Button fx:id="saisir" layoutX="389.0" layoutY="67.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="80.0" style="-fx-background-color: #52565e;" text="Saisir" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+             <TextField layoutX="90.0" layoutY="67.0" prefHeight="33.0" prefWidth="231.0" promptText="Nombre de Sommet" />
              
-             <Button fx:id="Effacer" layoutX="465.0" layoutY="282.0" mnemonicParsing="false" text="Effacer" />
-             <Button fx:id="retour" layoutX="34.0" layoutY="341.0" mnemonicParsing="false" text="RETOUR" />
-             <Button fx:id="plan" layoutX="484.0" layoutY="341.0" mnemonicParsing="false" text="PLAN" />
-            <ToggleButton fx:id="A1" layoutX="86.0" layoutY="100.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
-             <ToggleButton fx:id="A2" layoutX="160.0" layoutY="100.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
-             <ToggleButton fx:id="A3" layoutX="218.0" layoutY="100.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
-             <ToggleButton fx:id="A4" layoutX="291.0" layoutY="100.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
-             <ToggleButton fx:id="A5" layoutX="381.0" layoutY="100.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
-             <ToggleButton fx:id="B1" layoutX="86.0" layoutY="156.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
-             <ToggleButton fx:id="B2" layoutX="160.0" layoutY="156.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
-             <ToggleButton fx:id="B3" layoutX="218.0" layoutY="156.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
-             <ToggleButton fx:id="B4" layoutX="300.0" layoutY="150.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
-             <ToggleButton fx:id="B5" layoutX="381.0" layoutY="150.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
-             <ToggleButton fx:id="C1" layoutX="86.0" layoutY="210.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
-             <ToggleButton fx:id="C2" layoutX="151.0" layoutY="210.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
-             <ToggleButton fx:id="C3" layoutX="221.0" layoutY="209.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
-             <ToggleButton fx:id="C4" layoutX="300.0" layoutY="209.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
-             <ToggleButton fx:id="C5" layoutX="381.0" layoutY="209.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
-             <ToggleButton fx:id="D1" layoutX="86.0" layoutY="258.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
-             <ToggleButton fx:id="D2" layoutX="151.0" layoutY="258.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
-             <ToggleButton fx:id="D3" layoutX="221.0" layoutY="258.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
-             <ToggleButton fx:id="D4" layoutX="300.0" layoutY="258.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
-             <ToggleButton fx:id="D5" layoutX="381.0" layoutY="258.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
-             <ToggleButton fx:id="E1" layoutX="79.0" layoutY="308.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
-             <ToggleButton fx:id="E2" layoutX="151.0" layoutY="308.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
-             <ToggleButton fx:id="E3" layoutX="221.0" layoutY="308.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
-             <ToggleButton fx:id="E4" layoutX="300.0" layoutY="308.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
-             <ToggleButton fx:id="E5" layoutX="381.0" layoutY="308.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
-            <Button fx:id="aide" layoutX="517.0" layoutY="23.0" mnemonicParsing="false" text="?" />
+             <Button fx:id="Effacer" layoutX="587.0" layoutY="230.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="80.0" style="-fx-background-color: #52565e;" text="Effacer" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+             <Button fx:id="retour" layoutX="65.0" layoutY="459.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="105.0" style="-fx-background-color: #52565e;" text="RETOUR" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+             <Button fx:id="plan" layoutX="635.0" layoutY="459.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="105.0" style="-fx-background-color: #52565e;" text="PLAN" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+            <Button fx:id="aide" layoutX="721.0" layoutY="28.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="39.0" text="?" />
+            <ToggleButton fx:id="A1" layoutX="224.0" layoutY="178.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
+             <ToggleButton fx:id="A2" layoutX="298.0" layoutY="178.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
+             <ToggleButton fx:id="A3" layoutX="356.0" layoutY="178.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
+             <ToggleButton fx:id="A4" layoutX="429.0" layoutY="178.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
+             <ToggleButton fx:id="A5" layoutX="519.0" layoutY="178.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
+             <ToggleButton fx:id="B1" layoutX="224.0" layoutY="234.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
+             <ToggleButton fx:id="B2" layoutX="298.0" layoutY="234.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
+             <ToggleButton fx:id="B3" layoutX="356.0" layoutY="234.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
+             <ToggleButton fx:id="B4" layoutX="438.0" layoutY="228.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
+             <ToggleButton fx:id="B5" layoutX="519.0" layoutY="228.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
+             <ToggleButton fx:id="C1" layoutX="224.0" layoutY="288.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
+             <ToggleButton fx:id="C2" layoutX="289.0" layoutY="288.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
+             <ToggleButton fx:id="C3" layoutX="359.0" layoutY="287.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
+             <ToggleButton fx:id="C4" layoutX="438.0" layoutY="287.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
+             <ToggleButton fx:id="C5" layoutX="519.0" layoutY="287.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
+             <ToggleButton fx:id="D1" layoutX="224.0" layoutY="336.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
+             <ToggleButton fx:id="D2" layoutX="289.0" layoutY="336.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
+             <ToggleButton fx:id="D3" layoutX="359.0" layoutY="336.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
+             <ToggleButton fx:id="D4" layoutX="438.0" layoutY="336.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
+             <ToggleButton fx:id="D5" layoutX="519.0" layoutY="336.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
+             <ToggleButton fx:id="E1" layoutX="217.0" layoutY="386.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
+             <ToggleButton fx:id="E2" layoutX="289.0" layoutY="386.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
+             <ToggleButton fx:id="E3" layoutX="359.0" layoutY="386.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
+             <ToggleButton fx:id="E4" layoutX="438.0" layoutY="386.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
+             <ToggleButton fx:id="E5" layoutX="519.0" layoutY="386.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="1" />
+            <Label layoutX="226.0" layoutY="161.0" text="Note : on fait que sur des 1-graph">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
 
          </children></Pane>
    </children>

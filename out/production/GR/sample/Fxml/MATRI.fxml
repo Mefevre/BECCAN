@@ -1,46 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Control.Control_Matrix">
+<AnchorPane prefHeight="568.0" prefWidth="786.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Control.Control_Matrix">
    <children>
-      <Pane layoutX="1.0" prefHeight="400.0" prefWidth="600.0">
+      <Pane layoutX="1.0" prefHeight="486.0" prefWidth="683.0" style="-fx-background-color: #caccd1;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button fx:id="Saisir" layoutX="212.0" layoutY="32.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="52.0" text="Saisir" />
-            <TextField fx:id="NBSommet" layoutX="34.0" layoutY="35.0" promptText="Nombre de sommet" />
-            <TextField fx:id="A1" layoutX="144.0" layoutY="105.0" prefHeight="31.0" prefWidth="39.0" />
-             <TextField fx:id="A2" layoutX="199.0" layoutY="105.0" prefHeight="31.0" prefWidth="39.0" />
-             <TextField fx:id="A3" layoutX="262.0" layoutY="105.0" prefHeight="31.0" prefWidth="39.0" />
-             <TextField fx:id="A4" layoutX="315.0" layoutY="105.0" prefHeight="31.0" prefWidth="39.0" />
-             <TextField fx:id="A5" layoutX="376.0" layoutY="105.0" prefHeight="31.0" prefWidth="39.0" />
-             <TextField fx:id="B1" layoutX="144.0" layoutY="163.0" prefHeight="31.0" prefWidth="39.0" />
-             <TextField fx:id="B2" layoutX="199.0" layoutY="163.0" prefHeight="31.0" prefWidth="39.0" />
-             <TextField fx:id="B3" layoutX="262.0" layoutY="163.0" prefHeight="31.0" prefWidth="39.0" />
-             <TextField fx:id="B4" layoutX="315.0" layoutY="163.0" prefHeight="31.0" prefWidth="39.0" />
-             <TextField fx:id="B5" layoutX="376.0" layoutY="163.0" prefHeight="31.0" prefWidth="39.0" />
-             <TextField fx:id="C1" layoutX="144.0" layoutY="210.0" prefHeight="31.0" prefWidth="39.0" />
-             <TextField fx:id="C2" layoutX="199.0" layoutY="210.0" prefHeight="31.0" prefWidth="39.0" />
-             <TextField fx:id="C3" layoutX="262.0" layoutY="210.0" prefHeight="31.0" prefWidth="39.0" />
-             <TextField fx:id="C4" layoutX="315.0" layoutY="210.0" prefHeight="31.0" prefWidth="39.0" />
-             <TextField fx:id="C5" layoutX="376.0" layoutY="210.0" prefHeight="31.0" prefWidth="39.0" />
-             <TextField fx:id="D1" layoutX="144.0" layoutY="263.0" prefHeight="31.0" prefWidth="39.0" />
-             <TextField fx:id="D2" layoutX="199.0" layoutY="263.0" prefHeight="31.0" prefWidth="39.0" />
-             <TextField fx:id="D3" layoutX="262.0" layoutY="263.0" prefHeight="31.0" prefWidth="39.0" />
-             <TextField fx:id="D4" layoutX="315.0" layoutY="263.0" prefHeight="31.0" prefWidth="39.0" />
-             <TextField fx:id="D5" layoutX="376.0" layoutY="266.0" prefHeight="31.0" prefWidth="39.0" />
-             <TextField fx:id="E1" layoutX="144.0" layoutY="322.0" prefHeight="31.0" prefWidth="39.0" />
-             <TextField fx:id="E2" layoutX="205.0" layoutY="322.0" prefHeight="31.0" prefWidth="39.0" />
-             <TextField fx:id="E3" layoutX="270.0" layoutY="322.0" prefHeight="31.0" prefWidth="39.0" />
-             <TextField fx:id="E4" layoutX="315.0" layoutY="322.0" prefHeight="31.0" prefWidth="39.0" />
-             <TextField fx:id="E5" layoutX="376.0" layoutY="322.0" prefHeight="31.0" prefWidth="39.0" />
-            <Button fx:id="Effacer" layoutX="441.0" layoutY="251.0" mnemonicParsing="false" text="Effacer" />
-            <Button fx:id="aide" layoutX="534.0" layoutY="14.0" mnemonicParsing="false" text="?" />
-            <Button fx:id="Retour" layoutX="34.0" layoutY="326.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="78.0" text="Retour" />
-            <Button fx:id="Plan" layoutX="484.0" layoutY="326.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="78.0" text="Plan" />
-            <Label layoutX="144.0" layoutY="81.0" text="Note : les graphiques sont toujour des 1-graph">
+            <Button fx:id="Saisir" layoutX="425.0" layoutY="62.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="80.0" style="-fx-background-color: #52565e;" text="Saisir" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+            <TextField fx:id="NBSommet" layoutX="164.0" layoutY="66.0" prefHeight="31.0" prefWidth="197.0" promptText="Nombre de sommet" />
+            <TextField fx:id="A1" layoutX="249.0" layoutY="190.0" prefHeight="31.0" prefWidth="39.0" />
+             <TextField fx:id="A2" layoutX="304.0" layoutY="190.0" prefHeight="31.0" prefWidth="39.0" />
+             <TextField fx:id="A3" layoutX="367.0" layoutY="190.0" prefHeight="31.0" prefWidth="39.0" />
+             <TextField fx:id="A4" layoutX="420.0" layoutY="190.0" prefHeight="31.0" prefWidth="39.0" />
+             <TextField fx:id="A5" layoutX="481.0" layoutY="190.0" prefHeight="31.0" prefWidth="39.0" />
+             <TextField fx:id="B1" layoutX="249.0" layoutY="239.0" prefHeight="31.0" prefWidth="39.0" />
+             <TextField fx:id="B2" layoutX="304.0" layoutY="239.0" prefHeight="31.0" prefWidth="39.0" />
+             <TextField fx:id="B3" layoutX="367.0" layoutY="239.0" prefHeight="31.0" prefWidth="39.0" />
+             <TextField fx:id="B4" layoutX="420.0" layoutY="239.0" prefHeight="31.0" prefWidth="39.0" />
+             <TextField fx:id="B5" layoutX="481.0" layoutY="239.0" prefHeight="31.0" prefWidth="39.0" />
+             <TextField fx:id="C1" layoutX="249.0" layoutY="286.0" prefHeight="31.0" prefWidth="39.0" />
+             <TextField fx:id="C2" layoutX="304.0" layoutY="286.0" prefHeight="31.0" prefWidth="39.0" />
+             <TextField fx:id="C3" layoutX="367.0" layoutY="286.0" prefHeight="31.0" prefWidth="39.0" />
+             <TextField fx:id="C4" layoutX="420.0" layoutY="286.0" prefHeight="31.0" prefWidth="39.0" />
+             <TextField fx:id="C5" layoutX="481.0" layoutY="286.0" prefHeight="31.0" prefWidth="39.0" />
+             <TextField fx:id="D1" layoutX="249.0" layoutY="332.0" prefHeight="31.0" prefWidth="39.0" />
+             <TextField fx:id="D2" layoutX="304.0" layoutY="332.0" prefHeight="31.0" prefWidth="39.0" />
+             <TextField fx:id="D3" layoutX="367.0" layoutY="332.0" prefHeight="31.0" prefWidth="39.0" />
+             <TextField fx:id="D4" layoutX="420.0" layoutY="332.0" prefHeight="31.0" prefWidth="39.0" />
+             <TextField fx:id="D5" layoutX="481.0" layoutY="332.0" prefHeight="31.0" prefWidth="39.0" />
+             <TextField fx:id="E1" layoutX="249.0" layoutY="384.0" prefHeight="31.0" prefWidth="39.0" />
+             <TextField fx:id="E2" layoutX="304.0" layoutY="384.0" prefHeight="31.0" prefWidth="39.0" />
+             <TextField fx:id="E3" layoutX="367.0" layoutY="384.0" prefHeight="31.0" prefWidth="39.0" />
+             <TextField fx:id="E4" layoutX="420.0" layoutY="384.0" prefHeight="31.0" prefWidth="39.0" />
+             <TextField fx:id="E5" layoutX="481.0" layoutY="384.0" prefHeight="31.0" prefWidth="39.0" />
+            <Button fx:id="Effacer" layoutX="551.0" layoutY="283.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="80.0" style="-fx-background-color: #52565e;" text="Effacer" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+            <Button fx:id="aide" layoutX="716.0" layoutY="27.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="39.0" text="?" />
+            <Button fx:id="Retour" layoutX="57.0" layoutY="458.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="105.0" style="-fx-background-color: #52565e;" text="Retour" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+            <Button fx:id="Plan" layoutX="631.0" layoutY="458.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="105.0" style="-fx-background-color: #52565e;" text="Plan" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+            <Label layoutX="258.0" layoutY="168.0" text="Note : les graphiques sont toujour des 1-graph">
                <font>
                   <Font size="10.0" />
                </font>
@@ -48,6 +62,5 @@
 
          </children>
       </Pane>
-      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

@@ -6,7 +6,7 @@
 
 <AnchorPane prefHeight="568.0" prefWidth="786.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Control.Control_Start">
    <children>
-      <Pane prefHeight="568.0" prefWidth="786.0" style="-fx-background-color: #caccd1; -fx-background-image: url(&quot;FondAccueille.png&quot;);;">
+      <Pane prefHeight="568.0" prefWidth="786.0" style="-fx-background-image: sample/FondAccueille.png; -fx-background-color: #caccd1;" stylesheets="@../style.css">
          <children>
             <Button fx:id="nextSTART" layoutX="247.0" layoutY="278.0" mnemonicParsing="false" prefHeight="138.0" prefWidth="311.0" style="-fx-background-color: #f3f4f7;" text="START" textFill="RED">
                <font>

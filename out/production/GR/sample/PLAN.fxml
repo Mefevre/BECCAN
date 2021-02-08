@@ -3,23 +3,27 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="628.0" prefWidth="878.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.PanelPlan">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="725.0" prefWidth="1035.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.PanelPlan">
     <children>
-        <Pane fx:id="canvasGroup" onMouseClicked="#handle" prefHeight="628.0" prefWidth="878.0" style="-fx-background-color: #E0E0E0;">
-            <children>
-                <ToggleButton fx:id="edge" layoutX="26.0" layoutY="40.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#AddEdgeHandle" prefHeight="52.0" prefWidth="78.0" text="EDGE" />
-                <ToggleButton fx:id="node" layoutX="128.0" layoutY="40.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#AddNodeHandle" prefHeight="52.0" prefWidth="78.0" text="NODE" />
-                <Button layoutX="239.0" layoutY="28.0" mnemonicParsing="false" onAction="#COLOR" text="colori" />
-                <Button layoutX="227.0" layoutY="80.0" mnemonicParsing="false" onAction="#ResetHandle" prefHeight="25.0" prefWidth="48.0" text="RESET" />
-                <ToggleButton fx:id="dijkstraButton" layoutX="297.0" layoutY="14.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#DijkstraHandle" prefHeight="52.0" prefWidth="78.0" text="DISTRA" />
-                <ToggleButton fx:id="BFSS" layoutX="386.0" layoutY="14.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#BFSHandle" prefHeight="52.0" prefWidth="78.0" text="BFS" />
-                <Slider fx:id="slider" layoutX="26.0" layoutY="146.0" prefHeight="52.0" prefWidth="255.0" />
-            <Button fx:id="aide" layoutX="835.0" layoutY="16.0" mnemonicParsing="false" onAction="#aide" text="?" />
-            <ComboBox fx:id="List" layoutX="425.0" layoutY="80.0" onAction="#ListALgo" prefWidth="150.0" />
-            <TextArea fx:id="MatriX" layoutX="657.0" layoutY="98.0" prefHeight="200.0" prefWidth="200.0" />
-            <ComboBox fx:id="Welsh" layoutX="657.0" layoutY="348.0" prefHeight="25.0" prefWidth="200.0" />
-            </children>
-        </Pane>
+        <Pane fx:id="canvasGroup" layoutY="200.0" onMouseClicked="#handle" prefHeight="522.0" prefWidth="806.0" style="-fx-background-color: #dee1ec;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="228.60000000000002" AnchorPane.topAnchor="200.0" />
+      <Pane prefHeight="200.0" prefWidth="1035.0" style="-fx-background-color: #6a737b#6a737b;">
+         <children>
+            <ComboBox fx:id="List" layoutX="240.0" layoutY="47.0" onAction="#ListALgo" prefHeight="25.0" prefWidth="192.0" />
+                <Button layoutX="706.0" layoutY="24.0" mnemonicParsing="false" onAction="#COLOR" text="colori" />
+                <Button layoutX="444.0" layoutY="24.0" mnemonicParsing="false" onAction="#ResetHandle" prefHeight="61.0" prefWidth="92.0" text="RESET" />
+                <ToggleButton fx:id="node" layoutX="120.0" layoutY="24.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#AddNodeHandle" prefHeight="61.0" prefWidth="92.0" text="NODE" />
+                <ToggleButton fx:id="edge" layoutX="20.0" layoutY="24.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#AddEdgeHandle" prefHeight="61.0" prefWidth="92.0" text="EDGE" />
+                <Slider fx:id="slider" layoutX="14.0" layoutY="135.0" prefHeight="52.0" prefWidth="255.0" />
+            <ComboBox fx:id="Welsh" layoutX="444.0" layoutY="110.0" prefHeight="25.0" prefWidth="192.0" />
+                <ToggleButton fx:id="dijkstraButton" layoutX="706.0" layoutY="59.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#DijkstraHandle" prefHeight="52.0" prefWidth="78.0" text="DISTRA" />
+                <ToggleButton fx:id="BFSS" layoutX="706.0" layoutY="122.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#BFSHandle" prefHeight="52.0" prefWidth="78.0" text="BFS" />
+            <Button fx:id="aide" layoutX="960.0" layoutY="15.0" mnemonicParsing="false" onAction="#aide" prefHeight="36.0" prefWidth="34.0" style="-fx-border-color: #000000;" text="?" />
+         </children></Pane>
+      <Pane layoutX="806.0" layoutY="200.0" prefHeight="532.0" prefWidth="235.0">
+         <children>
+            <TextArea fx:id="MatriX" layoutX="18.0" layoutY="26.0" prefHeight="200.0" prefWidth="200.0" />
+         </children>
+      </Pane>
 
     </children>
 </AnchorPane>
