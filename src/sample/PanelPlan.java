@@ -3,7 +3,6 @@ import java.awt.Point;
 import java.net.URL;
 import java.util.*;
 
-import com.sun.javafx.geom.Edge;
 import javafx.animation.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -19,9 +18,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Line;
-import javafx.scene.shape.Shape;
+import javafx.scene.shape.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -41,7 +38,7 @@ public class PanelPlan implements Initializable, ChangeListener {
     NodeFX selectedNode = null;
     private Label sourceText = new Label("Source"), weight;
     private ARROW arrow;
-    private ARROW_courbe Arrow_cou;
+    private Linearrow_courbé Arrow_cou;
     @FXML
     private ComboBox List;
     @FXML
@@ -224,93 +221,90 @@ public class PanelPlan implements Initializable, ChangeListener {
                         weight = new Label();
                         if (!edgeExists(selectedNode, circle))
                         {
-
                             System.out.println("Adding Edge");
-                            //DESINE LES LIGNE OU FLECHE ENTRE LES POINTS
-                            if (undirected) {
-                                Line edgeLine = new Line(selectedNode.point.x, selectedNode.point.y, circle.point.x, circle.point.y);
-                                canvasGroup.getChildren().add(edgeLine);
-                                edgeLine.setId("line");
-                                g.ajouterArret(new Arret(selectedNode.nodeBIS, circle.nodeBIS));
-
-
-                            } else if (directed) {
-                                arrow = new ARROW(selectedNode.point.x, selectedNode.point.y, circle.point.x, circle.point.y);
-                                canvasGroup.getChildren().add(arrow);
-                                arrow.setId("arrow");
-                                g.ajouterArret(new Arret(selectedNode.nodeBIS, circle.nodeBIS));
-
-
-                            }
+                        //DESINE LES LIGNE OU FLECHE ENTRE LES POINTS
+                        if (undirected) {
+                            Line edgeLine = new Line(selectedNode.point.x, selectedNode.point.y, circle.point.x, circle.point.y);
+                            canvasGroup.getChildren().add(edgeLine);
+                            edgeLine.setId("line");
+                            g.ajouterArret(new Arret(selectedNode.nodeBIS, circle.nodeBIS));
+                        } else if (directed) {
+                            arrow = new ARROW(selectedNode.point.x, selectedNode.point.y, circle.point.x, circle.point.y);
+                            canvasGroup.getChildren().add(arrow);
+                            arrow.setId("arrow");
+                            g.ajouterArret(new Arret(selectedNode.nodeBIS, circle.nodeBIS));
                         }
-                        else
+
+                        /*else
                         {
                             System.out.println("Adding Edge courbé");
                             //DESINE LES LIGNE OU FLECHE ENTRE LES POINTS
-                            if (undirected) {
-                                //Line edgeLine = new Line(selectedNode.point.x, selectedNode.point.y, circle.point.x, circle.point.y);
-                                //canvasGroup.getChildren().add(edgeLine);
-                                //edgeLine.setId("line");
+                            if (undirected)
+                            {
+                                Arrow_cou = new Linearrow_courbé(selectedNode.point.x, selectedNode.point.y, circle.point.x, circle.point.y , -1);
+                                canvasGroup.getChildren().add(Arrow_cou);
+                                arrow.setId("line");
                                 g.ajouterArret(new Arret(selectedNode.nodeBIS, circle.nodeBIS));
-
-
-                            } else if (directed) {
-                                Arrow_cou = new ARROW_courbe(selectedNode.point.x, selectedNode.point.y, circle.point.x, circle.point.y);
+                            }
+                            else if (directed)
+                            {
+                                Arrow_cou = new Linearrow_courbé(selectedNode.point.x, selectedNode.point.y, circle.point.x, circle.point.y);
                                 canvasGroup.getChildren().add(Arrow_cou);
                                 arrow.setId("arrow");
                                 g.ajouterArret(new Arret(selectedNode.nodeBIS, circle.nodeBIS));
+                            }
+                        }*/
+                        if (weighted) {
+                            weight.setLayoutX(((selectedNode.point.x) + (circle.point.x)) / 2);
+                            weight.setLayoutY(((selectedNode.point.y) + (circle.point.y)) / 2);
+
+                            TextInputDialog dialog = new TextInputDialog("0");
+                            dialog.setTitle(null);
+                            dialog.setHeaderText("Enter Weight of the Edge :");
+                            dialog.setContentText(null);
+
+                            Optional<String> result = dialog.showAndWait();
+                            if (result.isPresent()) {
+                                weight.setText(result.get());
+                            } else {
+                                weight.setText("0");
+                            }
+                            canvasGroup.getChildren().add(weight);
+                        } else if (unweighted) {
+                            weight.setText("1");
                         }
-                        }
+                        Shape line_arrow = null;
+                        EEDGE temp = null;
+                        if (undirected) {
+                            temp = new EEDGE(selectedNode.node, circle.node, Integer.valueOf(weight.getText()), edgeLine, weight);
                             if (weighted) {
-                                weight.setLayoutX(((selectedNode.point.x) + (circle.point.x)) / 2);
-                                weight.setLayoutY(((selectedNode.point.y) + (circle.point.y)) / 2);
-
-                                TextInputDialog dialog = new TextInputDialog("0");
-                                dialog.setTitle(null);
-                                dialog.setHeaderText("Enter Weight of the Edge :");
-                                dialog.setContentText(null);
-
-                                Optional<String> result = dialog.showAndWait();
-                                if (result.isPresent()) {
-                                    weight.setText(result.get());
-                                } else {
-                                    weight.setText("0");
-                                }
-                                canvasGroup.getChildren().add(weight);
-                            } else if (unweighted) {
-                                weight.setText("1");
-                            }
-                            Shape line_arrow = null;
-                            EEDGE temp = null;
-                            if (undirected) {
-                                temp = new EEDGE(selectedNode.node, circle.node, Integer.valueOf(weight.getText()), edgeLine, weight);
-                                if (weighted) {
-                                    mstEdges.add(temp);
-                                }
-
-                                selectedNode.node.adjacents.add(new EEDGE(selectedNode.node, circle.node, Double.valueOf(weight.getText()), edgeLine, weight));
-                                circle.node.adjacents.add(new EEDGE(circle.node, selectedNode.node, Double.valueOf(weight.getText()), edgeLine, weight));
-                                edges.add(edgeLine);
-                                realEdges.add(selectedNode.node.adjacents.get(selectedNode.node.adjacents.size() - 1));
-                                realEdges.add(circle.node.adjacents.get(circle.node.adjacents.size() - 1));
-                                line_arrow = edgeLine;
-
-                            } else if (directed) {
-                                temp = new EEDGE(selectedNode.node, circle.node, Double.valueOf(weight.getText()), arrow, weight);
-                                selectedNode.node.adjacents.add(temp);
-                                //                                circle.node.revAdjacents.add(new Edge(circle.node, selectedNode.node, Integer.valueOf(weight.getText()), arrow));
-                                edges.add(arrow);
-                                line_arrow = arrow;
-                                realEdges.add(temp);
+                                mstEdges.add(temp);
                             }
 
-                            if (addNode || addEdge) {
-                                selectedNode.isSelected = false;
-                                FillTransition ft1 = new FillTransition(Duration.millis(300), selectedNode, Color.RED, Color.BLACK);
-                                ft1.play();
-                            }
-                            selectedNode = null;
-                            return;
+                            selectedNode.node.adjacents.add(new EEDGE(selectedNode.node, circle.node, Double.valueOf(weight.getText()), edgeLine, weight));
+                            circle.node.adjacents.add(new EEDGE(circle.node, selectedNode.node, Double.valueOf(weight.getText()), edgeLine, weight));
+                            edges.add(edgeLine);
+                            realEdges.add(selectedNode.node.adjacents.get(selectedNode.node.adjacents.size() - 1));
+                            realEdges.add(circle.node.adjacents.get(circle.node.adjacents.size() - 1));
+                            line_arrow = edgeLine;
+
+                        } else if (directed) {
+                            temp = new EEDGE(selectedNode.node, circle.node, Double.valueOf(weight.getText()), arrow, weight);
+                            selectedNode.node.adjacents.add(temp);
+                            //                                circle.node.revAdjacents.add(new Edge(circle.node, selectedNode.node, Integer.valueOf(weight.getText()), arrow));
+                            edges.add(arrow);
+                            line_arrow = arrow;
+                            realEdges.add(temp);
+                        }
+                    }
+                        if (addNode || addEdge)
+                        {
+                            selectedNode.isSelected = false;
+                            FillTransition ft1 = new FillTransition(Duration.millis(300), selectedNode, Color.RED, Color.BLACK);
+                            ft1.play();
+                        }
+                        selectedNode = null;
+                        return;
 
                     }
                     FillTransition ft = new FillTransition(Duration.millis(300), circle, Color.BLACK, Color.RED);
