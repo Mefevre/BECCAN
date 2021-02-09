@@ -52,7 +52,7 @@ public class PanelPlan implements Initializable, ChangeListener {
     public static TextArea textFlow = new TextArea();
     List<Label> distances = new ArrayList<Label>();
 
-    boolean addNode = true, addEdge = false,paused = false,playing = false , dijkstra , Bfs = false;
+    boolean addNode = true, addEdge = false,paused = false,playing = false , dijkstra , Bfs = false , mst;
     Algorithm algo = new Algorithm();
     public SequentialTransition st;
     public SequentialTransition stcolor;
@@ -478,6 +478,9 @@ public class PanelPlan implements Initializable, ChangeListener {
         else if (List.getSelectionModel().getSelectedItem().equals("Welsh Powell"))
         {
             WelshPowell();
+        }
+        else if (List.getSelectionModel().getSelectedItem().equals("Kruskal"))
+        {
 
         }
 
@@ -821,180 +824,7 @@ public class PanelPlan implements Initializable, ChangeListener {
                 //</editor-fold>
 
             }
-
         }
-        //<editor-fold defaultstate="collapsed" desc="MST">
-        public void newMST() {
-            new MST();
-        }
-
-        class MST {
-
-            int mstValue = 0;
-
-            Node findParent(Node x) {
-                if (x == x.previous) {
-                    return x;
-                }
-                x.previous = findParent(x.previous);
-                return x.previous;
-            }
-
-            void unionNode(Node x, Node y) {
-                Node px = findParent(x);
-                Node py = findParent(y);
-                if (px == py) {
-                    return;
-                }
-                if (Integer.valueOf(px.name) < Integer.valueOf(py.name)) {
-                    px.previous = py;
-                } else {
-                    py.previous = px;
-                }
-            }
-
-            public MST() {
-
-                st = new SequentialTransition();
-                for (NodeFX x : circles) {
-                    x.node.previous = x.node;
-                }
-
-                //<editor-fold defaultstate="collapsed" desc="Detail Information">
-                String init = "Intially : \n";
-                for (NodeFX x : circles) {
-                    final String s = "Node : " + x.node.name + " , Parent: " + x.node.previous.name + "\n";
-                    FadeTransition fd = new FadeTransition(Duration.millis(10), textFlow);
-                    fd.setOnFinished(e -> {
-                        textFlow.appendText(s);
-                    });
-                    fd.onFinishedProperty();
-                    st.getChildren().add(fd);
-                }
-                final String s = "Start Algorithm :---\n";
-                FadeTransition fdss = new FadeTransition(Duration.millis(10), textFlow);
-                fdss.setOnFinished(ev -> {
-                    textFlow.appendText(s);
-                });
-                fdss.onFinishedProperty();
-                st.getChildren().add(fdss);
-                //</editor-fold>
-                Collections.sort(mstEdges, new Comparator<EEDGE>() {
-                    public int compare(EEDGE o1, EEDGE o2) {
-                        if (o1.weight == o2.weight) {
-                            return 0;
-                        }
-                        return o1.weight > o2.weight ? 1 : -1;
-                    }
-                });
-
-                for (EEDGE e : mstEdges) {
-
-                    StrokeTransition ft1 = new StrokeTransition(Duration.millis(time), e.line);
-                    ft1.setToValue(Color.DARKORANGE);
-                    st.getChildren().add(ft1);
-
-                    //<editor-fold defaultstate="collapsed" desc="Detail Information">
-                    final String se = "Selected Edge:- (" + e.source.name.trim() + "--" + e.target.name.trim() + ") Weight: " + String.valueOf(e.weight) + " \n";
-                    FadeTransition fdx = new FadeTransition(Duration.millis(10), textFlow);
-                    fdx.setOnFinished(evx -> {
-                        textFlow.appendText(se);
-                    });
-                    fdx.onFinishedProperty();
-                    st.getChildren().add(fdx);
-
-                    final String s1 = "\t-> Node :" + e.source.name.trim() + "  Parent: " + findParent(e.source.previous).name.trim() + "\n";
-                    FadeTransition fdx2 = new FadeTransition(Duration.millis(10), textFlow);
-                    fdx2.setOnFinished(evx -> {
-                        textFlow.appendText(s1);
-                    });
-                    fdx2.onFinishedProperty();
-                    st.getChildren().add(fdx2);
-
-                    final String s2 = "\t-> Node :" + e.target.name.trim() + "  Parent: " + findParent(e.target.previous).name.trim() + "\n";
-                    FadeTransition fdx3 = new FadeTransition(Duration.millis(10), textFlow);
-                    fdx3.setOnFinished(evx -> {
-                        textFlow.appendText(s2);
-                    });
-                    fdx3.onFinishedProperty();
-                    st.getChildren().add(fdx3);
-                    //</editor-fold>
-
-                    if (findParent(e.source.previous) != findParent(e.target.previous)) {
-                        unionNode(e.source, e.target);
-                        mstValue += e.weight;
-
-                        //<editor-fold defaultstate="collapsed" desc="Detail Information">
-                        final String sa = "\t---->Unioned\n";
-                        final String sa1 = "\t\t->Node :" + e.source.name.trim() + "  Parent: " + findParent(e.source.previous).name.trim() + "\n";
-                        final String sa2 = "\t\t->Node :" + e.target.name.trim() + "  Parent: " + findParent(e.target.previous).name.trim() + "\n";
-                        FadeTransition fdx4 = new FadeTransition(Duration.millis(10), textFlow);
-                        fdx4.setOnFinished(evx -> {
-                            textFlow.appendText(sa);
-                        });
-                        fdx4.onFinishedProperty();
-                        st.getChildren().add(fdx4);
-                        FadeTransition fdx5 = new FadeTransition(Duration.millis(10), textFlow);
-                        fdx5.setOnFinished(evx -> {
-                            textFlow.appendText(sa1);
-                        });
-                        fdx5.onFinishedProperty();
-                        st.getChildren().add(fdx5);
-                        FadeTransition fdx6 = new FadeTransition(Duration.millis(10), textFlow);
-                        fdx6.setOnFinished(evx -> {
-                            textFlow.appendText(sa2);
-                        });
-                        fdx6.onFinishedProperty();
-                        st.getChildren().add(fdx6);
-
-                        StrokeTransition ft2 = new StrokeTransition(Duration.millis(time), e.line);
-                        ft2.setToValue(Color.DARKGREEN);
-                        st.getChildren().add(ft2);
-
-                        FillTransition ft3 = new FillTransition(Duration.millis(time), e.source.circle);
-                        ft3.setToValue(Color.AQUA);
-                        st.getChildren().add(ft3);
-
-                        ft3 = new FillTransition(Duration.millis(time), e.target.circle);
-                        ft3.setToValue(Color.AQUA);
-                        st.getChildren().add(ft3);
-                        //</editor-fold>
-                    } else {
-                        //<editor-fold defaultstate="collapsed" desc="Detail Info">
-                        final String sa = "\t---->Cycle Detected\n";
-                        FadeTransition fdx7 = new FadeTransition(Duration.millis(10), textFlow);
-                        fdx7.setOnFinished(evx -> {
-                            textFlow.appendText(sa);
-                        });
-                        fdx7.onFinishedProperty();
-                        st.getChildren().add(fdx7);
-                        //</editor-fold>
-                        StrokeTransition ft2 = new StrokeTransition(Duration.millis(time), e.line);
-                        ft2.setToValue(Color.DARKRED);
-                        st.getChildren().add(ft2);
-
-                        ft2 = new StrokeTransition(Duration.millis(time), e.line);
-                        ft2.setToValue(Color.web("#E0E0E0"));
-                        st.getChildren().add(ft2);
-
-                    }
-                }
-
-                //<editor-fold defaultstate="collapsed" desc="Animation after algorithm is finished">
-                st.setOnFinished(ev -> {
-                    paused = true;
-                    playing = false;
-                    textFlow.appendText("Minimum Cost of the Graph " + mstValue);
-                });
-                st.onFinishedProperty();
-                st.play();
-                playing = true;
-                //</editor-fold>
-                System.out.println("" + mstValue);
-            }
-        }
-        //</editor-fold>
-
     }
 }
 
