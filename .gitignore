@@ -3,3 +3,4 @@
 .idea
 # Ignorer tous les fichiers html
 *.idea
+out

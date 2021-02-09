@@ -261,30 +261,11 @@ public class PanelPlan implements Initializable, ChangeListener {
                             g.ajouterArret(new Arret(selectedNode.nodeBIS, circle.nodeBIS));
                         }
 
-                        /*else
-                        {
-                            System.out.println("Adding Edge courbé");
-                            //DESINE LES LIGNE OU FLECHE ENTRE LES POINTS
-                            if (undirected)
-                            {
-                                Arrow_cou = new Linearrow_courbé(selectedNode.point.x, selectedNode.point.y, circle.point.x, circle.point.y , -1);
-                                canvasGroup.getChildren().add(Arrow_cou);
-                                arrow.setId("line");
-                                g.ajouterArret(new Arret(selectedNode.nodeBIS, circle.nodeBIS));
-                            }
-                            else if (directed)
-                            {
-                                Arrow_cou = new Linearrow_courbé(selectedNode.point.x, selectedNode.point.y, circle.point.x, circle.point.y);
-                                canvasGroup.getChildren().add(Arrow_cou);
-                                arrow.setId("arrow");
-                                g.ajouterArret(new Arret(selectedNode.nodeBIS, circle.nodeBIS));
-                            }
-                        }*/
                         if (weighted) {
                             weight.setLayoutX(((selectedNode.point.x) + (circle.point.x)) / 2);
                             weight.setLayoutY(((selectedNode.point.y) + (circle.point.y)) / 2);
 
-                            TextInputDialog dialog = new TextInputDialog("0");
+                            TextInputDialog dialog = new TextInputDialog("1");
                             dialog.setTitle(null);
                             dialog.setHeaderText("Enter Weight of the Edge :");
                             dialog.setContentText(null);
@@ -317,7 +298,7 @@ public class PanelPlan implements Initializable, ChangeListener {
                         } else if (directed) {
                             temp = new EEDGE(selectedNode.node, circle.node, Double.valueOf(weight.getText()), arrow, weight);
                             selectedNode.node.adjacents.add(temp);
-                            //                                circle.node.revAdjacents.add(new Edge(circle.node, selectedNode.node, Integer.valueOf(weight.getText()), arrow));
+                            //circle.node.revAdjacents.add(new EEDGE(selectedNode.node, circle.node,Double.valueOf(weight.getText()), arrow, weight));
                             edges.add(arrow);
                             line_arrow = arrow;
                             realEdges.add(temp);
@@ -556,7 +537,7 @@ public class PanelPlan implements Initializable, ChangeListener {
      * Shape class for the nodes.
      */
     class NodeFX extends Circle {
-        NodeE node;
+        Node node;
         Sommet nodeBIS;
         Point point;
         Label id;
@@ -569,7 +550,7 @@ public class PanelPlan implements Initializable, ChangeListener {
         public NodeFX(double x, double y, double rad, String name, int N) {
             super(x, y, rad);
 
-            node = new NodeE(name, this);
+            node = new Node(name, this);
             g.ajouterSommet(nodeBIS = new Sommet(N, 0));
             point = new Point();
             point.setLocation(x, y);
@@ -589,16 +570,16 @@ public class PanelPlan implements Initializable, ChangeListener {
     //Class ALgo
     //
     public class Algorithm {
-        private NodeE source;
+        private Node source;
 
         //<editor-fold defaultstate="collapsed" desc="Dijkstra">
-        public void newDijkstra(NodeE source) {
+        public void newDijkstra(Node source) {
             new Dijkstra(source);
         }
 
         class Dijkstra {
 
-            Dijkstra(NodeE source) {
+            Dijkstra(Node source) {
                 //<editor-fold defaultstate="collapsed" desc="Animation Control">
                 for (NodeFX n : circles) {
                     distances.add(n.distance);
@@ -614,10 +595,10 @@ public class PanelPlan implements Initializable, ChangeListener {
                 //</editor-fold>
 
                 source.minDistance = 0;
-                PriorityQueue<NodeE> pq = new PriorityQueue<NodeE>();
+                PriorityQueue<Node> pq = new PriorityQueue<Node>();
                 pq.add(source);
                 while (!pq.isEmpty()) {
-                    NodeE u = pq.poll();
+                    Node u = pq.poll();
                     System.out.println(u.name);
                     //<editor-fold defaultstate="collapsed" desc="Animation Control">
                     FillTransition ft = new FillTransition(Duration.millis(slider.getValue()), u.circle);
@@ -636,7 +617,7 @@ public class PanelPlan implements Initializable, ChangeListener {
                     System.out.println(u.name);
                     for (EEDGE e : u.adjacents) {
                         if (e != null) {
-                            NodeE v = e.target;
+                            Node v = e.target;
                             System.out.println("HERE " + v.name);
                             if (u.minDistance + e.weight < v.minDistance) {
                                 pq.remove(v);
@@ -714,13 +695,13 @@ public class PanelPlan implements Initializable, ChangeListener {
             }
         }
         //<editor-fold defaultstate="collapsed" desc="BFS">
-        public void newBFS(NodeE source) {
+        public void newBFS(Node source) {
             new BFS(source);
         }
 
         class BFS {
 
-            BFS(NodeE source) {
+            BFS(Node source) {
 
                 //<editor-fold defaultstate="collapsed" desc="Set labels and distances">
                 for (NodeFX n : circles) {
@@ -738,10 +719,10 @@ public class PanelPlan implements Initializable, ChangeListener {
 
                 source.minDistance = 0;
                 source.visited = true;
-                LinkedList<NodeE> q = new LinkedList<NodeE>();
+                LinkedList<Node> q = new LinkedList<Node>();
                 q.push(source);
                 while (!q.isEmpty()) {
-                    NodeE u = q.removeLast();
+                    Node u = q.removeLast();
                     //<editor-fold defaultstate="collapsed" desc="Node Popped Animation">
                     FillTransition ft = new FillTransition(Duration.millis(slider.getValue()), u.circle);
                     if (u.circle.getFill() == Color.BLACK) {
@@ -762,7 +743,7 @@ public class PanelPlan implements Initializable, ChangeListener {
                     System.out.println(u.name);
                     for (EEDGE e : u.adjacents) {
                         if (e != null) {
-                            NodeE v = e.target;
+                            Node v = e.target;
 
                             if (!v.visited) {
                                 v.minDistance = u.minDistance + 1;
@@ -842,6 +823,177 @@ public class PanelPlan implements Initializable, ChangeListener {
             }
 
         }
+        //<editor-fold defaultstate="collapsed" desc="MST">
+        public void newMST() {
+            new MST();
+        }
+
+        class MST {
+
+            int mstValue = 0;
+
+            Node findParent(Node x) {
+                if (x == x.previous) {
+                    return x;
+                }
+                x.previous = findParent(x.previous);
+                return x.previous;
+            }
+
+            void unionNode(Node x, Node y) {
+                Node px = findParent(x);
+                Node py = findParent(y);
+                if (px == py) {
+                    return;
+                }
+                if (Integer.valueOf(px.name) < Integer.valueOf(py.name)) {
+                    px.previous = py;
+                } else {
+                    py.previous = px;
+                }
+            }
+
+            public MST() {
+
+                st = new SequentialTransition();
+                for (NodeFX x : circles) {
+                    x.node.previous = x.node;
+                }
+
+                //<editor-fold defaultstate="collapsed" desc="Detail Information">
+                String init = "Intially : \n";
+                for (NodeFX x : circles) {
+                    final String s = "Node : " + x.node.name + " , Parent: " + x.node.previous.name + "\n";
+                    FadeTransition fd = new FadeTransition(Duration.millis(10), textFlow);
+                    fd.setOnFinished(e -> {
+                        textFlow.appendText(s);
+                    });
+                    fd.onFinishedProperty();
+                    st.getChildren().add(fd);
+                }
+                final String s = "Start Algorithm :---\n";
+                FadeTransition fdss = new FadeTransition(Duration.millis(10), textFlow);
+                fdss.setOnFinished(ev -> {
+                    textFlow.appendText(s);
+                });
+                fdss.onFinishedProperty();
+                st.getChildren().add(fdss);
+                //</editor-fold>
+                Collections.sort(mstEdges, new Comparator<EEDGE>() {
+                    public int compare(EEDGE o1, EEDGE o2) {
+                        if (o1.weight == o2.weight) {
+                            return 0;
+                        }
+                        return o1.weight > o2.weight ? 1 : -1;
+                    }
+                });
+
+                for (EEDGE e : mstEdges) {
+
+                    StrokeTransition ft1 = new StrokeTransition(Duration.millis(time), e.line);
+                    ft1.setToValue(Color.DARKORANGE);
+                    st.getChildren().add(ft1);
+
+                    //<editor-fold defaultstate="collapsed" desc="Detail Information">
+                    final String se = "Selected Edge:- (" + e.source.name.trim() + "--" + e.target.name.trim() + ") Weight: " + String.valueOf(e.weight) + " \n";
+                    FadeTransition fdx = new FadeTransition(Duration.millis(10), textFlow);
+                    fdx.setOnFinished(evx -> {
+                        textFlow.appendText(se);
+                    });
+                    fdx.onFinishedProperty();
+                    st.getChildren().add(fdx);
+
+                    final String s1 = "\t-> Node :" + e.source.name.trim() + "  Parent: " + findParent(e.source.previous).name.trim() + "\n";
+                    FadeTransition fdx2 = new FadeTransition(Duration.millis(10), textFlow);
+                    fdx2.setOnFinished(evx -> {
+                        textFlow.appendText(s1);
+                    });
+                    fdx2.onFinishedProperty();
+                    st.getChildren().add(fdx2);
+
+                    final String s2 = "\t-> Node :" + e.target.name.trim() + "  Parent: " + findParent(e.target.previous).name.trim() + "\n";
+                    FadeTransition fdx3 = new FadeTransition(Duration.millis(10), textFlow);
+                    fdx3.setOnFinished(evx -> {
+                        textFlow.appendText(s2);
+                    });
+                    fdx3.onFinishedProperty();
+                    st.getChildren().add(fdx3);
+                    //</editor-fold>
+
+                    if (findParent(e.source.previous) != findParent(e.target.previous)) {
+                        unionNode(e.source, e.target);
+                        mstValue += e.weight;
+
+                        //<editor-fold defaultstate="collapsed" desc="Detail Information">
+                        final String sa = "\t---->Unioned\n";
+                        final String sa1 = "\t\t->Node :" + e.source.name.trim() + "  Parent: " + findParent(e.source.previous).name.trim() + "\n";
+                        final String sa2 = "\t\t->Node :" + e.target.name.trim() + "  Parent: " + findParent(e.target.previous).name.trim() + "\n";
+                        FadeTransition fdx4 = new FadeTransition(Duration.millis(10), textFlow);
+                        fdx4.setOnFinished(evx -> {
+                            textFlow.appendText(sa);
+                        });
+                        fdx4.onFinishedProperty();
+                        st.getChildren().add(fdx4);
+                        FadeTransition fdx5 = new FadeTransition(Duration.millis(10), textFlow);
+                        fdx5.setOnFinished(evx -> {
+                            textFlow.appendText(sa1);
+                        });
+                        fdx5.onFinishedProperty();
+                        st.getChildren().add(fdx5);
+                        FadeTransition fdx6 = new FadeTransition(Duration.millis(10), textFlow);
+                        fdx6.setOnFinished(evx -> {
+                            textFlow.appendText(sa2);
+                        });
+                        fdx6.onFinishedProperty();
+                        st.getChildren().add(fdx6);
+
+                        StrokeTransition ft2 = new StrokeTransition(Duration.millis(time), e.line);
+                        ft2.setToValue(Color.DARKGREEN);
+                        st.getChildren().add(ft2);
+
+                        FillTransition ft3 = new FillTransition(Duration.millis(time), e.source.circle);
+                        ft3.setToValue(Color.AQUA);
+                        st.getChildren().add(ft3);
+
+                        ft3 = new FillTransition(Duration.millis(time), e.target.circle);
+                        ft3.setToValue(Color.AQUA);
+                        st.getChildren().add(ft3);
+                        //</editor-fold>
+                    } else {
+                        //<editor-fold defaultstate="collapsed" desc="Detail Info">
+                        final String sa = "\t---->Cycle Detected\n";
+                        FadeTransition fdx7 = new FadeTransition(Duration.millis(10), textFlow);
+                        fdx7.setOnFinished(evx -> {
+                            textFlow.appendText(sa);
+                        });
+                        fdx7.onFinishedProperty();
+                        st.getChildren().add(fdx7);
+                        //</editor-fold>
+                        StrokeTransition ft2 = new StrokeTransition(Duration.millis(time), e.line);
+                        ft2.setToValue(Color.DARKRED);
+                        st.getChildren().add(ft2);
+
+                        ft2 = new StrokeTransition(Duration.millis(time), e.line);
+                        ft2.setToValue(Color.web("#E0E0E0"));
+                        st.getChildren().add(ft2);
+
+                    }
+                }
+
+                //<editor-fold defaultstate="collapsed" desc="Animation after algorithm is finished">
+                st.setOnFinished(ev -> {
+                    paused = true;
+                    playing = false;
+                    textFlow.appendText("Minimum Cost of the Graph " + mstValue);
+                });
+                st.onFinishedProperty();
+                st.play();
+                playing = true;
+                //</editor-fold>
+                System.out.println("" + mstValue);
+            }
+        }
+        //</editor-fold>
 
     }
 }
