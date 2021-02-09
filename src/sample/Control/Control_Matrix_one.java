@@ -1,5 +1,6 @@
 package sample.Control;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -40,119 +41,7 @@ public class Control_Matrix_one {
     //
     public void initialize()
     {
-        saisir.setOnAction(event -> {
-            switch (NBSommet.getText()) {
-                case "2":
-                    A1.setVisible(true);
-                    A2.setVisible(true);
-                    A3.setVisible(false);
-                    A4.setVisible(false);
-                    A5.setVisible(false);
-                    B1.setVisible(true);
-                    B2.setVisible(true);
-                    B3.setVisible(false);
-                    B4.setVisible(false);
-                    B5.setVisible(false);
-                    C1.setVisible(false);
-                    C2.setVisible(false);
-                    C3.setVisible(false);
-                    C4.setVisible(false);
-                    C5.setVisible(false);
-                    D1.setVisible(false);
-                    D2.setVisible(false);
-                    D3.setVisible(false);
-                    D4.setVisible(false);
-                    D5.setVisible(false);
-                    E1.setVisible(false);
-                    E2.setVisible(false);
-                    E3.setVisible(false);
-                    E4.setVisible(false);
-                    E5.setVisible(false);
-                    break;
-                case "3":
-                    A1.setVisible(true);
-                    A2.setVisible(true);
-                    A3.setVisible(true);
-                    A4.setVisible(false);
-                    A5.setVisible(false);
-                    B1.setVisible(true);
-                    B2.setVisible(true);
-                    B3.setVisible(true);
-                    B4.setVisible(false);
-                    B5.setVisible(false);
-                    C1.setVisible(true);
-                    C2.setVisible(true);
-                    C3.setVisible(true);
-                    C4.setVisible(false);
-                    C5.setVisible(false);
-                    D1.setVisible(false);
-                    D2.setVisible(false);
-                    D3.setVisible(false);
-                    D4.setVisible(false);
-                    D5.setVisible(false);
-                    E1.setVisible(false);
-                    E2.setVisible(false);
-                    E3.setVisible(false);
-                    E4.setVisible(false);
-                    E5.setVisible(false);
-
-                    break;
-                case "4":
-                    A1.setVisible(true);
-                    A2.setVisible(true);
-                    A3.setVisible(true);
-                    A4.setVisible(true);
-                    A5.setVisible(false);
-                    B1.setVisible(true);
-                    B2.setVisible(true);
-                    B3.setVisible(true);
-                    B4.setVisible(true);
-                    B5.setVisible(false);
-                    C1.setVisible(true);
-                    C2.setVisible(true);
-                    C3.setVisible(true);
-                    C4.setVisible(true);
-                    C5.setVisible(false);
-                    D1.setVisible(true);
-                    D2.setVisible(true);
-                    D3.setVisible(true);
-                    D4.setVisible(true);
-                    D5.setVisible(false);
-                    E1.setVisible(false);
-                    E2.setVisible(false);
-                    E3.setVisible(false);
-                    E4.setVisible(false);
-                    E5.setVisible(false);
-                    break;
-                case "5":
-                    A1.setVisible(true);
-                    A2.setVisible(true);
-                    A3.setVisible(true);
-                    A4.setVisible(true);
-                    A5.setVisible(true);
-                    B1.setVisible(true);
-                    B2.setVisible(true);
-                    B3.setVisible(true);
-                    B4.setVisible(true);
-                    B5.setVisible(true);
-                    C1.setVisible(true);
-                    C2.setVisible(true);
-                    C3.setVisible(true);
-                    C4.setVisible(true);
-                    C5.setVisible(true);
-                    D1.setVisible(true);
-                    D2.setVisible(true);
-                    D3.setVisible(true);
-                    D4.setVisible(true);
-                    D5.setVisible(true);
-                    E1.setVisible(true);
-                    E2.setVisible(true);
-                    E3.setVisible(true);
-                    E4.setVisible(true);
-                    E5.setVisible(true);
-                    break;
-            }
-        });
+        saisir.setOnAction(this::handle);
 
         Effacer.setOnAction(event -> {
             A1.setVisible(true);A2.setVisible(true);A3.setVisible(true);A4.setVisible(true);A5.setVisible(true);
@@ -226,6 +115,120 @@ public class Control_Matrix_one {
             Main.primaryStage.setScene(newScene);
         } catch (IOException ex) {
             Logger.getLogger(Control_Choix.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void handle(ActionEvent event) {
+        switch (NBSommet.getText()) {
+            case "2":
+                A1.setVisible(true);
+                A2.setVisible(true);
+                A3.setVisible(false);
+                A4.setVisible(false);
+                A5.setVisible(false);
+                B1.setVisible(true);
+                B2.setVisible(true);
+                B3.setVisible(false);
+                B4.setVisible(false);
+                B5.setVisible(false);
+                C1.setVisible(false);
+                C2.setVisible(false);
+                C3.setVisible(false);
+                C4.setVisible(false);
+                C5.setVisible(false);
+                D1.setVisible(false);
+                D2.setVisible(false);
+                D3.setVisible(false);
+                D4.setVisible(false);
+                D5.setVisible(false);
+                E1.setVisible(false);
+                E2.setVisible(false);
+                E3.setVisible(false);
+                E4.setVisible(false);
+                E5.setVisible(false);
+                break;
+            case "3":
+                A1.setVisible(true);
+                A2.setVisible(true);
+                A3.setVisible(true);
+                A4.setVisible(false);
+                A5.setVisible(false);
+                B1.setVisible(true);
+                B2.setVisible(true);
+                B3.setVisible(true);
+                B4.setVisible(false);
+                B5.setVisible(false);
+                C1.setVisible(true);
+                C2.setVisible(true);
+                C3.setVisible(true);
+                C4.setVisible(false);
+                C5.setVisible(false);
+                D1.setVisible(false);
+                D2.setVisible(false);
+                D3.setVisible(false);
+                D4.setVisible(false);
+                D5.setVisible(false);
+                E1.setVisible(false);
+                E2.setVisible(false);
+                E3.setVisible(false);
+                E4.setVisible(false);
+                E5.setVisible(false);
+
+                break;
+            case "4":
+                A1.setVisible(true);
+                A2.setVisible(true);
+                A3.setVisible(true);
+                A4.setVisible(true);
+                A5.setVisible(false);
+                B1.setVisible(true);
+                B2.setVisible(true);
+                B3.setVisible(true);
+                B4.setVisible(true);
+                B5.setVisible(false);
+                C1.setVisible(true);
+                C2.setVisible(true);
+                C3.setVisible(true);
+                C4.setVisible(true);
+                C5.setVisible(false);
+                D1.setVisible(true);
+                D2.setVisible(true);
+                D3.setVisible(true);
+                D4.setVisible(true);
+                D5.setVisible(false);
+                E1.setVisible(false);
+                E2.setVisible(false);
+                E3.setVisible(false);
+                E4.setVisible(false);
+                E5.setVisible(false);
+                break;
+            case "5":
+                A1.setVisible(true);
+                A2.setVisible(true);
+                A3.setVisible(true);
+                A4.setVisible(true);
+                A5.setVisible(true);
+                B1.setVisible(true);
+                B2.setVisible(true);
+                B3.setVisible(true);
+                B4.setVisible(true);
+                B5.setVisible(true);
+                C1.setVisible(true);
+                C2.setVisible(true);
+                C3.setVisible(true);
+                C4.setVisible(true);
+                C5.setVisible(true);
+                D1.setVisible(true);
+                D2.setVisible(true);
+                D3.setVisible(true);
+                D4.setVisible(true);
+                D5.setVisible(true);
+                E1.setVisible(true);
+                E2.setVisible(true);
+                E3.setVisible(true);
+                E4.setVisible(true);
+                E5.setVisible(true);
+                break;
         }
     }
 }

@@ -1,8 +1,8 @@
-# Les ligne commençant par '#' sont des commentaires.
-# Ignorer tous les fichiers nommés foo.txt
 .idea
-# Ignorer tous les fichiers html
+out
 *.idea
 ./out
 ./*.iml
 ./*.xml
+*.iml
+

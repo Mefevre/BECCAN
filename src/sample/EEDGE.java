@@ -7,7 +7,6 @@ package sample;
 
 import javafx.scene.control.Label;
 import javafx.scene.shape.Shape;
-import sample.NodeE;
 
 /**
  *
@@ -15,7 +14,7 @@ import sample.NodeE;
  */
 public class EEDGE {
 
-    public NodeE source, target;
+    public Node source, target;
     public double weight;
     public Shape line;
     public Label weightLabel;
@@ -24,13 +23,13 @@ public class EEDGE {
         return line;
     }
 
-    public EEDGE(NodeE argSource, NodeE argTarget) {
+    public EEDGE(Node argSource, Node argTarget) {
         source = argSource;
         target = argTarget;
         weight = 0;
     }
 
-    public EEDGE(NodeE argSource, NodeE argTarget, double argWeight, Shape argline, Label weiLabel) {
+    public EEDGE(Node argSource, Node argTarget, double argWeight, Shape argline, Label weiLabel) {
         source = argSource;
         target = argTarget;
         weight = argWeight;
