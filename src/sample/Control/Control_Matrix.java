@@ -1,7 +1,5 @@
 package sample.Control;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -177,7 +175,7 @@ public class Control_Matrix {
                     {E1.getText(), E2.getText(), E3.getText(), E4.getText(), E5.getText()}
             };
             etat_matrice = true;
-            loadNextScene("/sample/Fxml/PLAN.fxml");
+            loadNextScene("/sample/PLAN.fxml");
         });
         aide.setOnAction(event -> {
 

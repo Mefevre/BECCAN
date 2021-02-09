@@ -66,7 +66,7 @@ public class Control_Matrix_one {
                     {E1.isSelected(), E2.isSelected(), E3.isSelected(), E4.isSelected(), E5.isSelected()}
             };
             etat_matrice = true;
-            loadNextScene("/sample/Fxml/PLAN.fxml");
+            loadNextScene("/sample/PLAN.fxml");
         });
         aide.setOnAction(event -> {
 

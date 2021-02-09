@@ -16,7 +16,7 @@
                <font>
                   <Font size="18.0" />
                </font></Button>
-             <TextField layoutX="90.0" layoutY="67.0" prefHeight="33.0" prefWidth="231.0" promptText="Nombre de Sommet" />
+             <TextField fx:id="NBSommet" layoutX="90.0" layoutY="67.0" prefHeight="33.0" prefWidth="231.0" promptText="Nombre de Sommet" />
              
              <Button fx:id="Effacer" layoutX="587.0" layoutY="230.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="80.0" style="-fx-background-color: #52565e;" text="Effacer" textFill="WHITE">
                <font>
