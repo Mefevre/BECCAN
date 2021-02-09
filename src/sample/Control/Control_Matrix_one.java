@@ -21,6 +21,7 @@ import java.util.logging.Logger;
 public class Control_Matrix_one {
     public static boolean[][] matrice;
     public static boolean etat_matrice = false;
+    public static int ValueNBsommet;
     @FXML
     TextField NBSommet;
     @FXML
@@ -66,6 +67,7 @@ public class Control_Matrix_one {
                     {E1.isSelected(), E2.isSelected(), E3.isSelected(), E4.isSelected(), E5.isSelected()}
             };
             etat_matrice = true;
+            ValueNBsommet = Integer.parseInt(NBSommet.getText());
             loadNextScene("/sample/PLAN.fxml");
         });
         aide.setOnAction(event -> {

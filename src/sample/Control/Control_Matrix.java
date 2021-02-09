@@ -18,6 +18,7 @@ import java.util.logging.Logger;
 
 public class Control_Matrix {
     public static String[][] matrice;
+    public static int ValueNBsommet;
     public static boolean etat_matrice = false;
     @FXML
     TextField NBSommet;
@@ -175,6 +176,7 @@ public class Control_Matrix {
                     {E1.getText(), E2.getText(), E3.getText(), E4.getText(), E5.getText()}
             };
             etat_matrice = true;
+            ValueNBsommet = Integer.parseInt(NBSommet.getText());
             loadNextScene("/sample/PLAN.fxml");
         });
         aide.setOnAction(event -> {

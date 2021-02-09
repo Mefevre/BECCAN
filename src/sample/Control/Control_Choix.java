@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 
 public class Control_Choix {
     public static boolean directed = false, undirected = false, weighted = false, unweighted = false;
-
+    public static boolean etat_choix = false;
     @FXML
     public Button panelNext,NextMatrix , aide;
     @FXML
@@ -56,7 +56,7 @@ public class Control_Choix {
             unweighted = true;
             System.out.println("no_poids_Button");
         });
-        panelNext.setOnAction(e -> loadNextScene("/sample/PLAN.fxml"));
+        panelNext.setOnAction(event -> {etat_choix = true; loadNextScene("/sample/PLAN.fxml") ; });
         NextMatrix.setOnAction(e -> {
 
             if (directed || undirected && weighted || unweighted)

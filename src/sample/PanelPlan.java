@@ -57,7 +57,8 @@ public class PanelPlan implements Initializable, ChangeListener {
     public SequentialTransition st;
     public SequentialTransition stcolor;
     public static final int MAX_VALUE = 999; //bellman ford
-    public int ValueNBsommet = 0;//bellmanFord
+    public int ValueNBsommet = Control_Matrix.ValueNBsommet;//bellmanFord
+    public int ValueNBsommet_one = Control_Matrix_one.ValueNBsommet;
     public boolean WelABoolean = false;
 
     private boolean directed = Control_Choix.directed, undirected = Control_Choix.undirected , weighted = Control_Choix.weighted, unweighted = Control_Choix.unweighted;
@@ -116,9 +117,10 @@ public class PanelPlan implements Initializable, ChangeListener {
         //Combobox
         if (true)//teste de la combobox
         {
-            ListALgo.add("color");
+            ListALgo.add("Aucun");
+            ListALgo.add("DSATUR");
             ListALgo.add("Welsh Powell");
-            ListALgo.add("Dsatur");
+            ListALgo.add("Dijkstra");
             ListALgo.add("Eulérien");
             ListALgo.add("Hamiltonien");
             ListALgo.add("Kruskal");
@@ -348,6 +350,8 @@ public class PanelPlan implements Initializable, ChangeListener {
         node.setSelected(false);
         edge.setSelected(true);
         selectedNode = null;
+        //Algo annulation
+        WelABoolean = false;
     }
 
     //
@@ -360,6 +364,8 @@ public class PanelPlan implements Initializable, ChangeListener {
         node.setSelected(true);
         edge.setSelected(false);
         selectedNode = null;
+        //Algo annulation
+        WelABoolean = false;
     }
     //calcule la matrice du graph dans le plan
     //
@@ -367,6 +373,7 @@ public class PanelPlan implements Initializable, ChangeListener {
     //
     public void MatriceGR()
     {
+        ValueNBsommet = 0;
         matriceBellman = new int[][]{{0,0,0,0,0},{0,0,0,0,0},{0,0,0,0,0},{0,0,0,0,0},{0,0,0,0,0}};
         for (NodeFX u : circles)
         {
@@ -382,7 +389,7 @@ public class PanelPlan implements Initializable, ChangeListener {
     //
     //Appel le constructeur de BEllmanford
     //
-    public void AppelBellmanFord()
+    public void AppelBellmanFord(int [][]matriceBellman)
     {
         int numberofvertices = 0;
         int source = 0;
@@ -456,22 +463,49 @@ public class PanelPlan implements Initializable, ChangeListener {
     {
         if (List.getSelectionModel().getSelectedItem().equals("color"))
             COLOR();
-        else if (List.getSelectionModel().getSelectedItem().equals("Dsatur"))
+        else if (List.getSelectionModel().getSelectedItem().equals("Dijkstra"))
         {
             dijkstra = true;
             Bfs = false;
         }
         else if (List.getSelectionModel().getSelectedItem().equals("Bellman Ford"))
         {
-            if (etat_matrice ||etat_matrice_one)
-            {
-                //utilise la matrice créé
+            if (etat_matrice_one) {
+                // matrice_true matrice_nb  matriceBellman
+
+                for (int i = 0; i < matrice_true.length; i++) {
+                    for (int j = 0; j < matrice_true.length; j++) {
+                        if (matrice_true[i][j] == true && etat_matrice_one)
+                            matriceBellman[i][j] = 1;
+                        else if (etat_matrice)
+                            matriceBellman[i][j] = Integer.parseInt(matrice_nb[i][j]);
+                    }
+                }
+            }else if (etat_matrice){
+                for (int i =0;i <matrice_nb.length;i++)
+                {
+                    for (int j = 0 ;j<matrice_nb.length;j++)
+                    {
+                        if(matrice_nb[i][j] == "")
+                        {
+                            matriceBellman[i][j] = 0;
+                        }
+                        else
+                        {
+                            System.out.println("eee"+matrice_nb[i][j]+"eee");
+                            matriceBellman[i][j] = Integer.parseInt(matrice_nb[i][j]);
+                        }
+                    }
+                }
+                MatriX.setText("Resultat de Bellman-Ford  :\n");
+                AppelBellmanFord(matriceBellman);
+
             }
             else
             {
-                MatriX.setText("Resultat de Bellman-Ford\n");
+                MatriX.setText("Resultat de Bellman-Fords\n");
                 MatriceGR();
-                AppelBellmanFord();
+                AppelBellmanFord(matriceBellman);
 
             }
         }
@@ -482,6 +516,10 @@ public class PanelPlan implements Initializable, ChangeListener {
         else if (List.getSelectionModel().getSelectedItem().equals("Kruskal"))
         {
 
+        }
+        else if (List.getSelectionModel().getSelectedItem().equals("Aucun"))
+        {
+            WelABoolean = false;
         }
 
     }
@@ -503,7 +541,7 @@ public class PanelPlan implements Initializable, ChangeListener {
             stcolor1.getChildren().add(ftcolor);
         }
         stcolor1.play();
-
+        //if () pour allongé le temmps d'affiche des couleur.
         stcolor1.setOnFinished( event -> {
             for (NodeFX n : circles) {
                 FillTransition unftcolor = new FillTransition(Duration.millis(slider.getValue()), n);
