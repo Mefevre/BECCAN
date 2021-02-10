@@ -1,4 +1,4 @@
-package sample.Algo.Dsatur;
+package sample.Algo.Dijkstra;
 
 /**
  *

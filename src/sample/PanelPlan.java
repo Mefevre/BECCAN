@@ -22,9 +22,9 @@ import javafx.scene.shape.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import sample.Algo.Dsatur.Arret;
-import sample.Algo.Dsatur.GrapheDSat;
-import sample.Algo.Dsatur.Sommet;
+import sample.Algo.Dijkstra.Arret;
+import sample.Algo.Dijkstra.GrapheDSat;
+import sample.Algo.Dijkstra.Sommet;
 import sample.Control.Control_Choix;
 import sample.Control.Control_Matrix;
 import sample.Control.Control_Matrix_one;
@@ -35,13 +35,13 @@ public class PanelPlan implements Initializable, ChangeListener {
 
     public Pane canvasGroup;
     public ToggleButton edge;
-    public ToggleButton node ,dijkstraButton , BFSS;
+    public ToggleButton node, dijkstraButton, BFSS;
     NodeFX selectedNode = null;
     private Label sourceText = new Label("Source"), weight;
     private ARROW arrow;
     private Linearrow_courbé Arrow_cou;
     @FXML
-    private ComboBox List,Welsh;
+    private ComboBox List, Welsh;
     @FXML
     private TextArea MatriX;
     @FXML
@@ -52,7 +52,7 @@ public class PanelPlan implements Initializable, ChangeListener {
     public static TextArea textFlow = new TextArea();
     List<Label> distances = new ArrayList<Label>();
 
-    boolean addNode = true, addEdge = false,paused = false,playing = false , dijkstra , Bfs = false , mst;
+    boolean addNode = true, addEdge = false, paused = false, playing = false, dijkstra, Bfs = false, mst;
     Algorithm algo = new Algorithm();
     public SequentialTransition st;
     public SequentialTransition stcolor;
@@ -61,16 +61,17 @@ public class PanelPlan implements Initializable, ChangeListener {
     public int ValueNBsommet_one = Control_Matrix_one.ValueNBsommet;
     public boolean WelABoolean = false;
 
-    private boolean directed = Control_Choix.directed, undirected = Control_Choix.undirected , weighted = Control_Choix.weighted, unweighted = Control_Choix.unweighted;
-    private String [][]matrice_nb = Control_Matrix.matrice;
-    private boolean [][]matrice_true = Control_Matrix_one.matrice;
+    private boolean directed = Control_Choix.directed, undirected = Control_Choix.undirected, weighted = Control_Choix.weighted, unweighted = Control_Choix.unweighted;
+    private String[][] matrice_nb = Control_Matrix.matrice;
+    private boolean[][] matrice_true = Control_Matrix_one.matrice;
     private boolean etat_matrice = Control_Matrix.etat_matrice;
     private boolean etat_matrice_one = Control_Matrix_one.etat_matrice;
-    private int[][] matriceBellman = new int[][]{{0,0,0,0,0},{0,0,0,0,0},{0,0,0,0,0},{0,0,0,0,0},{0,0,0,0,0}};
+    private int[][] matriceBellman = new int[][]{{0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}};
     private int[][] matriceBellmanRES = new int[ValueNBsommet][ValueNBsommet];
-    int NB, NB2 , time = 700;;
+    int NB, NB2, time = 700;
+    ;
 
-    GrapheDSat g =new GrapheDSat();
+    GrapheDSat g = new GrapheDSat();
 
     List<String> ListALgo = new ArrayList<>();
     List<NodeFX> circles = new ArrayList<NodeFX>();
@@ -129,6 +130,7 @@ public class PanelPlan implements Initializable, ChangeListener {
             List.getItems().addAll(ListALgo);
         }
     }
+
     @Override
     //
     //Gere le temps du slider pour le temps des algos
@@ -150,21 +152,21 @@ public class PanelPlan implements Initializable, ChangeListener {
         //time = temp;
         //System.out.println(time);
     }
+
     //
     //Fonction qui gere la fenetre AIDE
     //
-    public void aide()
-    {
+    public void aide() {
         Label secondLabel;
 
-        secondLabel = new Label("Page d'aide pour Premiere page :"+"\n"
-                +"Page D'accueil : Le button centrale lance le logicile ."+"\n"+"\n"
-                +"Page de choix : Vous devais decidé les type de votre graph un choix possible pour les poids"+"\n"
-                +"et pour l'orientation."+"\n"+"\n"
-                +"Page de la matrice : Vous deviez tout d'abord mettre le Nb de sommet puis remplir la matrice"+"\n"
-                +"avec passe à l'etape du plan pour mettre en meouvre les algo."+"\n"+"\n"
-                +"Page de plan : Cette page affiche le graph et sert a le modifier , on peut applique des algorithme"+"\n"
-                +"sur le graph afficher."+"\n");
+        secondLabel = new Label("Page d'aide pour Premiere page :" + "\n"
+                + "Page D'accueil : Le button centrale lance le logicile ." + "\n" + "\n"
+                + "Page de choix : Vous devais decidé les type de votre graph un choix possible pour les poids" + "\n"
+                + "et pour l'orientation." + "\n" + "\n"
+                + "Page de la matrice : Vous deviez tout d'abord mettre le Nb de sommet puis remplir la matrice" + "\n"
+                + "avec passe à l'etape du plan pour mettre en meouvre les algo." + "\n" + "\n"
+                + "Page de plan : Cette page affiche le graph et sert a le modifier , on peut applique des algorithme" + "\n"
+                + "sur le graph afficher." + "\n");
 
         StackPane secondaryLayout = new StackPane();
         secondaryLayout.getChildren().add(secondLabel);
@@ -189,14 +191,14 @@ public class PanelPlan implements Initializable, ChangeListener {
 
         newWindow.show();
     }
+
     //
     //Fonction quand clique sur le pane , Gere le dessin des circle et appel la fonction des ARC ARRET
     //
     public void handle(MouseEvent ev) {
 
         if (addNode) {
-            if (ev.getEventType() == MouseEvent.MOUSE_CLICKED && WelABoolean == false && ev.getButton() == MouseButton.PRIMARY)
-            {
+            if (ev.getEventType() == MouseEvent.MOUSE_CLICKED && WelABoolean == false && ev.getButton() == MouseButton.PRIMARY) {
 
                 nNode++;
 
@@ -209,16 +211,14 @@ public class PanelPlan implements Initializable, ChangeListener {
                 tr.setByY(10f);
                 tr.setInterpolator(Interpolator.EASE_OUT);
                 tr.play();*/
-            }
-            else if (ev.getEventType() == MouseEvent.MOUSE_CLICKED && WelABoolean == true)
-            {
-                for (NodeFX node : circles)
-                {
+            } else if (ev.getEventType() == MouseEvent.MOUSE_CLICKED && WelABoolean == true) {
+                for (NodeFX node : circles) {
                     node.setOnMouseClicked(mouseHandler);
                 }
             }
         }
     }
+
     //
     //Empeche les N-graph
     //
@@ -230,6 +230,7 @@ public class PanelPlan implements Initializable, ChangeListener {
         }
         return false;
     }
+
     //
     //Fonction qui gere l'affichage des line et le label poids
     //
@@ -238,76 +239,72 @@ public class PanelPlan implements Initializable, ChangeListener {
         @Override
         public void handle(MouseEvent mouseEvent) {
             NodeFX circle = (NodeFX) mouseEvent.getSource();
-            if (mouseEvent.getEventType() == MouseEvent.MOUSE_PRESSED && mouseEvent.getButton() == MouseButton.PRIMARY && WelABoolean == true)
-            {
-                FillTransition ft1 = new FillTransition(Duration.millis(300), circle, Color.BLACK, colorName.get(Welsh.getSelectionModel().getSelectedIndex()+1));
+            if (mouseEvent.getEventType() == MouseEvent.MOUSE_PRESSED && mouseEvent.getButton() == MouseButton.PRIMARY && WelABoolean == true) {
+                FillTransition ft1 = new FillTransition(Duration.millis(300), circle, Color.BLACK, colorName.get(Welsh.getSelectionModel().getSelectedIndex() + 1));
                 ft1.play();
-            }
-            else if (mouseEvent.getEventType() == MouseEvent.MOUSE_PRESSED && mouseEvent.getButton() == MouseButton.PRIMARY && addEdge == true) {
+            } else if (mouseEvent.getEventType() == MouseEvent.MOUSE_PRESSED && mouseEvent.getButton() == MouseButton.PRIMARY && addEdge == true) {
                 if (!circle.isSelected) {
                     if (selectedNode != null) {
                         weight = new Label();
-                        if (!edgeExists(selectedNode, circle))
-                        {
+                        if (!edgeExists(selectedNode, circle)) {
                             System.out.println("Adding Edge");
-                        //DESINE LES LIGNE OU FLECHE ENTRE LES POINTS
-                        if (undirected) {
-                            Line edgeLine = new Line(selectedNode.point.x, selectedNode.point.y, circle.point.x, circle.point.y);
-                            canvasGroup.getChildren().add(edgeLine);
-                            edgeLine.setId("line");
-                            g.ajouterArret(new Arret(selectedNode.nodeBIS, circle.nodeBIS));
-                        } else if (directed) {
-                            arrow = new ARROW(selectedNode.point.x, selectedNode.point.y, circle.point.x, circle.point.y);
-                            canvasGroup.getChildren().add(arrow);
-                            arrow.setId("arrow");
-                            g.ajouterArret(new Arret(selectedNode.nodeBIS, circle.nodeBIS));
-                        }
-
-                        if (weighted) {
-                            weight.setLayoutX(((selectedNode.point.x) + (circle.point.x)) / 2);
-                            weight.setLayoutY(((selectedNode.point.y) + (circle.point.y)) / 2);
-
-                            TextInputDialog dialog = new TextInputDialog("1");
-                            dialog.setTitle(null);
-                            dialog.setHeaderText("Enter Weight of the Edge :");
-                            dialog.setContentText(null);
-
-                            Optional<String> result = dialog.showAndWait();
-                            if (result.isPresent()) {
-                                weight.setText(result.get());
-                            } else {
-                                weight.setText("0");
+                            //DESINE LES LIGNE OU FLECHE ENTRE LES POINTS
+                            if (undirected) {
+                                Line edgeLine = new Line(selectedNode.point.x, selectedNode.point.y, circle.point.x, circle.point.y);
+                                canvasGroup.getChildren().add(edgeLine);
+                                edgeLine.setId("line");
+                                g.ajouterArret(new Arret(selectedNode.nodeBIS, circle.nodeBIS));
+                            } else if (directed) {
+                                arrow = new ARROW(selectedNode.point.x, selectedNode.point.y, circle.point.x, circle.point.y);
+                                canvasGroup.getChildren().add(arrow);
+                                arrow.setId("arrow");
+                                g.ajouterArret(new Arret(selectedNode.nodeBIS, circle.nodeBIS));
                             }
-                            canvasGroup.getChildren().add(weight);
-                        } else if (unweighted) {
-                            weight.setText("1");
-                        }
-                        Shape line_arrow = null;
-                        EEDGE temp = null;
-                        if (undirected) {
-                            temp = new EEDGE(selectedNode.node, circle.node, Integer.valueOf(weight.getText()), edgeLine, weight);
+
                             if (weighted) {
-                                mstEdges.add(temp);
+                                weight.setLayoutX(((selectedNode.point.x) + (circle.point.x)) / 2);
+                                weight.setLayoutY(((selectedNode.point.y) + (circle.point.y)) / 2);
+
+                                TextInputDialog dialog = new TextInputDialog("1");
+                                dialog.setTitle(null);
+                                dialog.setHeaderText("Enter Weight of the Edge :");
+                                dialog.setContentText(null);
+
+                                Optional<String> result = dialog.showAndWait();
+                                if (result.isPresent()) {
+                                    weight.setText(result.get());
+                                } else {
+                                    weight.setText("0");
+                                }
+                                canvasGroup.getChildren().add(weight);
+                            } else if (unweighted) {
+                                weight.setText("1");
                             }
+                            Shape line_arrow = null;
+                            EEDGE temp = null;
+                            if (undirected) {
+                                temp = new EEDGE(selectedNode.node, circle.node, Integer.valueOf(weight.getText()), edgeLine, weight);
+                                if (weighted) {
+                                    mstEdges.add(temp);
+                                }
 
-                            selectedNode.node.adjacents.add(new EEDGE(selectedNode.node, circle.node, Double.valueOf(weight.getText()), edgeLine, weight));
-                            circle.node.adjacents.add(new EEDGE(circle.node, selectedNode.node, Double.valueOf(weight.getText()), edgeLine, weight));
-                            edges.add(edgeLine);
-                            realEdges.add(selectedNode.node.adjacents.get(selectedNode.node.adjacents.size() - 1));
-                            realEdges.add(circle.node.adjacents.get(circle.node.adjacents.size() - 1));
-                            line_arrow = edgeLine;
+                                selectedNode.node.adjacents.add(new EEDGE(selectedNode.node, circle.node, Double.valueOf(weight.getText()), edgeLine, weight));
+                                circle.node.adjacents.add(new EEDGE(circle.node, selectedNode.node, Double.valueOf(weight.getText()), edgeLine, weight));
+                                edges.add(edgeLine);
+                                realEdges.add(selectedNode.node.adjacents.get(selectedNode.node.adjacents.size() - 1));
+                                realEdges.add(circle.node.adjacents.get(circle.node.adjacents.size() - 1));
+                                line_arrow = edgeLine;
 
-                        } else if (directed) {
-                            temp = new EEDGE(selectedNode.node, circle.node, Double.valueOf(weight.getText()), arrow, weight);
-                            selectedNode.node.adjacents.add(temp);
-                            //circle.node.revAdjacents.add(new EEDGE(selectedNode.node, circle.node,Double.valueOf(weight.getText()), arrow, weight));
-                            edges.add(arrow);
-                            line_arrow = arrow;
-                            realEdges.add(temp);
+                            } else if (directed) {
+                                temp = new EEDGE(selectedNode.node, circle.node, Double.valueOf(weight.getText()), arrow, weight);
+                                selectedNode.node.adjacents.add(temp);
+                                //circle.node.revAdjacents.add(new EEDGE(selectedNode.node, circle.node,Double.valueOf(weight.getText()), arrow, weight));
+                                edges.add(arrow);
+                                line_arrow = arrow;
+                                realEdges.add(temp);
+                            }
                         }
-                    }
-                        if (addNode || addEdge)
-                        {
+                        if (addNode || addEdge) {
                             selectedNode.isSelected = false;
                             FillTransition ft1 = new FillTransition(Duration.millis(300), selectedNode, Color.RED, Color.BLACK);
                             ft1.play();
@@ -321,12 +318,9 @@ public class PanelPlan implements Initializable, ChangeListener {
                     circle.isSelected = true;
                     selectedNode = circle;
                     //CHOIX DES ALGOS
-                    if (dijkstra)
-                    {
+                    if (dijkstra) {
                         algo.newDijkstra(circle.node);
-                    }
-                    else if (Bfs)
-                    {
+                    } else if (Bfs) {
                         algo.newBFS(circle.node);
                     }
                 } else {
@@ -340,11 +334,11 @@ public class PanelPlan implements Initializable, ChangeListener {
             }
         }
     };
+
     //
     //Modifier la valeur en cliquant sur button Edge
     //
-    public void AddEdgeHandle (ActionEvent actionEvent)
-    {
+    public void AddEdgeHandle(ActionEvent actionEvent) {
         addNode = false;
         addEdge = true;
         node.setSelected(false);
@@ -357,8 +351,7 @@ public class PanelPlan implements Initializable, ChangeListener {
     //
     //Modifier la valeur en cliquant sur button NODE
     //
-    public void AddNodeHandle (ActionEvent actionEvent)
-    {
+    public void AddNodeHandle(ActionEvent actionEvent) {
         addNode = true;
         addEdge = false;
         node.setSelected(true);
@@ -367,30 +360,28 @@ public class PanelPlan implements Initializable, ChangeListener {
         //Algo annulation
         WelABoolean = false;
     }
+
     //calcule la matrice du graph dans le plan
     //
     //Fonction de calcule de la matrice du graph dessiner utilisé pour Bellman FORD
     //
-    public void MatriceGR()
-    {
+    public void MatriceGR() {
         ValueNBsommet = 0;
-        matriceBellman = new int[][]{{0,0,0,0,0},{0,0,0,0,0},{0,0,0,0,0},{0,0,0,0,0},{0,0,0,0,0}};
-        for (NodeFX u : circles)
-        {
+        matriceBellman = new int[][]{{0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}};
+        for (NodeFX u : circles) {
             //ListNode.add(u.node);
             ValueNBsommet++;
-            for (EEDGE e : u.node.adjacents)
-            {
-                matriceBellman[Integer.parseInt(e.source.name)][Integer.parseInt(e.target.name)] =(int)e.weight;
+            for (EEDGE e : u.node.adjacents) {
+                matriceBellman[Integer.parseInt(e.source.name)][Integer.parseInt(e.target.name)] = (int) e.weight;
             }
         }
 
     }
+
     //
     //Appel le constructeur de BEllmanford
     //
-    public void AppelBellmanFord(int [][]matriceBellman)
-    {
+    public void AppelBellmanFord(int[][] matriceBellman) {
         int numberofvertices = 0;
         int source = 0;
         Scanner scanner = new Scanner(System.in);
@@ -400,76 +391,65 @@ public class PanelPlan implements Initializable, ChangeListener {
 
         int adjacencymatrix[][] = new int[numberofvertices + 1][numberofvertices + 1];
         System.out.println("Enter the adjacency matrix");
-        for (int sourcenode = 1; sourcenode <= numberofvertices; sourcenode++)
-        {
-            for (int destinationnode = 1; destinationnode <= numberofvertices; destinationnode++)
-            {
+        for (int sourcenode = 1; sourcenode <= numberofvertices; sourcenode++) {
+            for (int destinationnode = 1; destinationnode <= numberofvertices; destinationnode++) {
                 adjacencymatrix[sourcenode][destinationnode] = matriceBellman[sourcenode][destinationnode];// ICI
-                if (sourcenode == destinationnode)
-                {
+                if (sourcenode == destinationnode) {
                     adjacencymatrix[sourcenode][destinationnode] = 0;
                     continue;
                 }
-                if (adjacencymatrix[sourcenode][destinationnode] == 0)
-                {
+                if (adjacencymatrix[sourcenode][destinationnode] == 0) {
                     adjacencymatrix[sourcenode][destinationnode] = MAX_VALUE;
                 }
             }
         }
         //ICI
-        System.out.println("Enter the source vertex [1 -- "+numberofvertices+"]");
+        System.out.println("Enter the source vertex [1 -- " + numberofvertices + "]");
         //source = scanner.nextInt();// on veut tout le tableau .
         MatriX.appendText("     ");
-        for (int o = 1;o<=numberofvertices;o++)
-        {
-            MatriX.appendText("  "+o+"   ");
+        for (int o = 1; o <= numberofvertices; o++) {
+            MatriX.appendText("  " + o + "   ");
         }
-        MatriX.appendText("\n"+"      ");
-        for (int g = 1;g<=numberofvertices;g++)
-        {
+        MatriX.appendText("\n" + "      ");
+        for (int g = 1; g <= numberofvertices; g++) {
             MatriX.appendText("____");
         }
         MatriX.appendText("\n");
-        for (int i = 1 ; i<=numberofvertices ; i++ )
-        {
+        for (int i = 1; i <= numberofvertices; i++) {
             BellmanFord bellmanford = new BellmanFord(numberofvertices);
-            matriceBellmanRES = bellmanford.BellmanFordEvaluation(i,adjacencymatrix);
-            MatriX.appendText(i+"   |");
-            for (int j = 0 ;j< matriceBellmanRES.length;j++)
-            {
-                if (matriceBellmanRES[i-1][j] == 884)
+            matriceBellmanRES = bellmanford.BellmanFordEvaluation(i, adjacencymatrix);
+            MatriX.appendText(i + "   |");
+            for (int j = 0; j < matriceBellmanRES.length; j++) {
+                if (matriceBellmanRES[i - 1][j] == 884)
                     MatriX.setText("Cycle negative !! ");
-                else if (matriceBellmanRES[i-1][j] == 999)
+                else if (matriceBellmanRES[i - 1][j] == 999)
                     MatriX.appendText(" [inf+] ");
                 else
-                    MatriX.appendText(String.valueOf(" ["+matriceBellmanRES[i-1][j])+"]  ");
+                    MatriX.appendText(String.valueOf(" [" + matriceBellmanRES[i - 1][j]) + "]  ");
             }
             MatriX.appendText("\n");
 
         }
 
     }
+
     //
     //Modifier un boolean avec le choix dans la combobox algo
     //
-    public void WelshPowell()
-    {
+    public void WelshPowell() {
         WelABoolean = true;
     }
+
     //
     //Le teste des choix dans la combobox
     //
-    public void ListALgo()
-    {
+    public void ListALgo() {
         if (List.getSelectionModel().getSelectedItem().equals("color"))
             COLOR();
-        else if (List.getSelectionModel().getSelectedItem().equals("Dijkstra"))
-        {
+        else if (List.getSelectionModel().getSelectedItem().equals("Dijkstra")) {
             dijkstra = true;
             Bfs = false;
-        }
-        else if (List.getSelectionModel().getSelectedItem().equals("Bellman Ford"))
-        {
+        } else if (List.getSelectionModel().getSelectedItem().equals("Bellman Ford")) {
             if (etat_matrice_one) {
                 // matrice_true matrice_nb  matriceBellman
 
@@ -481,18 +461,13 @@ public class PanelPlan implements Initializable, ChangeListener {
                             matriceBellman[i][j] = Integer.parseInt(matrice_nb[i][j]);
                     }
                 }
-            }else if (etat_matrice){
-                for (int i =0;i <matrice_nb.length;i++)
-                {
-                    for (int j = 0 ;j<matrice_nb.length;j++)
-                    {
-                        if(matrice_nb[i][j] == "")
-                        {
+            } else if (etat_matrice) {
+                for (int i = 0; i < matrice_nb.length; i++) {
+                    for (int j = 0; j < matrice_nb.length; j++) {
+                        if (matrice_nb[i][j] == "") {
                             matriceBellman[i][j] = 0;
-                        }
-                        else
-                        {
-                            System.out.println("eee"+matrice_nb[i][j]+"eee");
+                        } else {
+                            System.out.println("eee" + matrice_nb[i][j] + "eee");
                             matriceBellman[i][j] = Integer.parseInt(matrice_nb[i][j]);
                         }
                     }
@@ -500,34 +475,26 @@ public class PanelPlan implements Initializable, ChangeListener {
                 MatriX.setText("Resultat de Bellman-Ford  :\n");
                 AppelBellmanFord(matriceBellman);
 
-            }
-            else
-            {
+            } else {
                 MatriX.setText("Resultat de Bellman-Fords\n");
                 MatriceGR();
                 AppelBellmanFord(matriceBellman);
 
             }
-        }
-        else if (List.getSelectionModel().getSelectedItem().equals("Welsh Powell"))
-        {
+        } else if (List.getSelectionModel().getSelectedItem().equals("Welsh Powell")) {
             WelshPowell();
-        }
-        else if (List.getSelectionModel().getSelectedItem().equals("Kruskal"))
-        {
+        } else if (List.getSelectionModel().getSelectedItem().equals("Kruskal")) {
 
-        }
-        else if (List.getSelectionModel().getSelectedItem().equals("Aucun"))
-        {
+        } else if (List.getSelectionModel().getSelectedItem().equals("Aucun")) {
             WelABoolean = false;
         }
 
     }
+
     //
     //Appel le contructeur de la class COLOR pour colorisé le graph
     //
-    public void COLOR()
-    {
+    public void COLOR() {
 
         int U = 0;
         g.colorier();
@@ -542,15 +509,14 @@ public class PanelPlan implements Initializable, ChangeListener {
         }
         stcolor1.play();
         //if () pour allongé le temmps d'affiche des couleur.
-        stcolor1.setOnFinished( event -> {
+        stcolor1.setOnFinished(event -> {
             for (NodeFX n : circles) {
                 FillTransition unftcolor = new FillTransition(Duration.millis(slider.getValue()), n);
                 unftcolor.setToValue(Color.BLACK);
                 unftcolor.play();
             }
-      });
+        });
     }
-
 
 
     //
@@ -560,6 +526,7 @@ public class PanelPlan implements Initializable, ChangeListener {
         dijkstra = true;
         Bfs = false;
     }
+
     //
     //Modifier la valeur Boolean en cliquand sur button
     //
@@ -567,6 +534,7 @@ public class PanelPlan implements Initializable, ChangeListener {
         Bfs = true;
         dijkstra = false;
     }
+
     //
     //Reset a etat au demarage
     //
@@ -607,6 +575,7 @@ public class PanelPlan implements Initializable, ChangeListener {
             System.out.println("ADDing: " + circles.size());
         }
     }
+
     //
     //Class ALgo
     //
@@ -735,6 +704,7 @@ public class PanelPlan implements Initializable, ChangeListener {
                 //</editor-fold>
             }
         }
+
         //<editor-fold defaultstate="collapsed" desc="BFS">
         public void newBFS(Node source) {
             new BFS(source);
@@ -865,5 +835,3 @@ public class PanelPlan implements Initializable, ChangeListener {
         }
     }
 }
-
-

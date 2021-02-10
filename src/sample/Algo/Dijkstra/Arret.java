@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package sample.Algo.Dsatur;
+package sample.Algo.Dijkstra;
 
 /**
  *
@@ -11,21 +11,25 @@ package sample.Algo.Dsatur;
 public class Arret {
     private Sommet s1;
     private Sommet s2;
-    
-    public Arret(Sommet e, Sommet r){
-        this.s1= e;
-        this.s2= r;
+
+    public Arret(Sommet e, Sommet r) {
+        this.s1 = e;
+        this.s2 = r;
     }
-    public Sommet get_1(){
+
+    public Sommet get_1() {
         return s1;
     }
-    public Sommet get_2(){
+
+    public Sommet get_2() {
         return s2;
     }
+
     @Override
-    public int hashCode(){
-        return s1.getNumero()*7+s2.getNumero()*5;
+    public int hashCode() {
+        return s1.getNumero() * 7 + s2.getNumero() * 5;
     }
+
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
@@ -35,13 +39,13 @@ public class Arret {
             return false;
         }
         final Arret arret = (Arret) obj;
-        if(
+        if (
                 (this.s1.equals(arret.s1) && this.s2.equals(arret.s2)) ||
-                (this.s1.equals(arret.s2) && this.s1.equals(arret.s2))
-                
-                ) return true;
+                        (this.s1.equals(arret.s2) && this.s1.equals(arret.s2))
 
-        
+        ) return true;
+
+
         return false;
     }
 }
