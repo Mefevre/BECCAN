@@ -22,9 +22,9 @@ import javafx.scene.shape.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import sample.Algo.Dijkstra.Arret;
-import sample.Algo.Dijkstra.GrapheDSat;
-import sample.Algo.Dijkstra.Sommet;
+import sample.Algo.Dsatur.Arret;
+import sample.Algo.Dsatur.GrapheDSat;
+import sample.Algo.Dsatur.Sommet;
 import sample.Control.Control_Choix;
 import sample.Control.Control_Matrix;
 import sample.Control.Control_Matrix_one;
@@ -50,7 +50,7 @@ public class PanelPlan implements Initializable, ChangeListener {
     private Slider slider = new Slider();
     private Line edgeLine;
     public static TextArea textFlow = new TextArea();
-    List<Label> distances = new ArrayList<Label>();
+    List<Label> distances = new ArrayList<Label>(), visitTime = new ArrayList<>(), lowTime = new ArrayList<Label>();
 
     boolean addNode = true, addEdge = false, paused = false, playing = false, dijkstra, Bfs = false, mst;
     Algorithm algo = new Algorithm();
@@ -359,6 +359,79 @@ public class PanelPlan implements Initializable, ChangeListener {
         selectedNode = null;
         //Algo annulation
         WelABoolean = false;
+    }//
+    //Modifier la valeur Boolean en cliquand sur button
+    //
+    public void DijkstraHandle(ActionEvent actionEvent) {
+        dijkstra = true;
+        Bfs = false;
+    }
+
+    //
+    //Modifier la valeur Boolean en cliquand sur button
+    //
+    public void BFSHandle(ActionEvent actionEvent) {
+        Bfs = true;
+        dijkstra = false;
+    }
+
+    //
+    //Reset a etat au demarage
+    //
+    public void ResetHandle(ActionEvent event) //a faire
+    {
+        //nNode = 0;
+        //canvasGroup.getChildren().clear();
+        selectedNode = null;
+        //circles = new ArrayList<NodeFX>();
+        //distances = new ArrayList<Label>();
+        addNode = true;
+        addEdge = false;
+        node.setSelected(false);
+        edge.setSelected(false);
+        for (NodeFX n : circles) {
+            n.isSelected = false;
+            n.node.visited = false;
+            n.node.previous = null;
+            n.node.minDistance = Double.POSITIVE_INFINITY;
+            FillTransition ft1 = new FillTransition(Duration.millis(300), n);
+            ft1.setToValue(Color.BLACK);
+            ft1.play();
+        }
+        for (Shape x : edges) {
+            if (undirected) {
+                StrokeTransition ftEdge = new StrokeTransition(Duration.millis(time), x);
+                ftEdge.setToValue(Color.BLACK);
+                ftEdge.play();
+            } else if (directed) {
+                FillTransition ftEdge = new FillTransition(Duration.millis(time), x);
+                ftEdge.setToValue(Color.BLACK);
+                ftEdge.play();
+            }
+        }
+        canvasGroup.getChildren().remove(sourceText);
+        for (Label x : distances) {
+            x.setText("Distance : INFINITY");
+            canvasGroup.getChildren().remove(x);
+        }
+        for (Label x : visitTime) {
+            x.setText("Visit : 0");
+            canvasGroup.getChildren().remove(x);
+        }
+        for (Label x : lowTime) {
+            x.setText("Low Value : NULL");
+            canvasGroup.getChildren().remove(x);
+        }
+        distances = new ArrayList<>();
+        visitTime = new ArrayList<>();
+        lowTime = new ArrayList<>();
+        textFlow.clear();
+        dijkstra = false;
+        WelABoolean=false;
+        matriceBellman = new int[][]{{0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}};
+        playing = false;
+        paused = false;
+
     }
 
     //calcule la matrice du graph dans le plan
@@ -519,28 +592,7 @@ public class PanelPlan implements Initializable, ChangeListener {
     }
 
 
-    //
-    //Modifier la valeur Boolean en cliquand sur button
-    //
-    public void DijkstraHandle(ActionEvent actionEvent) {
-        dijkstra = true;
-        Bfs = false;
-    }
 
-    //
-    //Modifier la valeur Boolean en cliquand sur button
-    //
-    public void BFSHandle(ActionEvent actionEvent) {
-        Bfs = true;
-        dijkstra = false;
-    }
-
-    //
-    //Reset a etat au demarage
-    //
-    public void ResetHandle(ActionEvent event) //a faire
-    {
-    }
 
     /**
      * Shape class for the nodes.
