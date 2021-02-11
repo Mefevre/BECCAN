@@ -25,7 +25,7 @@ import javafx.util.Duration;
 import sample.Algo.Dijkstra.Arret;
 import sample.Algo.Dijkstra.GrapheDSat;
 import sample.Algo.Dijkstra.Sommet;
-import sample.Algo.Dijkstra.Dsatur;
+import sample.Algo.Dsatur.Dsatur;
 import sample.Control.Control_Choix;
 import sample.Control.Control_Matrix;
 import sample.Control.Control_Matrix_one;
