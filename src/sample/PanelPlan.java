@@ -559,6 +559,7 @@ public class PanelPlan implements Initializable, ChangeListener {
         } else if (List.getSelectionModel().getSelectedItem().equals("Aucun")) {
             WelABoolean = false;
         } else if (List.getSelectionModel().getSelectedItem().equals("Dsatur")) {
+            COLOR();
             //MatriceGR();
             //int[][] matriceGR = getMatriceGraph();
             //Dsatur newDsatur = new Dsatur(matriceGR, g.getListSommets());
