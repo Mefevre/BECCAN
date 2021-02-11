@@ -1,6 +1,6 @@
 package sample.Algo.Dsatur;
 
-import sample.Algo.Dijkstra.Sommet;
+import sample.Algo.Dsatur.Sommet;
 
 import java.util.LinkedList;
 
