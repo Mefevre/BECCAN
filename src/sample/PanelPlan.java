@@ -566,7 +566,7 @@ public class PanelPlan implements Initializable, ChangeListener {
 
     //
     //Appel le contructeur de la class COLOR pour colorisé le graph
-    //
+    //------------------------------------COLOR(g, cicles, colorName, slider)-----------------------------------------------
     public void COLOR() {
 
         int U = 0;
