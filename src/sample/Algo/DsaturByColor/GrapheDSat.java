@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package sample.Algo.Dijkstra;
+package sample.Algo.DsaturByColor;
 
 import java.util.*;
 

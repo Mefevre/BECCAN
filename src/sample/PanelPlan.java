@@ -22,7 +22,7 @@ import javafx.scene.shape.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import sample.Algo.Dijkstra.*;
+import sample.Algo.DsaturByColor.*;
 import sample.Algo.Dsatur.Dsatur;
 import sample.Control.Control_Choix;
 import sample.Control.Control_Matrix;
