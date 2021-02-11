@@ -8,13 +8,13 @@ public class ELEURIAN {
     // A Java program to check if a given graph is Eulerian or not
 
     // This class represents an undirected graph using adjacency list
-// representation
+    // representation
     class EulerianPath
     {
         private int V; // No. of vertices
 
         // Array of lists for Adjacency List Representation
-        private LinkedList<Integer> adj[];
+        private LinkedList<Integer> adj[]; // rajouter un getter pour recupere et l'affiche sur le sommet !!!
 
         // Constructor
         EulerianPath(int v)
@@ -124,8 +124,6 @@ public class ELEURIAN {
             g1.addEdge(1, 0);
             g1.addEdge(0, 2);
             g1.addEdge(2, 1);
-            g1.addEdge(0, 3);
-            g1.addEdge(3, 4);
             g1.test();
 
             EulerianPath g2 = new EulerianPath(5);
@@ -159,6 +157,7 @@ public class ELEURIAN {
             EulerianPath g5 = new EulerianPath(3);
             g5.test();
         }
+
     }
 // This code is contributed by Aakash Hasija
 
