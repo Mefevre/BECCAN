@@ -22,8 +22,7 @@ import javafx.scene.shape.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import sample.Algo.DsaturByColor.*;
-import sample.Algo.Dsatur.Dsatur;
+import sample.Algo.Dsatur.*;
 import sample.Control.Control_Choix;
 import sample.Control.Control_Matrix;
 import sample.Control.Control_Matrix_one;
@@ -561,8 +560,8 @@ public class PanelPlan implements Initializable, ChangeListener {
             WelABoolean = false;
         } else if (List.getSelectionModel().getSelectedItem().equals("Dsatur")) {
             //MatriceGR();
-            int[][] matriceGR = getMatriceGraph();
-            Dsatur newDsatur = new Dsatur(matriceGR, g.getListSommets());
+            //int[][] matriceGR = getMatriceGraph();
+            //Dsatur newDsatur = new Dsatur(matriceGR, g.getListSommets());
         }
 
     }
@@ -901,12 +900,9 @@ public class PanelPlan implements Initializable, ChangeListener {
             {
                 boolean existe = edgeExists(circles.get(i), circles.get(j));
                 if (existe)
-                {
                     matrice[i][j] = 1;
-                } else
-                {
+                 else
                     matrice[i][j] = 0;
-                }
             }
         }
         return matrice;

@@ -9,14 +9,11 @@
       <Pane prefHeight="200.0" prefWidth="1035.0" style="-fx-background-color: #6a737b#6a737b;">
          <children>
             <ComboBox fx:id="List" layoutX="240.0" layoutY="47.0" onAction="#ListALgo" prefHeight="25.0" prefWidth="192.0" promptText="List d'algorithmes" />
-                <Button layoutX="706.0" layoutY="24.0" mnemonicParsing="false" onAction="#COLOR" text="colori" />
                 <Button layoutX="444.0" layoutY="24.0" mnemonicParsing="false" onAction="#ResetHandle" prefHeight="61.0" prefWidth="92.0" text="RESET" />
                 <ToggleButton fx:id="node" layoutX="120.0" layoutY="24.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#AddNodeHandle" prefHeight="61.0" prefWidth="92.0" text="NODE" />
                 <ToggleButton fx:id="edge" layoutX="20.0" layoutY="24.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#AddEdgeHandle" prefHeight="61.0" prefWidth="92.0" text="EDGE" />
                 <Slider fx:id="slider" layoutX="14.0" layoutY="135.0" prefHeight="52.0" prefWidth="255.0" />
             <ComboBox fx:id="Welsh" layoutX="444.0" layoutY="110.0" prefHeight="25.0" prefWidth="192.0" promptText="Liste de couleur" />
-                <ToggleButton fx:id="dijkstraButton" layoutX="706.0" layoutY="59.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#DijkstraHandle" prefHeight="52.0" prefWidth="78.0" text="DISTRA" />
-                <ToggleButton fx:id="BFSS" layoutX="706.0" layoutY="122.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#BFSHandle" prefHeight="52.0" prefWidth="78.0" text="BFS" />
             <Button fx:id="aide" layoutX="976.0" layoutY="19.0" mnemonicParsing="false" onAction="#aide" prefHeight="39.0" prefWidth="39.0" style="-fx-border-color: #000000;" text="?" />
          </children></Pane>
       <Pane layoutX="806.0" layoutY="200.0" prefHeight="532.0" prefWidth="235.0">

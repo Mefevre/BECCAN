@@ -1,4 +1,4 @@
-package sample.Algo.DsaturByColor;
+package sample.Algo.Dsatur;
 
 /**
  *
