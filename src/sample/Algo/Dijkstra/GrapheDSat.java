@@ -78,6 +78,14 @@ public class GrapheDSat extends Graphe implements Comparator<Sommet> {
         return false;
     }
 
+    public LinkedList<Sommet> getListSommets()
+    {
+        Collections.sort(sommets,this);
+        LinkedList<Sommet> listSommet=new LinkedList<Sommet>();
+        listSommet.addAll(sommets);
+        return listSommet;
+    }
+
     /*
     public static void main(String[] args){
         Graphe.GrapheDSat g=new Graphe.GrapheDSat();

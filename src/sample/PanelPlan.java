@@ -25,6 +25,7 @@ import javafx.util.Duration;
 import sample.Algo.Dijkstra.Arret;
 import sample.Algo.Dijkstra.GrapheDSat;
 import sample.Algo.Dijkstra.Sommet;
+import sample.Algo.Dsatur.Dsatur;
 import sample.Control.Control_Choix;
 import sample.Control.Control_Matrix;
 import sample.Control.Control_Matrix_one;
@@ -119,7 +120,7 @@ public class PanelPlan implements Initializable, ChangeListener {
         if (true)//teste de la combobox
         {
             ListALgo.add("Aucun");
-            ListALgo.add("DSATUR");
+            ListALgo.add("Dsatur");
             ListALgo.add("Welsh Powell");
             ListALgo.add("Dijkstra");
             ListALgo.add("Eulérien");
@@ -222,7 +223,7 @@ public class PanelPlan implements Initializable, ChangeListener {
     //
     //Empeche les N-graph
     //
-    boolean edgeExists(NodeFX u, NodeFX v) {
+    public boolean edgeExists(NodeFX u, NodeFX v) {
         for (EEDGE e : realEdges) {
             if (e.source == u.node && e.target == v.node || e.source == v.node && e.target == u.node) {
                 return true;
@@ -487,6 +488,10 @@ public class PanelPlan implements Initializable, ChangeListener {
 
         } else if (List.getSelectionModel().getSelectedItem().equals("Aucun")) {
             WelABoolean = false;
+        } else if (List.getSelectionModel().getSelectedItem().equals("Dsatur")) {
+            //MatriceGR();
+            int[][] matriceGR = getMatriceGraph();
+            Dsatur newDsatur = new Dsatur(matriceGR, g.getListSommets());
         }
 
     }
@@ -833,5 +838,27 @@ public class PanelPlan implements Initializable, ChangeListener {
 
             }
         }
+    }
+
+    public int[][] getMatriceGraph()
+    {
+        int nbSommets = g.getSommets().size();
+        int[][] matrice = new int[nbSommets][nbSommets];
+
+        for (int i=0; i<nbSommets; i++)
+        {
+            for (int j=0; j<nbSommets; j++)
+            {
+                boolean existe = edgeExists(circles.get(i), circles.get(j));
+                if (existe)
+                {
+                    matrice[i][j] = 1;
+                } else
+                {
+                    matrice[i][j] = 0;
+                }
+            }
+        }
+        return matrice;
     }
 }

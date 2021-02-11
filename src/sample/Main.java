@@ -19,6 +19,8 @@ public class Main extends Application {
         primaryStage.setTitle("LOGICIEL DE GRAPH");
         primaryStage.setScene(new Scene(root, 786, 568));
         primaryStage.show();
+
+
     }
 
 
