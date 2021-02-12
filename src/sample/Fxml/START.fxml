@@ -13,7 +13,7 @@
                   <Font size="48.0" />
                </font></Button>
             <Button fx:id="aide" layoutX="712.0" layoutY="24.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="39.0" text="?" />
-            <Label graphicTextGap="7.0" layoutX="256.0" layoutY="147.0" prefHeight="98.0" prefWidth="293.0" text="PROJET NAC-BEC">
+            <Label graphicTextGap="7.0" layoutX="256.0" layoutY="147.0" prefHeight="98.0" prefWidth="293.0" text="PROJET BECCAN">
                <font>
                   <Font size="36.0" />
                </font>
