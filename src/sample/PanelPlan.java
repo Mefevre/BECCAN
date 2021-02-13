@@ -1,5 +1,6 @@
 package sample;
 import java.awt.Point;
+import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.*;
 
@@ -57,7 +58,13 @@ public class PanelPlan implements Initializable, ChangeListener {
     public static final int MAX_VALUE = 999; //bellman ford
     public int ValueNBsommet = Control_Matrix.ValueNBsommet;//bellmanFord
     public int ValueNBsommet_one = Control_Matrix_one.ValueNBsommet;
+
+
     public boolean WelABoolean = false;
+    private LinkedList<Integer> adj[]; //welsh powell
+    private int[][]tabcolor;
+    private int[][] tempcoloriage;
+
 
     private boolean directed = Control_Choix.directed, undirected = Control_Choix.undirected, weighted = Control_Choix.weighted, unweighted = Control_Choix.unweighted;
     private String[][] matrice_nb = Control_Matrix.matrice;
@@ -251,11 +258,16 @@ public class PanelPlan implements Initializable, ChangeListener {
                                 Line edgeLine = new Line(selectedNode.point.x, selectedNode.point.y, circle.point.x, circle.point.y);
                                 canvasGroup.getChildren().add(edgeLine);
                                 edgeLine.setId("line");
+                                int X = Integer.parseInt(selectedNode.node.name);
+                                int Y = Integer.parseInt(circle.node.name);
+                                adj[X].add(Y);//WelshPowell
+                                adj[Y].add(X);//WelshPowell
                                 g.ajouterArret(new Arret(selectedNode.nodeBIS, circle.nodeBIS));
                             } else if (directed) {
                                 arrow = new ARROW(selectedNode.point.x, selectedNode.point.y, circle.point.x, circle.point.y);
                                 canvasGroup.getChildren().add(arrow);
                                 arrow.setId("arrow");
+                                adj[selectedNode.Nombre].add(circle.Nombre);//WelshPowell
                                 g.ajouterArret(new Arret(selectedNode.nodeBIS, circle.nodeBIS));
                             }
 
@@ -503,6 +515,71 @@ public class PanelPlan implements Initializable, ChangeListener {
         }
 
     }
+    public int[][] Welsh()
+    {
+        tabcolor = new int[circles.size()][2];
+        ArrayList<Integer> Interditsom = new ArrayList<Integer>();
+        ArrayList<Integer> Interditcol = new ArrayList<Integer>();
+
+        int V;
+        int temp = 0, affect = 0;
+        V = circles.size();
+        adj = new LinkedList[circles.size()];
+            for (int i=1; i<circles.size(); i++)
+            {
+                adj[i] = new LinkedList();
+                tabcolor[i][1] = 0;
+            }
+
+        //Creation de tableau avec ordre de degre
+        for (int i=0; i<circles.size(); i++)
+        {
+            for (int j=1; j<circles.size(); j++)
+            {
+                if (adj[j].size() > temp && Interditsom.get(j) != 1)
+                {
+                    temp = j;
+                }
+            }
+            Interditsom.add(temp , 1);
+            tabcolor[i][0] =temp;
+            temp = 0;
+
+        }
+        tabcolor[0][1] =1;
+        //Affect couleur a other sommet
+        for (int i=1; i<tabcolor.length; i++)
+        {
+            Interditcol.clear();
+            for (int j=0; j<tabcolor.length; j++)
+            {
+                //tabcolor[i][0];
+                if (tabcolor[j][0] > 0 )
+                {
+                    if (adj[i].contains(j))
+                    {
+                        //tabcolor[i][1] = tabcolor[j][1]+1;
+                        if (!Interditcol.contains(tabcolor[j][1]))
+                            Interditcol.add(tabcolor[j][1]);
+                    }
+                }else
+                    j=tabcolor.length;
+            }
+            //tabcolor[i][1] =
+            for (int j=1; j<Interditcol.size()+1; j++)
+            {
+                if (!Interditcol.contains(j))
+                {
+                    affect = j;
+                    j = 99;
+                }
+            }
+            tabcolor[i][1] =affect;
+        }
+        return tabcolor;
+
+
+    }
 
     //
     //Modifier un boolean avec le choix dans la combobox algo
@@ -553,7 +630,16 @@ public class PanelPlan implements Initializable, ChangeListener {
 
             }
         } else if (List.getSelectionModel().getSelectedItem().equals("Welsh Powell")) {
-            WelshPowell();
+            //WelshPowell();
+            SequentialTransition stcolor2 = new SequentialTransition();
+            tempcoloriage = Welsh();
+            for (int i = 0;i<circles.size();i++)
+            {
+                FillTransition ftcolor = new FillTransition(Duration.millis(slider.getValue()),circles.get(tempcoloriage[i][0]) );
+                ftcolor.setToValue(colorName.get(tempcoloriage[i][1]));
+                stcolor2.getChildren().add(ftcolor);
+            }
+            stcolor2.play();
         } else if (List.getSelectionModel().getSelectedItem().equals("Kruskal")) {
 
         } else if (List.getSelectionModel().getSelectedItem().equals("Aucun")) {
@@ -886,6 +972,8 @@ public class PanelPlan implements Initializable, ChangeListener {
 
             }
         }
+
+
     }
 
     public int[][] getMatriceGraph()
