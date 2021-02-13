@@ -11,7 +11,6 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.*;
@@ -34,7 +33,6 @@ import sample.Algo.Dsatur.Sommet;
 import sample.Control.Control_Choix;
 import sample.Control.Control_Matrix;
 import sample.Control.Control_Matrix_one;
-import sample.Other.Linearrow_courbé;
 
 import java.awt.*;
 import java.net.URL;
@@ -49,23 +47,24 @@ public class PanelPlan implements Initializable, ChangeListener {
     NodeFX selectedNode = null;
     private Label sourceText = new Label("Source"), weight;
     private ARROW arrow;
-    private Linearrow_courbé Arrow_cou;
     @FXML
-    private ComboBox List, Welsh;
+    private ComboBox List;
     @FXML
     private TextArea MatriX;
-    @FXML
-    private Button vitesse;
     @FXML
     private Slider slider = new Slider();
     private Line edgeLine;
     public static TextArea textFlow = new TextArea();
     List<Label> distances = new ArrayList<Label>(), visitTime = new ArrayList<>(), lowTime = new ArrayList<Label>();
 
-    boolean addNode = true, addEdge = false, paused = false, playing = false, dijkstra, Bfs = false, mst;
+    boolean addNode = true;
+    boolean addEdge = false;
+    boolean paused = false;
+    boolean playing = false;
+    boolean dijkstra;
+    boolean Bfs = false;
     Algorithm algo = new Algorithm();
     public SequentialTransition st;
-    public SequentialTransition stcolor;
     public static final int MAX_VALUE = 999; //bellman ford
     public int ValueNBsommet = Control_Matrix.ValueNBsommet;//bellmanFord
     public int ValueNBsommet_one = Control_Matrix_one.ValueNBsommet;
@@ -84,7 +83,7 @@ public class PanelPlan implements Initializable, ChangeListener {
     private boolean etat_matrice_one = Control_Matrix_one.etat_matrice;
     private int[][] matriceBellman = new int[][]{{0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}};
     private int[][] matriceBellmanRES = new int[ValueNBsommet][ValueNBsommet];
-    int NB, NB2, time = 700;
+    int time = 700;
     ;
 
     GrapheDSat g = new GrapheDSat();
@@ -94,9 +93,7 @@ public class PanelPlan implements Initializable, ChangeListener {
     List<Shape> edges = new ArrayList<>();
     List<EEDGE> mstEdges = new ArrayList<EEDGE>();
     List<EEDGE> realEdges = new ArrayList<EEDGE>();
-    List<EEDGE> EDGE = new ArrayList<EEDGE>();
     List<Color> colorName = new ArrayList<Color>();
-    List<String> colorCombo = new ArrayList<String>();
     //List<NodeE> ListNode = new ArrayList<>();
     int nNode = 0;
 
@@ -125,13 +122,6 @@ public class PanelPlan implements Initializable, ChangeListener {
         colorName.add(Color.PINK);
         colorName.add(Color.YELLOW);
         colorName.add(Color.VIOLET);
-        colorCombo.add("RED");
-        colorCombo.add("GREEN");
-        colorCombo.add("ORANGE");
-        colorCombo.add("PINK");
-        colorCombo.add("YELLOW");
-        colorCombo.add("VIOLET");
-        Welsh.getItems().addAll(colorCombo);
         //Combobox
         if (true)//teste de la combobox
         {
@@ -153,21 +143,7 @@ public class PanelPlan implements Initializable, ChangeListener {
     //Gere le temps du slider pour le temps des algos
     //
     public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-        int temp = (int) slider.getValue();
 
-        if (temp > 500) {
-            int diff = temp - 500;
-            temp = 500;
-            temp -= diff;
-            temp += 10;
-        } else if (temp < 500) {
-            int diff = 500 - temp;
-            temp = 500;
-            temp += diff;
-            temp -= 10;
-        }
-        //time = temp;
-        //System.out.println(time);
     }
 
     //
@@ -264,7 +240,7 @@ public class PanelPlan implements Initializable, ChangeListener {
                             System.out.println("Adding Edge");
                             //DESINE LES LIGNE OU FLECHE ENTRE LES POINTS
                             if (undirected) {
-                                Line edgeLine = new Line(selectedNode.point.x, selectedNode.point.y, circle.point.x, circle.point.y);
+                                edgeLine = new Line(selectedNode.point.x, selectedNode.point.y, circle.point.x, circle.point.y);
                                 canvasGroup.getChildren().add(edgeLine);
                                 edgeLine.setId("line");
                                 g.ajouterArret(new Arret(selectedNode.nodeBIS, circle.nodeBIS));
@@ -394,11 +370,7 @@ public class PanelPlan implements Initializable, ChangeListener {
     //
     public void ResetHandle(ActionEvent event) //a faire
     {
-        //nNode = 0;
-        //canvasGroup.getChildren().clear();
         selectedNode = null;
-        //circles = new ArrayList<NodeFX>();
-        //distances = new ArrayList<Label>();
         addNode = true;
         addEdge = false;
         node.setSelected(false);
@@ -470,12 +442,8 @@ public class PanelPlan implements Initializable, ChangeListener {
     //
     public void AppelBellmanFord(int[][] matriceBellman) {
         int numberofvertices = 0;
-        int source = 0;
-        Scanner scanner = new Scanner(System.in);
-
         System.out.println("Enter the number of vertices");
         numberofvertices = ValueNBsommet;//nb de sommet
-
         int adjacencymatrix[][] = new int[numberofvertices + 1][numberofvertices + 1];
         System.out.println("Enter the adjacency matrix");
         for (int sourcenode = 1; sourcenode <= numberofvertices; sourcenode++) {
@@ -524,10 +492,7 @@ public class PanelPlan implements Initializable, ChangeListener {
         tabcolor = new int[circles.size()][2];
         ArrayList<Integer> Interditsom = new ArrayList<Integer>();
         ArrayList<Integer> Interditcol = new ArrayList<Integer>();
-        SequentialTransition stcolorline = new SequentialTransition();
-        int V ;
-        int tempDegre = 0 , tempSom = 0, affect = 0;
-        V = circles.size();
+        int tempDegre = 0 , tempSom = 0;
         adj = new LinkedList[circles.size()+1];
         for (int i=1; i<=circles.size(); ++i)
         {
@@ -657,7 +622,7 @@ public class PanelPlan implements Initializable, ChangeListener {
     //------------------------------------COLOR(g, cicles, colorName, slider)-----------------------------------------------
     public void COLOR() {
 
-        int U = 0;
+        int U;
         g.colorier();
         System.out.print(g.toString());
         SequentialTransition stcolor1 = new SequentialTransition();
@@ -691,8 +656,6 @@ public class PanelPlan implements Initializable, ChangeListener {
         Point point;
         Label id;
         Label distance = new Label("Dist. : INFINITY");
-        Label visitTime = new Label("Visit : 0");
-        Label lowTime = new Label("Low : 0");
         int Nombre;
         boolean isSelected = false;
 
