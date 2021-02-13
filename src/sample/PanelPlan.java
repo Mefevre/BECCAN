@@ -1,10 +1,9 @@
 package sample;
-import java.awt.Point;
-import java.lang.reflect.Array;
-import java.net.URL;
-import java.util.*;
 
-import javafx.animation.*;
+import javafx.animation.FadeTransition;
+import javafx.animation.FillTransition;
+import javafx.animation.SequentialTransition;
+import javafx.animation.StrokeTransition;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -12,6 +11,9 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.*;
 import javafx.scene.effect.BlendMode;
 import javafx.scene.input.MouseButton;
@@ -19,22 +21,31 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.*;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
+import javafx.scene.shape.Shape;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import sample.Algo.Dsatur.*;
+import sample.Algo.BellmanFord.BellmanFord;
+import sample.Algo.Dsatur.Arret;
+import sample.Algo.Dsatur.GrapheDSat;
+import sample.Algo.Dsatur.Sommet;
 import sample.Control.Control_Choix;
 import sample.Control.Control_Matrix;
 import sample.Control.Control_Matrix_one;
-import sample.Algo.BellmanFord.BellmanFord;
 import sample.Other.Linearrow_courbé;
+
+import java.awt.*;
+import java.net.URL;
+import java.util.List;
+import java.util.*;
 
 public class PanelPlan implements Initializable, ChangeListener {
 
     public Pane canvasGroup;
     public ToggleButton edge;
-    public ToggleButton node, dijkstraButton, BFSS;
+    public ToggleButton node;
     NodeFX selectedNode = null;
     private Label sourceText = new Label("Source"), weight;
     private ARROW arrow;
@@ -510,11 +521,6 @@ public class PanelPlan implements Initializable, ChangeListener {
     }
     public int[][] Welsh()
     {
-        /*int X = selectedNode.nodeBIS.getNumero();//WelshPowell
-          int Y = circle.nodeBIS.getNumero();//WelshPowell
-          System.out.println("Egde crée entre "+X+" et "+Y);
-          adj[X].add(Y);//WelshPowell
-          adj[Y].add(X);//WelshPowell*/
         tabcolor = new int[circles.size()][2];
         ArrayList<Integer> Interditsom = new ArrayList<Integer>();
         ArrayList<Integer> Interditcol = new ArrayList<Integer>();
@@ -528,7 +534,6 @@ public class PanelPlan implements Initializable, ChangeListener {
             adj[i] = new LinkedList();
             tabcolor[i-1][1] = 0;
         }
-
         for (NodeFX u : circles)
         {
             for (EEDGE e : u.node.adjacents)
@@ -538,40 +543,27 @@ public class PanelPlan implements Initializable, ChangeListener {
                 //adj[Integer.parseInt(e.target.name)].add(Integer.parseInt(e.source.name));
             }
         }
-
-
-
         //Creation de tableau avec ordre de degre
+        System.out.println("Trie realiser");
         tempDegre = 0;
         tempSom = 0;
         Interditsom.clear();
-
         for (int i=0; i<tabcolor.length ; i++)
         {
             for (int j=1; j<adj.length; j++)
             {
                 if (adj[j].size() > tempDegre && !Interditsom.contains(j))
                 {
-
                     tempDegre = adj[j].size();
                     tempSom = j;
-                    System.out.println(tempDegre + " le sommet est "+tempSom);
-
                 }
             }
             tabcolor[i][0] =tempSom;
             Interditsom.add(tempSom);
             tempDegre = 0;
-
         }
         tabcolor[0][1] =1;
         Interditsom.clear();
-        System.out.println("Affichage");
-        for (int i=0; i<tabcolor.length; ++i)
-        {
-            System.out.println(tabcolor[i][0]+" et "+tabcolor[i][1]);
-        }
-
         System.out.println("Affectation");
         //Affect couleur a sommet
         for (int i=1; i<tabcolor.length; i++)
@@ -582,7 +574,6 @@ public class PanelPlan implements Initializable, ChangeListener {
                 if (adj[tabcolor[i][0]].contains(tabcolor[j][0]))
                     Interditcol.add(tabcolor[j][1]);
             }
-
             for (int j=1; j<=circles.size(); j++)
             {
                 if (!Interditcol.contains(j))
@@ -592,23 +583,9 @@ public class PanelPlan implements Initializable, ChangeListener {
                 }
             }
         }
-        System.out.println("Coloration fini res = ");
-        for (int i=0; i<tabcolor.length; ++i)
-        {
-            System.out.println(tabcolor[i][0]+" et "+tabcolor[i][1]);
-        }
+        System.out.println("Welsh-Powell Fini");
         return tabcolor;
-
-
     }
-
-    //
-    //Modifier un boolean avec le choix dans la combobox algo
-    //
-    public void WelshPowell() {
-        WelABoolean = true;
-    }
-
     //
     //Le teste des choix dans la combobox
     //
@@ -650,7 +627,7 @@ public class PanelPlan implements Initializable, ChangeListener {
                 AppelBellmanFord(matriceBellman);
 
             }
-        } else if (List.getSelectionModel().getSelectedItem().equals("Welsh Powell")) //pas besoin de reset
+        } else if (List.getSelectionModel().getSelectedItem().equals("Welsh Powell")) //pas besoin de reset ,marche en non orienté
         {
             //WelshPowell();
             tempcoloriage = new int[circles.size()][2];
@@ -667,7 +644,7 @@ public class PanelPlan implements Initializable, ChangeListener {
         } else if (List.getSelectionModel().getSelectedItem().equals("Kruskal")) {
 
         } else if (List.getSelectionModel().getSelectedItem().equals("Aucun")) {
-            WelABoolean = false;
+
         } else if (List.getSelectionModel().getSelectedItem().equals("Dsatur")) {
             COLOR();
             //dsatur
