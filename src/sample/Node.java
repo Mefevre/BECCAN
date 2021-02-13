@@ -19,17 +19,18 @@ public class Node implements Comparable<Node> {
     public double minDistance = Double.POSITIVE_INFINITY;
     public boolean visited, isArticulationPoint;
     public int visitTime = 0, lowTime = 0;
-    public int DAGColor;
+    public int Numero;
 
     public Node(String argName) {
         name = argName;
         visited = false;
     }
 
-    public Node(String argName, PanelPlan.NodeFX c) {
+    public Node(String argName, PanelPlan.NodeFX c ,int num) {
         name = argName;
         circle = c;
         visited = false;
+        Numero = num;
     }
 
     @Override

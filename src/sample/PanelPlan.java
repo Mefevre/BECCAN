@@ -83,6 +83,7 @@ public class PanelPlan implements Initializable, ChangeListener {
     List<Shape> edges = new ArrayList<>();
     List<EEDGE> mstEdges = new ArrayList<EEDGE>();
     List<EEDGE> realEdges = new ArrayList<EEDGE>();
+    List<EEDGE> EDGE = new ArrayList<EEDGE>();
     List<Color> colorName = new ArrayList<Color>();
     List<String> colorCombo = new ArrayList<String>();
     //List<NodeE> ListNode = new ArrayList<>();
@@ -244,10 +245,7 @@ public class PanelPlan implements Initializable, ChangeListener {
         @Override
         public void handle(MouseEvent mouseEvent) {
             NodeFX circle = (NodeFX) mouseEvent.getSource();
-            if (mouseEvent.getEventType() == MouseEvent.MOUSE_PRESSED && mouseEvent.getButton() == MouseButton.PRIMARY && WelABoolean == true) {
-                FillTransition ft1 = new FillTransition(Duration.millis(300), circle, Color.BLACK, colorName.get(Welsh.getSelectionModel().getSelectedIndex() + 1));
-                ft1.play();
-            } else if (mouseEvent.getEventType() == MouseEvent.MOUSE_PRESSED && mouseEvent.getButton() == MouseButton.PRIMARY && addEdge == true) {
+            if (mouseEvent.getEventType() == MouseEvent.MOUSE_PRESSED && mouseEvent.getButton() == MouseButton.PRIMARY && addEdge == true) {
                 if (!circle.isSelected) {
                     if (selectedNode != null) {
                         weight = new Label();
@@ -258,16 +256,11 @@ public class PanelPlan implements Initializable, ChangeListener {
                                 Line edgeLine = new Line(selectedNode.point.x, selectedNode.point.y, circle.point.x, circle.point.y);
                                 canvasGroup.getChildren().add(edgeLine);
                                 edgeLine.setId("line");
-                                int X = Integer.parseInt(selectedNode.node.name);
-                                int Y = Integer.parseInt(circle.node.name);
-                                adj[X].add(Y);//WelshPowell
-                                adj[Y].add(X);//WelshPowell
                                 g.ajouterArret(new Arret(selectedNode.nodeBIS, circle.nodeBIS));
                             } else if (directed) {
                                 arrow = new ARROW(selectedNode.point.x, selectedNode.point.y, circle.point.x, circle.point.y);
                                 canvasGroup.getChildren().add(arrow);
                                 arrow.setId("arrow");
-                                adj[selectedNode.Nombre].add(circle.Nombre);//WelshPowell
                                 g.ajouterArret(new Arret(selectedNode.nodeBIS, circle.nodeBIS));
                             }
 
@@ -517,64 +510,92 @@ public class PanelPlan implements Initializable, ChangeListener {
     }
     public int[][] Welsh()
     {
+        /*int X = selectedNode.nodeBIS.getNumero();//WelshPowell
+          int Y = circle.nodeBIS.getNumero();//WelshPowell
+          System.out.println("Egde crée entre "+X+" et "+Y);
+          adj[X].add(Y);//WelshPowell
+          adj[Y].add(X);//WelshPowell*/
         tabcolor = new int[circles.size()][2];
         ArrayList<Integer> Interditsom = new ArrayList<Integer>();
         ArrayList<Integer> Interditcol = new ArrayList<Integer>();
-
-        int V;
-        int temp = 0, affect = 0;
+        SequentialTransition stcolorline = new SequentialTransition();
+        int V ;
+        int tempDegre = 0 , tempSom = 0, affect = 0;
         V = circles.size();
-        adj = new LinkedList[circles.size()];
-            for (int i=1; i<circles.size(); i++)
+        adj = new LinkedList[circles.size()+1];
+        for (int i=1; i<=circles.size(); ++i)
+        {
+            adj[i] = new LinkedList();
+            tabcolor[i-1][1] = 0;
+        }
+
+        for (NodeFX u : circles)
+        {
+            for (EEDGE e : u.node.adjacents)
             {
-                adj[i] = new LinkedList();
-                tabcolor[i][1] = 0;
+                System.out.println(e.source.name+"  "+e.target.name);
+                adj[Integer.parseInt(e.source.name)].add(Integer.parseInt(e.target.name));
+                //adj[Integer.parseInt(e.target.name)].add(Integer.parseInt(e.source.name));
             }
+        }
+
+
 
         //Creation de tableau avec ordre de degre
-        for (int i=0; i<circles.size(); i++)
+        tempDegre = 0;
+        tempSom = 0;
+        Interditsom.clear();
+
+        for (int i=0; i<tabcolor.length ; i++)
         {
-            for (int j=1; j<circles.size(); j++)
+            for (int j=1; j<adj.length; j++)
             {
-                if (adj[j].size() > temp && Interditsom.get(j) != 1)
+                if (adj[j].size() > tempDegre && !Interditsom.contains(j))
                 {
-                    temp = j;
+
+                    tempDegre = adj[j].size();
+                    tempSom = j;
+                    System.out.println(tempDegre + " le sommet est "+tempSom);
+
                 }
             }
-            Interditsom.add(temp , 1);
-            tabcolor[i][0] =temp;
-            temp = 0;
+            tabcolor[i][0] =tempSom;
+            Interditsom.add(tempSom);
+            tempDegre = 0;
 
         }
         tabcolor[0][1] =1;
-        //Affect couleur a other sommet
+        Interditsom.clear();
+        System.out.println("Affichage");
+        for (int i=0; i<tabcolor.length; ++i)
+        {
+            System.out.println(tabcolor[i][0]+" et "+tabcolor[i][1]);
+        }
+
+        System.out.println("Affectation");
+        //Affect couleur a sommet
         for (int i=1; i<tabcolor.length; i++)
         {
             Interditcol.clear();
-            for (int j=0; j<tabcolor.length; j++)
+            for (int j=0; j<=i-1; j++)
             {
-                //tabcolor[i][0];
-                if (tabcolor[j][0] > 0 )
-                {
-                    if (adj[i].contains(j))
-                    {
-                        //tabcolor[i][1] = tabcolor[j][1]+1;
-                        if (!Interditcol.contains(tabcolor[j][1]))
-                            Interditcol.add(tabcolor[j][1]);
-                    }
-                }else
-                    j=tabcolor.length;
+                if (adj[tabcolor[i][0]].contains(tabcolor[j][0]))
+                    Interditcol.add(tabcolor[j][1]);
             }
-            //tabcolor[i][1] =
-            for (int j=1; j<Interditcol.size()+1; j++)
+
+            for (int j=1; j<=circles.size(); j++)
             {
                 if (!Interditcol.contains(j))
                 {
-                    affect = j;
-                    j = 99;
+                    tabcolor[i][1] =j;
+                    j=99;
                 }
             }
-            tabcolor[i][1] =affect;
+        }
+        System.out.println("Coloration fini res = ");
+        for (int i=0; i<tabcolor.length; ++i)
+        {
+            System.out.println(tabcolor[i][0]+" et "+tabcolor[i][1]);
         }
         return tabcolor;
 
@@ -629,13 +650,16 @@ public class PanelPlan implements Initializable, ChangeListener {
                 AppelBellmanFord(matriceBellman);
 
             }
-        } else if (List.getSelectionModel().getSelectedItem().equals("Welsh Powell")) {
+        } else if (List.getSelectionModel().getSelectedItem().equals("Welsh Powell")) //pas besoin de reset
+        {
             //WelshPowell();
+            tempcoloriage = new int[circles.size()][2];
             SequentialTransition stcolor2 = new SequentialTransition();
             tempcoloriage = Welsh();
-            for (int i = 0;i<circles.size();i++)
+
+            for (int i = 0;i < circles.size();i++)
             {
-                FillTransition ftcolor = new FillTransition(Duration.millis(slider.getValue()),circles.get(tempcoloriage[i][0]) );
+                FillTransition ftcolor = new FillTransition(Duration.millis(slider.getValue()),circles.get(tempcoloriage[i][0]-1) );
                 ftcolor.setToValue(colorName.get(tempcoloriage[i][1]));
                 stcolor2.getChildren().add(ftcolor);
             }
@@ -698,7 +722,7 @@ public class PanelPlan implements Initializable, ChangeListener {
         public NodeFX(double x, double y, double rad, String name, int N) {
             super(x, y, rad);
 
-            node = new Node(name, this);
+            node = new Node(name, this,N);
             g.ajouterSommet(nodeBIS = new Sommet(N, 0));
             point = new Point();
             point.setLocation(x, y);
