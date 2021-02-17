@@ -1,16 +1,19 @@
 package sample.Algo.Hamiltonien;
 
+import javafx.scene.control.TextArea;
 import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
 
 public class Hamiltonien {
     private int V, pathCount;
     private int[] path;
     private int[][] graph;
+    private TextArea affiche;
+    private boolean semiHelerien;
 
-    public Hamiltonien (int[][] matrice)
+    public Hamiltonien (int[][] matrice, TextArea textArea)
     {
+        semiHelerien = false;
+        affiche =  textArea;
         V = matrice.length;
         path = new int[V];
 
@@ -21,11 +24,11 @@ public class Hamiltonien {
             path[0] = 0;
             pathCount = 1;
             solve(0);
-            System.out.println("No solution");
+            affiche.setText("Le Graph n'est pas Hamiltonien.");
         }
         catch (Exception e)
         {
-            System.out.println(e.getMessage());
+            affiche.setText(e.getMessage());
             display();
         }
     }
@@ -56,10 +59,12 @@ public class Hamiltonien {
     {
         /** solution **/
         if (graph[vertex][0] == 1 && pathCount == V)
-            throw new Exception("Solution found");
+            throw new Exception("Ce graph possède un cycle Hamiltonien");
         /** all vertices selected but last vertex not linked to 0 **/
-        if (pathCount == V)
-            return;
+        if (pathCount == V) {
+            semiHelerien = true;
+            throw new Exception("Ce graph possède un chemin Hamiltonien");
+        }
 
         for (int v = 0; v < V; v++)
         {
@@ -95,30 +100,14 @@ public class Hamiltonien {
     /** display solution **/
     public void display()
     {
-        System.out.print("\nPath : ");
-        for (int i = 0; i <= V; i++)
-            System.out.print(path[i % V] +" ");
-        System.out.println();
+        affiche.appendText("\nLe chemin est de l'ordre : ");
+        if (semiHelerien)
+        {
+            for (int i = 0; i <= V; i++)
+                affiche.appendText(path[i]+1 +" ");
+        } else {
+            for (int i = 0; i <= V; i++)
+                affiche.appendText(path[i % V] + 1 + " ");
+        }
     }
-    /** Main function **/
-//    public static void main (String[] args)
-//    {
-//        Scanner scan = new Scanner(System.in);
-//        System.out.println("HamiltonianCycle Algorithm Test\n");
-//        /** Make an object of HamiltonianCycle class **/
-//        HamiltonianCycle hc = new HamiltonianCycle();
-//
-//        /** Accept number of vertices **/
-//        System.out.println("Enter number of vertices\n");
-//        int V = scan.nextInt();
-//
-//        /** get graph **/
-//        System.out.println("\nEnter matrix\n");
-//        int[][] graph = new int[V][V];
-//        for (int i = 0; i < V; i++)
-//            for (int j = 0; j < V; j++)
-//                graph[i][j] = scan.nextInt();
-//
-//        hc.findHamiltonianCycle(graph);
-//    }
 }

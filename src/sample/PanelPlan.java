@@ -615,7 +615,7 @@ public class PanelPlan implements Initializable, ChangeListener {
             COLOR();
             //dsatur
         } else if (List.getSelectionModel().getSelectedItem().equals("Hamiltonien")) {
-            new Hamiltonien(getMatriceGraph());
+            new Hamiltonien(getMatriceGraph(), MatriX);
         }
 
     }
