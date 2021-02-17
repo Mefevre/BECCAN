@@ -30,6 +30,7 @@ import sample.Algo.BellmanFord.BellmanFord;
 import sample.Algo.Dsatur.Arret;
 import sample.Algo.Dsatur.GrapheDSat;
 import sample.Algo.Dsatur.Sommet;
+import sample.Algo.Hamiltonien.Hamiltonien;
 import sample.Control.Control_Choix;
 import sample.Control.Control_Matrix;
 import sample.Control.Control_Matrix_one;
@@ -613,6 +614,8 @@ public class PanelPlan implements Initializable, ChangeListener {
         } else if (List.getSelectionModel().getSelectedItem().equals("Dsatur")) {
             COLOR();
             //dsatur
+        } else if (List.getSelectionModel().getSelectedItem().equals("Hamiltonien")) {
+            new Hamiltonien(getMatriceGraph());
         }
 
     }
@@ -940,6 +943,12 @@ public class PanelPlan implements Initializable, ChangeListener {
 
     }
 
+    /**
+     * @author Nathan LEFEVRE
+     * @version 1.0.0
+     * Génère une matrice a partir du graph construit.
+     * @return tab int[][]
+     */
     public int[][] getMatriceGraph()
     {
         int nbSommets = g.getSommets().size();
