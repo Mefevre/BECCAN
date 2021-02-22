@@ -37,4 +37,10 @@ public class EEDGE {
         this.weightLabel = weiLabel;
     }
 
+    @Override
+    public String toString()
+    {
+        return "Source: " + source + " | target: " + target + " | poids: " + weight + ".\n";
+    }
+
 }
