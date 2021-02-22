@@ -31,6 +31,7 @@ import sample.Algo.Dsatur.Arret;
 import sample.Algo.Dsatur.GrapheDSat;
 import sample.Algo.Dsatur.Sommet;
 import sample.Algo.Hamiltonien.Hamiltonien;
+import sample.Algo.Kruskal.Kruskal;
 import sample.Control.Control_Choix;
 import sample.Control.Control_Matrix;
 import sample.Control.Control_Matrix_one;
@@ -608,7 +609,7 @@ public class PanelPlan implements Initializable, ChangeListener {
             }
             stcolor2.play();
         } else if (List.getSelectionModel().getSelectedItem().equals("Kruskal")) {
-
+            new Kruskal(mstEdges);
         } else if (List.getSelectionModel().getSelectedItem().equals("Aucun")) {
 
         } else if (List.getSelectionModel().getSelectedItem().equals("Dsatur")) {
