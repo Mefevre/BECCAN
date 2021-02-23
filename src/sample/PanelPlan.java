@@ -609,7 +609,8 @@ public class PanelPlan implements Initializable, ChangeListener {
             }
             stcolor2.play();
         } else if (List.getSelectionModel().getSelectedItem().equals("Kruskal")) {
-            new Kruskal(mstEdges);
+            //new Kruskal(mstEdges);
+
         } else if (List.getSelectionModel().getSelectedItem().equals("Aucun")) {
 
         } else if (List.getSelectionModel().getSelectedItem().equals("Dsatur")) {
