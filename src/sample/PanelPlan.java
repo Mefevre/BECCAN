@@ -613,6 +613,7 @@ public class PanelPlan implements Initializable, ChangeListener {
             stcolor2.play();
         } else if (List.getSelectionModel().getSelectedItem().equals("Kruskal")) {
             int V,E=0,i=0;
+            SequentialTransition stcolorkru = new SequentialTransition();
             for (NodeFX u : circles)
             {
                 for (EEDGE e : u.node.adjacents)
@@ -641,8 +642,22 @@ public class PanelPlan implements Initializable, ChangeListener {
             chemin = graph.KruskalMST();
             for (int k = 0 ;k < chemin.length;k++)
             {
-                System.out.println(chemin[k][0]+" -- "+chemin[k][1]+" = "+chemin[k][2]);
+                /*for (NodeFX u : circles)
+                {
+                    for (EEDGE e : u.node.adjacents)
+                    {
+                        if (e.source.Numero == chemin[k][0]+1 && e.target.Numero ==chemin[k][1]+1 )
+                        {
+                            FillTransition ftEdge = new FillTransition(Duration.millis(slider.getValue()), e.line);
+                            ftEdge.setToValue(Color.BLUE);
+                            stcolorkru.getChildren().add(ftEdge);
+                        }
+                    }
+                }*/
+                System.out.println((chemin[k][0]+1)+" -- "+(chemin[k][1]+1)+" = "+chemin[k][2]);
             }
+            //stcolorkru.onFinishedProperty();
+            //stcolorkru.play();
 
         } else if (List.getSelectionModel().getSelectedItem().equals("Aucun")) {
 
