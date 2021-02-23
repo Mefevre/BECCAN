@@ -31,7 +31,8 @@ import sample.Algo.Dsatur.Arret;
 import sample.Algo.Dsatur.GrapheDSat;
 import sample.Algo.Dsatur.Sommet;
 import sample.Algo.Hamiltonien.Hamiltonien;
-import sample.Algo.Kruskal.Kruskal;
+//import sample.Algo.Kruskal.Kruskal;
+import sample.Algo.Kruskal.Graph;
 import sample.Control.Control_Choix;
 import sample.Control.Control_Matrix;
 import sample.Control.Control_Matrix_one;
@@ -433,7 +434,7 @@ public class PanelPlan implements Initializable, ChangeListener {
             //ListNode.add(u.node);
             ValueNBsommet++;
             for (EEDGE e : u.node.adjacents) {
-                matriceBellman[Integer.parseInt(e.source.name)][Integer.parseInt(e.target.name)] = (int) e.weight;
+                matriceBellman[Integer.parseInt(e.source.name)][Integer.parseInt(e.target.name)] = (int) e.getWeight();
             }
         }
 
@@ -609,7 +610,28 @@ public class PanelPlan implements Initializable, ChangeListener {
             }
             stcolor2.play();
         } else if (List.getSelectionModel().getSelectedItem().equals("Kruskal")) {
-            new Kruskal(mstEdges);
+
+            int V,E=0,i=0;
+            for (NodeFX u : circles)
+            {
+                for (EEDGE e : u.node.adjacents)
+                {
+                    E++;
+                }
+            }
+            V = circles.size();
+            Graph graph = new Graph(V, E);
+            for (NodeFX u : circles)
+            {
+                for (EEDGE e : u.node.adjacents)
+                {
+                    graph.edge[i].src = e.source.Numero;
+                    graph.edge[i].dest = e.target.Numero;
+                    graph.edge[i].weight = (int)e.weight;
+                    i++;
+                }
+            }
+            graph.KruskalMST();
         } else if (List.getSelectionModel().getSelectedItem().equals("Aucun")) {
 
         } else if (List.getSelectionModel().getSelectedItem().equals("Dsatur")) {
@@ -736,9 +758,9 @@ public class PanelPlan implements Initializable, ChangeListener {
                         if (e != null) {
                             Node v = e.target;
                             System.out.println("HERE " + v.name);
-                            if (u.minDistance + e.weight < v.minDistance) {
+                            if (u.minDistance + e.getWeight() < v.minDistance) {
                                 pq.remove(v);
-                                v.minDistance = u.minDistance + e.weight;
+                                v.minDistance = u.minDistance + e.getWeight();
                                 v.previous = u;
                                 pq.add(v);
                                 //<editor-fold defaultstate="collapsed" desc="Node visiting animation">

@@ -26,13 +26,13 @@ public class EEDGE {
     public EEDGE(Node argSource, Node argTarget) {
         source = argSource;
         target = argTarget;
-        weight = 0;
+        setWeight(0);
     }
 
     public EEDGE(Node argSource, Node argTarget, double argWeight, Shape argline, Label weiLabel) {
         source = argSource;
         target = argTarget;
-        weight = argWeight;
+        setWeight(argWeight);
         line = argline;
         this.weightLabel = weiLabel;
     }
@@ -40,7 +40,14 @@ public class EEDGE {
     @Override
     public String toString()
     {
-        return "Source: " + source + " | target: " + target + " | poids: " + weight + ".\n";
+        return "Source: " + source + " | target: " + target + " | poids: " + getWeight() + ".\n";
     }
 
+    public double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
 }
