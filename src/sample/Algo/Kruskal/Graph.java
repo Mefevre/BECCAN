@@ -1,14 +1,9 @@
 package sample.Algo.Kruskal;
-
 // Java program for Kruskal's algorithm to
 // find Minimum Spanning Tree of a given
 //connected, undirected and  weighted graph
-import com.sun.javafx.geom.Edge;
-
 import java.util.*;
 import java.lang.*;
-import java.io.*;
-
 
 public class Graph {
     // A class to represent a graph edge
@@ -26,13 +21,14 @@ public class Graph {
 
     // A class to represent a subset for
     // union-find
-    class subset
+    public class subset
     {
         int parent, rank;
     };
 
     int V, E; // V-> no. of vertices & E->no.of edges
     public Edge edge[]; // collection of all edges
+    public int[][]chemin;
 
     // Creates a graph with V vertices and E edges
     public Graph(int v, int e)
@@ -46,20 +42,20 @@ public class Graph {
 
     // A utility function to find set of an
     // element i (uses path compression technique)
-    int find(subset subsets[], int i)
+    public int find(subset subsets[], int i)
     {
         // find root and make root as parent of i
         // (path compression)
         if (subsets[i].parent != i)
-            subsets[i].parent
-                    = find(subsets, subsets[i].parent);
-
+        {
+            subsets[i].parent = find(subsets, subsets[i].parent);
+        }
         return subsets[i].parent;
     }
 
     // A function that does union of two sets
     // of x and y (uses union by rank)
-    void Union(subset subsets[], int x, int y)
+    public void Union(subset subsets[], int x, int y)
     {
         int xroot = find(subsets, x);
         int yroot = find(subsets, y);
@@ -83,7 +79,7 @@ public class Graph {
 
     // The main function to construct MST using Kruskal's
     // algorithm
-    public void KruskalMST()
+    public int[][] KruskalMST()
     {
         // Tnis will store the resultant MST
         Edge result[] = new Edge[V];
@@ -141,21 +137,32 @@ public class Graph {
         // the built MST
         System.out.println("Following are the edges in "
                 + "the constructed MST");
+        chemin = new int[e][3];
         int minimumCost = 0;
         for (i = 0; i < e; ++i)
         {
-            System.out.println(result[i].src + " -- "
-                    + result[i].dest
-                    + " == " + result[i].weight);
+            System.out.println(result[i].src + " -- " + (result[i].dest) + " == " + result[i].weight);
             minimumCost += result[i].weight;
+            chemin[i][0] = result[i].src;
+            chemin[i][1] = result[i].dest ;
+            chemin[i][2] = result[i].weight;
         }
         System.out.println("Minimum Cost Spanning Tree "
                 + minimumCost);
+        return chemin;
     }
 
-    // Driver Code
-    /**public static void main(String[] args)
+    /*public static void main(String[] args)
     {
+
+        Let us create following weighted graph
+                 10
+            0--------1
+            |  \     |
+           6|   5\   |15
+            |      \ |
+            2--------3
+                4
         int V = 4; // Number of vertices in graph
         int E = 5; // Number of edges in graph
 

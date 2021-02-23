@@ -78,6 +78,8 @@ public class PanelPlan implements Initializable, ChangeListener {
     private int[][]tabcolor;
     private int[][] tempcoloriage;
 
+    //kruskal
+    private int[][] chemin;
 
     private boolean directed = Control_Choix.directed, undirected = Control_Choix.undirected, weighted = Control_Choix.weighted, unweighted = Control_Choix.unweighted;
     private String[][] matrice_nb = Control_Matrix.matrice;
@@ -619,18 +621,29 @@ public class PanelPlan implements Initializable, ChangeListener {
                 }
             }
             V = circles.size();
-            Graph graph = new Graph(V, E);
+            System.out.println("nb sommet "+V + "  "+(E/2));
+            Graph graph = new Graph(V, (E/2));
             for (NodeFX u : circles)
             {
                 for (EEDGE e : u.node.adjacents)
                 {
-                    graph.edge[i].src = e.source.Numero;
-                    graph.edge[i].dest = e.target.Numero;
-                    graph.edge[i].weight = (int)e.weight;
-                    i++;
+                    if (!(e.target.Numero < u.node.Numero))
+                    {
+                        graph.edge[i].src = e.source.Numero-1;
+                        graph.edge[i].dest = e.target.Numero-1;
+                        graph.edge[i].weight = (int)e.weight;
+                        System.out.println(e.source.Numero + ">"+e.target.Numero + "avec "+(int)e.weight);
+                        i++;
+                    }
                 }
             }
-            graph.KruskalMST();
+
+            chemin = graph.KruskalMST();
+            for (int k = 0 ;k < chemin.length;k++)
+            {
+                System.out.println(chemin[k][0]+" -- "+chemin[k][1]+" = "+chemin[k][2]);
+            }
+
         } else if (List.getSelectionModel().getSelectedItem().equals("Aucun")) {
 
         } else if (List.getSelectionModel().getSelectedItem().equals("Dsatur")) {
