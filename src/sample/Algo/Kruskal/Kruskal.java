@@ -89,13 +89,15 @@ public class Kruskal {
 
     public static void main(String args[]) throws FileNotFoundException {
         List<Vertex> vertices = new ArrayList<>();
-        vertices.add(new Vertex(0, 2));
-        vertices.add(new Vertex(0, 0));
-        vertices.add(new Vertex(1, 1));
-        vertices.add(new Vertex(2, 1));
-        vertices.add(new Vertex(3, 2));
-        vertices.add(new Vertex(4, 2));
-        vertices.add(new Vertex(3, 0));
+        //vertices.add(new Vertex(0, 2));
+        //vertices.add(new Vertex(0, 0));
+        //vertices.add(new Vertex(1, 1));
+        //vertices.add(new Vertex(2, 1));
+        //vertices.add(new Vertex(3, 2));
+        //vertices.add(new Vertex(4, 2));
+        //vertices.add(new Vertex(3, 0));
+        vertices.add(new Vertex(1, 1));vertices.add(new Vertex(2, 2));
+        vertices.add(new Vertex(3, 3));
 
         List<Edge> graph = Kruskal.compute(vertices);
 

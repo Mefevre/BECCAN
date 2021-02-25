@@ -31,7 +31,8 @@ import sample.Algo.Dsatur.Arret;
 import sample.Algo.Dsatur.GrapheDSat;
 import sample.Algo.Dsatur.Sommet;
 import sample.Algo.Hamiltonien.Hamiltonien;
-import sample.Algo.Kruskal.Kruskal;
+//import sample.Algo.Kruskal.Kruskal;
+import sample.Algo.Kruskal.Graph;
 import sample.Control.Control_Choix;
 import sample.Control.Control_Matrix;
 import sample.Control.Control_Matrix_one;
@@ -77,6 +78,8 @@ public class PanelPlan implements Initializable, ChangeListener {
     private int[][]tabcolor;
     private int[][] tempcoloriage;
 
+    //kruskal
+    private int[][] chemin;
 
     private boolean directed = Control_Choix.directed, undirected = Control_Choix.undirected, weighted = Control_Choix.weighted, unweighted = Control_Choix.unweighted;
     private String[][] matrice_nb = Control_Matrix.matrice;
@@ -426,14 +429,14 @@ public class PanelPlan implements Initializable, ChangeListener {
     //
     //Fonction de calcule de la matrice du graph dessiner utilisé pour Bellman FORD
     //
-    public void MatriceGR() {
+    public void MatricePoids() {
         ValueNBsommet = 0;
         matriceBellman = new int[][]{{0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}};
         for (NodeFX u : circles) {
             //ListNode.add(u.node);
             ValueNBsommet++;
             for (EEDGE e : u.node.adjacents) {
-                matriceBellman[Integer.parseInt(e.source.name)][Integer.parseInt(e.target.name)] = (int) e.weight;
+                matriceBellman[Integer.parseInt(e.source.name)][Integer.parseInt(e.target.name)] = (int) e.getWeight();
             }
         }
 
@@ -553,6 +556,70 @@ public class PanelPlan implements Initializable, ChangeListener {
         System.out.println("Welsh-Powell Fini");
         return tabcolor;
     }
+
+    public void Krus()
+    {
+        int V,E=0,i=0;
+        V = circles.size();
+        //Node de sommet ↑ et nombre d'arc ou arret ↓
+        for (NodeFX u : circles)
+        {
+            if (u.node.adjacents.isEmpty())
+                V--;
+            for (EEDGE e : u.node.adjacents)
+            {
+                E++;
+
+            }
+        }
+        System.out.println("nb sommet "+V + "  "+(E/2));
+        Graph graph = new Graph(V, (E/2));
+        //ajout des arc a l'odjet Graph ↓
+        for (NodeFX u : circles)
+        {
+            for (EEDGE e : u.node.adjacents)
+            {
+                if (!(e.target.Numero < u.node.Numero))
+                {
+                    graph.edge[i].src = e.source.Numero-1;
+                    graph.edge[i].dest = e.target.Numero-1;
+                    graph.edge[i].weight = (int)e.weight;
+                    System.out.println(e.source.Numero + ">"+e.target.Numero + "avec "+(int)e.weight);
+                    i++;
+                }
+            }
+        }
+        //Parti coloration  chaque sommet et arrret KRUSKAL
+        SequentialTransition stcolorkru = new SequentialTransition();
+        chemin = graph.KruskalMST();
+        for (int k = 0 ;k < chemin.length;k++)
+        {
+            for (NodeFX u : circles)
+            {
+                for (EEDGE e : u.node.adjacents)
+                {
+                    if (e.source.Numero == (chemin[k][0]+1) && e.target.Numero == (chemin[k][1]+1) )
+                    {
+                        StrokeTransition ftEdge = new StrokeTransition(Duration.millis(slider.getValue()), e.line);
+                        ftEdge.setToValue(Color.BLUE);
+                        stcolorkru.getChildren().add(ftEdge);
+                        //ftEdge.play();
+                        FillTransition ftNodeS = new FillTransition(Duration.millis(slider.getValue()), e.source.circle);
+                        ftNodeS.setToValue(Color.BLUE);
+                        stcolorkru.getChildren().add(ftNodeS);
+                        FillTransition ftNodeT = new FillTransition(Duration.millis(slider.getValue()), e.target.circle);
+                        ftNodeT.setToValue(Color.BLUE);
+                        stcolorkru.getChildren().add(ftNodeT);
+                        System.out.println("Ajoout de line couleur "+e.source.Numero+" à "+e.target.Numero);
+                    }
+                }
+            }
+            //System.out.println((chemin[k][0]+1)+" -- "+(chemin[k][1]+1)+" = "+chemin[k][2]);
+        }
+        stcolorkru.onFinishedProperty();
+        stcolorkru.play();
+
+    }
     //
     //Le teste des choix dans la combobox
     //
@@ -590,7 +657,7 @@ public class PanelPlan implements Initializable, ChangeListener {
 
             } else {
                 MatriX.setText("Resultat de Bellman-Fords\n");
-                MatriceGR();
+                MatricePoids();
                 AppelBellmanFord(matriceBellman);
 
             }
@@ -609,7 +676,7 @@ public class PanelPlan implements Initializable, ChangeListener {
             }
             stcolor2.play();
         } else if (List.getSelectionModel().getSelectedItem().equals("Kruskal")) {
-            new Kruskal(mstEdges);
+            Krus();
         } else if (List.getSelectionModel().getSelectedItem().equals("Aucun")) {
 
         } else if (List.getSelectionModel().getSelectedItem().equals("Dsatur")) {
@@ -736,9 +803,9 @@ public class PanelPlan implements Initializable, ChangeListener {
                         if (e != null) {
                             Node v = e.target;
                             System.out.println("HERE " + v.name);
-                            if (u.minDistance + e.weight < v.minDistance) {
+                            if (u.minDistance + e.getWeight() < v.minDistance) {
                                 pq.remove(v);
-                                v.minDistance = u.minDistance + e.weight;
+                                v.minDistance = u.minDistance + e.getWeight();
                                 v.previous = u;
                                 pq.add(v);
                                 //<editor-fold defaultstate="collapsed" desc="Node visiting animation">
