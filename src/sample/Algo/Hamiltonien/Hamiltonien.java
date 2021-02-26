@@ -33,27 +33,6 @@ public class Hamiltonien {
         }
     }
 
-    /** Function to find cycle **/
-    /*public void findHamiltonianCycle(int[][] g)
-    {
-        V = g.length;
-        path = new int[V];
-
-        Arrays.fill(path, -1);
-        graph = g;
-        try
-        {
-            path[0] = 0;
-            pathCount = 1;
-            solve(0);
-            System.out.println("No solution");
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            display();
-        }
-    }*/
     /** function to find paths recursively **/
     public void solve(int vertex) throws Exception
     {
