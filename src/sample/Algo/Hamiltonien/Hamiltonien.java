@@ -12,39 +12,44 @@ public class Hamiltonien {
 
     public Hamiltonien (int[][] matrice, TextArea textArea)
     {
-        semiHelerien = false;
-        affiche =  textArea;
-        V = matrice.length;
-        path = new int[V];
+        for (int i=0; i<matrice.length; i++)
+        {
+            semiHelerien = false;
+            affiche =  textArea;
+            V = matrice.length;
+            path = new int[V];
 
-        Arrays.fill(path, -1);
-        graph = matrice;
-        try
-        {
-            path[0] = 0;
+            Arrays.fill(path, -1);
+            graph = matrice;
+
+            path[0] = i;
             pathCount = 1;
-            solve(0);
-            affiche.setText("Le Graph n'est pas Hamiltonien.");
+            String resu = solve(i, i);
+//            if (resu != "")
+//            {
+            affiche.appendText(resu);
+//                i=matrice.length;
+//            }
+            if (resu != "a\n")
+            {
+                display();
+            }
         }
-        catch (Exception e)
-        {
-            affiche.setText(e.getMessage());
-            display();
-        }
+        System.out.println("fin");
     }
 
     /** function to find paths recursively **/
-    public void solve(int vertex) throws Exception
+    public String solve(int vertex, int init)
     {
         /** solution **/
-        if (graph[vertex][0] == 1 && pathCount == V)
-            throw new Exception("Ce graph possède un cycle Hamiltonien");
+        if (graph[vertex][init] == 1 && pathCount == V)
+            return "Ce graph possède un cycle Hamiltonien";
         /** all vertices selected but last vertex not linked to 0 **/
         if (pathCount == V) {
             semiHelerien = true;
-            throw new Exception("Ce graph possède un chemin Hamiltonien");
+            return "Ce graph possède un chemin Hamiltonien";
         }
-
+        String retour = "a\n";
         for (int v = 0; v < V; v++)
         {
             /** if connected **/
@@ -58,8 +63,12 @@ public class Hamiltonien {
 
                 /** if vertex not already selected  solve recursively **/
                 if (!isPresent(v))
-                    solve(v);
+                    retour = solve(v, init);
 
+                if (retour != "a\n")
+                {
+                    return retour;
+                }
                 /** restore connection **/
                 graph[vertex][v] = 1;
                 graph[v][vertex] = 1;
@@ -67,6 +76,7 @@ public class Hamiltonien {
                 path[--pathCount] = -1;
             }
         }
+        return retour;
     }
     /** function to check if path is already selected **/
     public boolean isPresent(int v)
@@ -82,11 +92,12 @@ public class Hamiltonien {
         affiche.appendText("\nLe chemin est de l'ordre : ");
         if (semiHelerien)
         {
-            for (int i = 0; i <= V; i++)
+            for (int i = 0; i < V; i++)
                 affiche.appendText(path[i]+1 +" ");
         } else {
             for (int i = 0; i <= V; i++)
                 affiche.appendText(path[i % V] + 1 + " ");
         }
+        affiche.appendText("\n");
     }
 }
