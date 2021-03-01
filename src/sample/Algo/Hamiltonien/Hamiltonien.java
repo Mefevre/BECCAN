@@ -18,18 +18,22 @@ public class Hamiltonien {
             affiche =  textArea;
             V = matrice.length;
             path = new int[V];
+            graph = new int[V][V];
 
             Arrays.fill(path, -1);
-            graph = matrice;
+
+            for (int ii = 0; ii<V; ii++)
+            {
+                for (int jj = 0; jj<V; jj++)
+                {
+                    graph[ii][jj] = matrice[ii][jj];
+                }
+            }
 
             path[0] = i;
             pathCount = 1;
             String resu = solve(i, i);
-//            if (resu != "")
-//            {
             affiche.appendText(resu);
-//                i=matrice.length;
-//            }
             if (resu != "a\n")
             {
                 display();
