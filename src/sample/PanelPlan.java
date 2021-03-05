@@ -1029,9 +1029,9 @@ public class PanelPlan implements Initializable, ChangeListener {
             {
                 boolean existe = edgeExists(circles.get(i), circles.get(j));
                 if (existe)
-                    matrice[i][j] = 1;
+                    matrice[j][i] = 1;
                  else
-                    matrice[i][j] = 0;
+                    matrice[j][i] = 0;
             }
         }
         return matrice;
