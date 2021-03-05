@@ -68,7 +68,7 @@ public class Hamiltonien {
                 path[init][pathCount++] = v;
                 /** remove connection **/
                 graph[vertex][v] = 0;
-                graph[v][vertex] = 0;
+                //graph[v][vertex] = 0;
 
                 /** if vertex not already selected  solve recursively **/
                 if (!isPresent(v, init))
@@ -80,7 +80,7 @@ public class Hamiltonien {
                 }
                 /** restore connection **/
                 graph[vertex][v] = 1;
-                graph[v][vertex] = 1;
+                //graph[v][vertex] = 1;
                 /** remove path **/
                 path[init][--pathCount] = -1;
             }
