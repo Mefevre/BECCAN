@@ -683,6 +683,7 @@ public class PanelPlan implements Initializable, ChangeListener {
             COLOR();
             //dsatur
         } else if (List.getSelectionModel().getSelectedItem().equals("Hamiltonien")) {
+            afficheMatrice(getMatriceGraph());
             new Hamiltonien(getMatriceGraph(), MatriX);
         }
 
@@ -1034,5 +1035,24 @@ public class PanelPlan implements Initializable, ChangeListener {
             }
         }
         return matrice;
+    }
+
+    public void afficheMatrice(int[][] matrice)
+    {
+        System.out.print("   ");
+        for (int i=0; i<matrice.length; i++)
+        {
+            System.out.print(i+1 + "   ");
+        }
+        System.out.print("\n");
+        for (int i=0; i<matrice.length; i++)
+        {
+            System.out.print(i+1 + "  ");
+            for (int j=0; j<matrice.length; j++)
+            {
+                System.out.print(matrice[j][i] + "   ");
+            }
+            System.out.print("\n");
+        }
     }
 }
