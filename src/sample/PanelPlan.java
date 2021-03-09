@@ -683,6 +683,7 @@ public class PanelPlan implements Initializable, ChangeListener {
             COLOR();
             //dsatur
         } else if (List.getSelectionModel().getSelectedItem().equals("Hamiltonien")) {
+            System.out.println("Le graph est : " + directed);
             afficheMatrice(getMatriceGraph());
             new Hamiltonien(getMatriceGraph(), MatriX);
         }
@@ -1014,7 +1015,7 @@ public class PanelPlan implements Initializable, ChangeListener {
 
     /**
      * @author Nathan LEFEVRE
-     * @version 1.0.0
+     * @version 1.1.0
      * Génère une matrice a partir du graph construit.
      * @return tab int[][]
      */
@@ -1027,7 +1028,7 @@ public class PanelPlan implements Initializable, ChangeListener {
         {
             for (int j=0; j<nbSommets; j++)
             {
-                boolean existe = edgeExists(circles.get(i), circles.get(j));
+                boolean existe = edgeExistsV2(circles.get(i), circles.get(j));
                 if (existe)
                     matrice[j][i] = 1;
                  else
@@ -1035,6 +1036,22 @@ public class PanelPlan implements Initializable, ChangeListener {
             }
         }
         return matrice;
+    }
+
+    public boolean edgeExistsV2(NodeFX u, NodeFX v) {
+        for (EEDGE e : realEdges) {
+            if (directed)
+            {
+                if (e.source == u.node && e.target == v.node) {
+                    return true;
+                }
+            }else {
+                if (e.source == u.node && e.target == v.node || e.source == v.node && e.target == u.node) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     public void afficheMatrice(int[][] matrice)
