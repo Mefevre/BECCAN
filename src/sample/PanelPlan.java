@@ -1030,9 +1030,9 @@ public class PanelPlan implements Initializable, ChangeListener {
             {
                 boolean existe = edgeExistsV2(circles.get(i), circles.get(j));
                 if (existe)
-                    matrice[j][i] = 1;
+                    matrice[i][j] = 1;
                  else
-                    matrice[j][i] = 0;
+                    matrice[i][j] = 0;
             }
         }
         return matrice;
@@ -1067,7 +1067,7 @@ public class PanelPlan implements Initializable, ChangeListener {
             System.out.print(i+1 + "  ");
             for (int j=0; j<matrice.length; j++)
             {
-                System.out.print(matrice[j][i] + "   ");
+                System.out.print(matrice[i][j] + "   ");
             }
             System.out.print("\n");
         }
