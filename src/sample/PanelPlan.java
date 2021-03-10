@@ -141,6 +141,8 @@ public class PanelPlan implements Initializable, ChangeListener {
             ListALgo.add("Bellman Ford");
             List.getItems().addAll(ListALgo);
         }
+        if (etat_matrice || etat_matrice_one)
+            creationGraph();
     }
 
     @Override
@@ -209,10 +211,6 @@ public class PanelPlan implements Initializable, ChangeListener {
                 tr.setByY(10f);
                 tr.setInterpolator(Interpolator.EASE_OUT);
                 tr.play();*/
-            } else if (ev.getEventType() == MouseEvent.MOUSE_CLICKED && WelABoolean == true) {
-                for (NodeFX node : circles) {
-                    node.setOnMouseClicked(mouseHandler);
-                }
             }
         }
     }
@@ -440,6 +438,43 @@ public class PanelPlan implements Initializable, ChangeListener {
             }
         }
 
+    }
+    //
+    //Crée le graph depuis la matrice
+    //
+    public void creationGraph()
+    {
+        int X = 100 , Y = 100;
+        int i;
+        if (etat_matrice)
+        {
+            for (i  = 1 ; i <= matrice_nb.length;i++)
+            {
+                if (i == 2)
+                {
+                    X=100;
+                    Y=300;
+                }
+                else if (i == 3) {
+                    X =300 ;
+                    Y = 100;
+                }
+                else if (i==4)
+                {
+                    X = 300;
+                    Y = 300;
+                }
+                else if(i == 5)
+                {
+                    X = 200;
+                    Y = 200;
+                }
+                NodeFX circle = new NodeFX(X, Y, 10, String.valueOf(i), i);
+                canvasGroup.getChildren().add(circle);
+
+            }
+            nNode = i;
+        }
     }
 
     //
