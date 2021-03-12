@@ -368,6 +368,11 @@ public class PanelPlan implements Initializable, ChangeListener {
         dijkstra = false;
     }
 
+    public void resetGraph(ActionEvent event)
+    {
+        canvasGroup.getChildren().clear();
+    }
+
     //
     //Reset a etat au demarage
     //
