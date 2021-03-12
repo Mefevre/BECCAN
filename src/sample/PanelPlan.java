@@ -12,9 +12,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.*;
 import javafx.scene.effect.BlendMode;
+import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -170,21 +172,15 @@ public class PanelPlan implements Initializable, ChangeListener {
 
         StackPane secondaryLayout = new StackPane();
         secondaryLayout.getChildren().add(secondLabel);
-
         Scene secondScene = new Scene(secondaryLayout, 650, 400);
-
         // New window (Stage)
         Stage newWindow = new Stage();
         newWindow.setTitle("Fenetre D'aide");
         newWindow.setScene(secondScene);
-
-
         // Specifies the modality for new window.
         newWindow.initModality(Modality.WINDOW_MODAL);
-
         // Specifies the owner Window (parent) for new window
         newWindow.initOwner(Main.primaryStage);
-
         // Set position of second window, related to primary window.
         newWindow.setX(Main.primaryStage.getX() + 200);
         newWindow.setY(Main.primaryStage.getY() + 100);
@@ -211,11 +207,6 @@ public class PanelPlan implements Initializable, ChangeListener {
                 tr.setByY(10f);
                 tr.setInterpolator(Interpolator.EASE_OUT);
                 tr.play();*/
-            }
-            else if(ev.getEventType() == MouseEvent.MOUSE_CLICKED && ev.getButton() == MouseButton.SECONDARY)
-            {
-
-                circle.setOnMousePressed(mouseHandler);
             }
         }
     }
@@ -362,18 +353,63 @@ public class PanelPlan implements Initializable, ChangeListener {
         //Algo annulation
         WelABoolean = false;
     }
+    //
+    //Supprime une node et les arc attacher à cela.
+    //
     public void RemoveNode(NodeFX sourceFX)
     {
-        Node source = sourceFX.node;
-        circles.remove(sourceFX);
-        for (EEDGE e : source.adjacents)
-        {
-            edges.remove(e.getLine());
-            canvasGroup.getChildren().remove(e.getLine());
-            mstEdges.remove(e);
-        }
-        canvasGroup.getChildren().remove(sourceFX.id);
-        canvasGroup.getChildren().remove(sourceFX);
+        List<EEDGE> tempEdges2 = new ArrayList<>();
+        List<Shape> tempArrows = new ArrayList<>();
+        List<Node> tempNodes2 = new ArrayList<>();
+        // Create ContextMenu
+        ContextMenu contextMenu = new ContextMenu();
+        MenuItem item1 = new MenuItem("Supprimer");
+        item1.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Node source = sourceFX.node;
+                circles.remove(sourceFX);
+                for (EEDGE e : source.adjacents)
+                {
+                    edges.remove(e.getLine());
+                    canvasGroup.getChildren().remove(e.getLine());
+                    mstEdges.remove(e);
+                }
+                for (NodeFX z : circles) {
+                    for (EEDGE s : z.node.adjacents) {
+                        if (s.target == source) {
+                            tempEdges2.add(s);
+                            tempArrows.add(s.line);
+                            tempNodes2.add(z.node);
+                            canvasGroup.getChildren().remove(s.weightLabel);
+                            canvasGroup.getChildren().remove(s.line);
+                        }
+                    }
+                }
+                for (Node z : tempNodes2) {
+                    z.adjacents.removeAll(tempEdges2);
+                }
+                canvasGroup.getChildren().remove(sourceFX.id);
+                canvasGroup.getChildren().remove(sourceFX);
+            }
+        });
+        MenuItem item2 = new MenuItem("ANTONIN");
+        item2.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("Pourquoi tu clique ici");
+            }
+        });
+        // Add MenuItem to ContextMenu
+        contextMenu.getItems().addAll(item1, item2);
+        // When user right-click on Circle
+        sourceFX.setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {
+            @Override
+            public void handle(ContextMenuEvent event) {
+
+                contextMenu.show(sourceFX, event.getScreenX(), event.getScreenY());
+            }
+        });
     }
     //
     //Modifier la valeur Boolean en cliquand sur button
