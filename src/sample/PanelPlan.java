@@ -371,6 +371,15 @@ public class PanelPlan implements Initializable, ChangeListener {
     public void resetGraph(ActionEvent event)
     {
         canvasGroup.getChildren().clear();
+        g.getSommets().clear();
+        circles.clear();
+        mstEdges.clear();
+        realEdges.clear();
+        edges.clear();
+
+        nNode = 0;
+        addNode = true;
+        addEdge = false;
     }
 
     //
