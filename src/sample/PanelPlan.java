@@ -196,13 +196,13 @@ public class PanelPlan implements Initializable, ChangeListener {
     //Fonction quand clique sur le pane , Gere le dessin des circle et appel la fonction des ARC ARRET
     //
     public void handle(MouseEvent ev) {
-
+        NodeFX circle = null;
         if (addNode) {
-            if (ev.getEventType() == MouseEvent.MOUSE_CLICKED && WelABoolean == false && ev.getButton() == MouseButton.PRIMARY) {
+            if (ev.getEventType() == MouseEvent.MOUSE_CLICKED && ev.getButton() == MouseButton.PRIMARY) {
 
                 nNode++;
 
-                NodeFX circle = new NodeFX(ev.getX(), ev.getY(), 10, String.valueOf(nNode), nNode);
+                circle = new NodeFX(ev.getX(), ev.getY(), 10, String.valueOf(nNode), nNode);
                 canvasGroup.getChildren().add(circle);
                 circle.setOnMousePressed(mouseHandler);
                 //Easter eggs
@@ -211,6 +211,11 @@ public class PanelPlan implements Initializable, ChangeListener {
                 tr.setByY(10f);
                 tr.setInterpolator(Interpolator.EASE_OUT);
                 tr.play();*/
+            }
+            else if(ev.getEventType() == MouseEvent.MOUSE_CLICKED && ev.getButton() == MouseButton.SECONDARY)
+            {
+
+                circle.setOnMousePressed(mouseHandler);
             }
         }
     }
@@ -325,6 +330,10 @@ public class PanelPlan implements Initializable, ChangeListener {
 
 
             }
+            else if(mouseEvent.getEventType() == MouseEvent.MOUSE_PRESSED && mouseEvent.getButton() == MouseButton.SECONDARY)
+            {
+                RemoveNode(circle);
+            }
         }
     };
 
@@ -352,7 +361,21 @@ public class PanelPlan implements Initializable, ChangeListener {
         selectedNode = null;
         //Algo annulation
         WelABoolean = false;
-    }//
+    }
+    public void RemoveNode(NodeFX sourceFX)
+    {
+        Node source = sourceFX.node;
+        circles.remove(sourceFX);
+        for (EEDGE e : source.adjacents)
+        {
+            edges.remove(e.getLine());
+            canvasGroup.getChildren().remove(e.getLine());
+            mstEdges.remove(e);
+        }
+        canvasGroup.getChildren().remove(sourceFX.id);
+        canvasGroup.getChildren().remove(sourceFX);
+    }
+    //
     //Modifier la valeur Boolean en cliquand sur button
     //
     public void DijkstraHandle(ActionEvent actionEvent) {
@@ -454,7 +477,7 @@ public class PanelPlan implements Initializable, ChangeListener {
 
     }
     //
-    //Crée le graph depuis la matrice
+    //Crée les nodes depuis la matrice
     //
     public void creationGraph()
     {
