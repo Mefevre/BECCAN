@@ -17,7 +17,7 @@
             <Separator layoutX="166.0" layoutY="5.0" orientation="VERTICAL" prefHeight="187.0" prefWidth="5.0" />
             <Separator layoutX="424.0" layoutY="5.0" orientation="VERTICAL" prefHeight="187.0" prefWidth="5.0" />
             <Separator layoutX="574.0" layoutY="5.0" orientation="VERTICAL" prefHeight="187.0" prefWidth="5.0" />
-            <Button layoutX="456.0" layoutY="100.0" mnemonicParsing="false" onAction="#ResetHandle" prefHeight="61.0" prefWidth="92.0" text="Efface graphe" />
+            <Button layoutX="456.0" layoutY="100.0" mnemonicParsing="false" onAction="#resetGraph" prefHeight="61.0" prefWidth="92.0" text="Efface graphe" />
             <Separator layoutX="902.0" layoutY="5.0" orientation="VERTICAL" prefHeight="187.0" prefWidth="5.0" />
             <TextArea fx:id="MatriX" editable="false" layoutX="614.0" layoutY="17.0" prefHeight="163.0" prefWidth="260.0" />
          </children></Pane>
