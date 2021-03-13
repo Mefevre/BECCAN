@@ -367,6 +367,7 @@ public class PanelPlan implements Initializable, ChangeListener {
         item1.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                int nb = sourceFX.Nombre;
                 Node source = sourceFX.node;
                 circles.remove(sourceFX);
                 for (EEDGE e : source.adjacents)
@@ -391,6 +392,18 @@ public class PanelPlan implements Initializable, ChangeListener {
                 }
                 canvasGroup.getChildren().remove(sourceFX.id);
                 canvasGroup.getChildren().remove(sourceFX);
+                nNode--;
+                for (int i = nb-1 ; i < circles.size(); i++)
+                {
+                    circles.get(i).setId(circles.get(i).getid()-1);
+                    for ( NodeFX u : circles )
+                    {
+                        if (u.Nombre > nb)
+                        {
+                            u.setNombre(u.getNombre()-1);
+                        }
+                    }
+                }
             }
         });
         MenuItem item2 = new MenuItem("ANTONIN");
@@ -410,6 +423,7 @@ public class PanelPlan implements Initializable, ChangeListener {
                 contextMenu.show(sourceFX, event.getScreenX(), event.getScreenY());
             }
         });
+
     }
 
     //
@@ -855,6 +869,21 @@ public class PanelPlan implements Initializable, ChangeListener {
             this.setId("node");
             circles.add(this);
             System.out.println("ADDing: " + circles.size());
+        }
+
+        public void setId(int id) {
+            this.id.setText(String.valueOf(id));
+        }
+        public int getid()
+        {
+            return Integer.parseInt(this.id.getText());
+        }
+
+        public int getNombre() {
+            return Nombre;
+        }
+        public void setNombre(int nombre) {
+            Nombre = nombre;
         }
     }
 
