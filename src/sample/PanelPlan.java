@@ -801,6 +801,8 @@ public class PanelPlan implements Initializable, ChangeListener {
 
         int U;
         g.colorier();
+        MatriX.setText("Voici les couleurs attribuées aux sommets :\n");
+        MatriX.appendText(g.toString());
         System.out.print(g.toString());
         SequentialTransition stcolor1 = new SequentialTransition();
         for (NodeFX n : circles) {
