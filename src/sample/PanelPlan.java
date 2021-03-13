@@ -1134,7 +1134,7 @@ public class PanelPlan implements Initializable, ChangeListener {
      */
     public int[][] getMatriceGraph()
     {
-        int nbSommets = g.getSommets().size();
+        int nbSommets = circles.size();
         int[][] matrice = new int[nbSommets][nbSommets];
 
         for (int i=0; i<nbSommets; i++)
