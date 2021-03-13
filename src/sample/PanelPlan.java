@@ -411,13 +411,6 @@ public class PanelPlan implements Initializable, ChangeListener {
             }
         });
     }
-    //
-    //Modifier la valeur Boolean en cliquand sur button
-    //
-    public void DijkstraHandle(ActionEvent actionEvent) {
-        dijkstra = true;
-        Bfs = false;
-    }
 
     //
     //Modifier la valeur Boolean en cliquand sur button
@@ -732,9 +725,7 @@ public class PanelPlan implements Initializable, ChangeListener {
     //Le teste des choix dans la combobox
     //
     public void ListALgo() {
-        if (List.getSelectionModel().getSelectedItem().equals("color"))
-            COLOR();
-        else if (List.getSelectionModel().getSelectedItem().equals("Dijkstra")) {
+        if (List.getSelectionModel().getSelectedItem().equals("Dijkstra")) {
 //            dijkstra = true;
 //            Bfs = false;
             /*       TU METS TON APPEL ICI       */
