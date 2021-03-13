@@ -785,12 +785,14 @@ public class PanelPlan implements Initializable, ChangeListener {
             tempcoloriage = new int[circles.size()][2];
             SequentialTransition stcolor2 = new SequentialTransition();
             tempcoloriage = Welsh();
+            MatriX.setText("Tableau de coloration Welsh Powell\n");
 
             for (int i = 0;i < circles.size();i++)
             {
                 FillTransition ftcolor = new FillTransition(Duration.millis(slider.getValue()),circles.get(tempcoloriage[i][0]-1) );
                 ftcolor.setToValue(colorName.get(tempcoloriage[i][1]));
                 stcolor2.getChildren().add(ftcolor);
+                MatriX.appendText("Sommet : "+circles.get(tempcoloriage[i][0]-1).Nombre + " à  la couleur : "+tempcoloriage[i][1]+"\n");
             }
             stcolor2.play();
         } else if (List.getSelectionModel().getSelectedItem().equals("Kruskal")) {
