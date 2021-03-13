@@ -798,6 +798,11 @@ public class PanelPlan implements Initializable, ChangeListener {
         } else if (List.getSelectionModel().getSelectedItem().equals("Kruskal")) {
             Krus();
         } else if (List.getSelectionModel().getSelectedItem().equals("Aucun")) {
+            for (NodeFX n : circles) {
+                FillTransition unftcolor = new FillTransition(Duration.millis(slider.getValue()), n);
+                unftcolor.setToValue(Color.BLACK);
+                unftcolor.play();
+            }
 
         } else if (List.getSelectionModel().getSelectedItem().equals("Dsatur")) {
             COLOR();
@@ -818,7 +823,7 @@ public class PanelPlan implements Initializable, ChangeListener {
         int U;
         g.colorier();
         MatriX.setText("Voici les couleurs attribuées aux sommets :\n");
-        MatriX.appendText(g.toString());
+        //MatriX.appendText(g.toString());
         System.out.print(g.toString());
         SequentialTransition stcolor1 = new SequentialTransition();
         for (NodeFX n : circles) {
@@ -827,16 +832,18 @@ public class PanelPlan implements Initializable, ChangeListener {
 
             ftcolor.setToValue(colorName.get(U));
             stcolor1.getChildren().add(ftcolor);
+            MatriX.appendText("Sommet : "+ n.Nombre+"  et  "+"Couleur : "+U+"\n");
+
         }
         stcolor1.play();
-        //if () pour allongé le temmps d'affiche des couleur.
-        stcolor1.setOnFinished(event -> {
+        //pour allongé le temmps d'affiche des couleur.
+        /*stcolor1.setOnFinished(event -> {
             for (NodeFX n : circles) {
                 FillTransition unftcolor = new FillTransition(Duration.millis(slider.getValue()), n);
                 unftcolor.setToValue(Color.BLACK);
                 unftcolor.play();
             }
-        });
+        });*/
     }
 
 
