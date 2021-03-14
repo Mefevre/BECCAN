@@ -35,6 +35,7 @@ import sample.Algo.Dsatur.Sommet;
 import sample.Algo.Hamiltonien.Hamiltonien;
 //import sample.Algo.Kruskal.Kruskal;
 import sample.Algo.Kruskal.Graph;
+import sample.Algo.Prim.Prim;
 import sample.Control.Control_Choix;
 import sample.Control.Control_Matrix;
 import sample.Control.Control_Matrix_one;
@@ -811,6 +812,16 @@ public class PanelPlan implements Initializable, ChangeListener {
             System.out.println("Le graph est : " + directed);
             afficheMatrice(getMatriceGraph());
             new Hamiltonien(getMatriceGraph(), MatriX);
+        }else if (List.getSelectionModel().getSelectedItem().equals("Prim")) {
+
+            Prim t = new Prim();
+            MatricePoids();
+            int graph[][] = matriceBellman;
+
+            // Print the solution
+            t.primMST(graph);
+
+
         }
 
     }

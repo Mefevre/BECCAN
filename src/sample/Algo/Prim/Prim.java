@@ -1,11 +1,9 @@
 package sample.Algo.Prim;// A Java program for Prim's Minimum Spanning Tree (MST) algorithm.
 // The program is for adjacency matrix representation of the graph
 
-import java.util.*;
 import java.lang.*;
-import java.io.*;
 
-class MST {
+public class Prim {
     // Number of vertices in the graph
     private static final int V = 5;
 
@@ -36,7 +34,7 @@ class MST {
 
     // Function to construct and print MST for a graph represented
     // using adjacency matrix representation
-    void primMST(int graph[][])
+    public void primMST(int graph[][])
     {
         // Array to store constructed MST
         int parent[] = new int[V];
@@ -95,7 +93,7 @@ class MST {
 		| /	 \ |
 		(3)-------(4)
 			9		 */
-        MST t = new MST();
+        Prim t = new Prim();
         int graph[][] = new int[][] {
             { 0, 2, 3, 6, 5 },
             { 2, 0, 0, 0, 0 },
