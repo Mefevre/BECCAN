@@ -1,11 +1,12 @@
-package sample.Algo.Prim;// A Java program for Prim's Minimum Spanning Tree (MST) algorithm.
+package sample.Algo.Prim;
+// A Java program for Prim's Minimum Spanning Tree (MST) algorithm.
 // The program is for adjacency matrix representation of the graph
 
 import java.lang.*;
 
-public class Prim {
+public class MST {
     // Number of vertices in the graph
-    private static final int V = 5;
+    private static final int V = 4;
 
     // A utility function to find the vertex with minimum key
     // value, from the set of vertices not yet included in MST
@@ -83,7 +84,7 @@ public class Prim {
         printMST(parent, graph);
     }
 
-    public static void main(String[] args)
+    /*public static void main(String[] args)
     {
 		/* Let us create the following graph
 		2 3
@@ -92,7 +93,7 @@ public class Prim {
 		6| 8/ \5 |7
 		| /	 \ |
 		(3)-------(4)
-			9		 */
+			9		 *//*
         Prim t = new Prim();
         int graph[][] = new int[][] {
             { 0, 2, 3, 6, 5 },
@@ -100,10 +101,10 @@ public class Prim {
             { 3, 0, 0, 0, 0 },
             { 6, 0, 0, 0, 0 },
             { 5, 0, 0, 0, 0 }
-    };
+           };
 
         // Print the solution
         t.primMST(graph);
-    }
+    }*/
 }
 // This code is contributed by peziere ANOTNINN

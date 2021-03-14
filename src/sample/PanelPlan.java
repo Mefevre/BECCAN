@@ -35,7 +35,7 @@ import sample.Algo.Dsatur.Sommet;
 import sample.Algo.Hamiltonien.Hamiltonien;
 //import sample.Algo.Kruskal.Kruskal;
 import sample.Algo.Kruskal.Graph;
-import sample.Algo.Prim.Prim;
+import sample.Algo.Prim.MST;
 import sample.Control.Control_Choix;
 import sample.Control.Control_Matrix;
 import sample.Control.Control_Matrix_one;
@@ -504,22 +504,7 @@ public class PanelPlan implements Initializable, ChangeListener {
 
     }
 
-    //calcule la matrice du graph dans le plan
-    //
-    //Fonction de calcule de la matrice du graph dessiner utilisé pour Bellman FORD
-    //
-    public void MatricePoids() {
-        ValueNBsommet  = nNode;
-        matriceBellman = new int[ValueNBsommet][];
-        for (NodeFX u : circles) {
-            //ListNode.add(u.node);
-            ValueNBsommet++;
-            for (EEDGE e : u.node.adjacents) {
-                matriceBellman[e.source.Numero][e.target.Numero] = (int) e.getWeight();
-            }
-        }
 
-    }
     //
     //Crée les nodes depuis la matrice
     //
@@ -736,6 +721,22 @@ public class PanelPlan implements Initializable, ChangeListener {
         stcolorkru.play();
 
     }
+    //calcule la matrice du graph dans le plan
+    //
+    //Fonction de calcule de la matrice du graph dessiner utilisé pour Bellman FORD
+    //
+    public void MatricePoids() {
+        ValueNBsommet  = 0;
+        matriceBellman = new int[nNode][nNode];
+        for (NodeFX u : circles) {
+            ValueNBsommet++;
+            for (EEDGE e : u.node.adjacents) {
+                System.out.println(" De "+e.source.Numero+" à "+e.target.Numero+" avec "+(int) e.getWeight());
+                matriceBellman[e.source.circle.Nombre][e.target.circle.Nombre] = (int) e.getWeight();
+            }
+        }
+
+    }
     //
     //Le teste des choix dans la combobox
     //
@@ -814,12 +815,20 @@ public class PanelPlan implements Initializable, ChangeListener {
             new Hamiltonien(getMatriceGraph(), MatriX);
         }else if (List.getSelectionModel().getSelectedItem().equals("Prim")) {
 
-            Prim t = new Prim();
-            MatricePoids();
-            int graph[][] = matriceBellman;
-
+            MST t = new MST();
+            //MatricePoids();
+            matriceBellman = new int[5][5];
+            for (NodeFX u : circles) {
+                ValueNBsommet++;
+                for (EEDGE e : u.node.adjacents) {
+                    System.out.println(" De "+e.source.Numero+" à "+e.target.Numero+" avec "+(int) e.getWeight());
+                    matriceBellman[e.source.circle.Nombre][e.target.circle.Nombre] = (int) e.getWeight();
+                }
+            }
+            //int graph[][] = new int[][] {{ 0, 2, 3, 6, 5 },{ 2, 0, 0, 0, 0 },{ 3, 0, 0, 0, 0 },{ 6, 0, 0, 0, 0 },{ 5, 0, 0, 0, 0 }};
+            //graph = matriceBellman;
             // Print the solution
-            t.primMST(graph);
+            t.primMST(matriceBellman);
 
 
         }
