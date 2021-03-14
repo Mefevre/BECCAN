@@ -497,7 +497,7 @@ public class PanelPlan implements Initializable, ChangeListener {
         textFlow.clear();
         dijkstra = false;
         WelABoolean=false;
-        matriceBellman = new int[][]{{0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}};
+        matriceBellman = new int[ValueNBsommet][];
         playing = false;
         paused = false;
 
@@ -508,8 +508,8 @@ public class PanelPlan implements Initializable, ChangeListener {
     //Fonction de calcule de la matrice du graph dessiner utilisé pour Bellman FORD
     //
     public void MatricePoids() {
-        ValueNBsommet = 0;
-        matriceBellman = new int[][]{{0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}};
+        ValueNBsommet  = nNode;
+        matriceBellman = new int[ValueNBsommet][];
         for (NodeFX u : circles) {
             //ListNode.add(u.node);
             ValueNBsommet++;
