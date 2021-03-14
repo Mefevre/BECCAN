@@ -514,7 +514,7 @@ public class PanelPlan implements Initializable, ChangeListener {
             //ListNode.add(u.node);
             ValueNBsommet++;
             for (EEDGE e : u.node.adjacents) {
-                matriceBellman[Integer.parseInt(e.source.name)][Integer.parseInt(e.target.name)] = (int) e.getWeight();
+                matriceBellman[e.source.Numero][e.target.Numero] = (int) e.getWeight();
             }
         }
 
