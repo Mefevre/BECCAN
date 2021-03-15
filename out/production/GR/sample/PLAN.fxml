@@ -8,7 +8,7 @@
         <Pane fx:id="canvasGroup" layoutY="200.0" onMouseClicked="#handle" prefHeight="522.0" prefWidth="806.0" style="-fx-background-color: #dee1ec;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="228.60000000000002" AnchorPane.topAnchor="200.0" />
       <Pane prefHeight="200.0" prefWidth="1035.0" style="-fx-background-color: #6a737b#6a737b;">
          <children>
-            <ComboBox fx:id="List" layoutX="197.0" layoutY="41.0" onAction="#ListALgo" prefHeight="39.0" prefWidth="200.0" promptText="List d'algorithmes" />
+            <ComboBox fx:id="List" layoutX="197.0" layoutY="41.0" onAction="#ListALgo" prefHeight="39.0" prefWidth="200.0" promptText="Liste d'algorithmes" />
                 <Button layoutX="456.0" layoutY="19.0" mnemonicParsing="false" onAction="#ResetHandle" prefHeight="61.0" prefWidth="92.0" text="Efface algo" />
                 <ToggleButton fx:id="node" layoutX="40.0" layoutY="105.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#AddNodeHandle" prefHeight="61.0" prefWidth="92.0" text="Sommet" />
                 <ToggleButton fx:id="edge" layoutX="40.0" layoutY="28.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#AddEdgeHandle" prefHeight="61.0" prefWidth="92.0" text="Arret / Arc" />
