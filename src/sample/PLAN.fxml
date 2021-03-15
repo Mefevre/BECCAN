@@ -3,25 +3,25 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="725.0" prefWidth="1035.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.PanelPlan">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="725.0" prefWidth="1149.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.PanelPlan">
     <children>
-        <Pane fx:id="canvasGroup" layoutY="200.0" onMouseClicked="#handle" prefHeight="522.0" prefWidth="806.0" style="-fx-background-color: #dee1ec;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="228.60000000000002" AnchorPane.topAnchor="200.0" />
-      <Pane prefHeight="200.0" prefWidth="1035.0" style="-fx-background-color: #6a737b#6a737b;">
+        <Pane fx:id="canvasGroup" layoutY="200.0" onMouseClicked="#handle" prefHeight="525.0" prefWidth="808.0" style="-fx-background-color: #dee1ec;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="341.0" AnchorPane.topAnchor="200.0" />
+      <Pane prefHeight="200.0" prefWidth="1149.0" style="-fx-background-color: #6a737b#6a737b;">
          <children>
-            <ComboBox fx:id="List" layoutX="197.0" layoutY="41.0" onAction="#ListALgo" prefHeight="39.0" prefWidth="200.0" promptText="Liste d'algorithmes" />
-                <Button layoutX="456.0" layoutY="19.0" mnemonicParsing="false" onAction="#ResetHandle" prefHeight="61.0" prefWidth="92.0" text="Efface algo" />
+            <ComboBox fx:id="List" layoutX="204.0" layoutY="41.0" onAction="#ListALgo" prefHeight="39.0" prefWidth="200.0" promptText="Liste d'algorithmes" />
+                <Button layoutX="490.0" layoutY="19.0" mnemonicParsing="false" onAction="#ResetHandle" prefHeight="61.0" prefWidth="92.0" text="Efface algo" />
                 <ToggleButton fx:id="node" layoutX="40.0" layoutY="105.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#AddNodeHandle" prefHeight="61.0" prefWidth="92.0" text="Sommet" />
                 <ToggleButton fx:id="edge" layoutX="40.0" layoutY="28.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#AddEdgeHandle" prefHeight="61.0" prefWidth="92.0" text="Arret / Arc" />
-                <Slider fx:id="slider" layoutX="187.0" layoutY="110.0" prefHeight="52.0" prefWidth="221.0" />
-            <Button fx:id="aide" layoutX="976.0" layoutY="19.0" mnemonicParsing="false" onAction="#aide" prefHeight="39.0" prefWidth="39.0" text="?" />
+                <Slider fx:id="slider" layoutX="195.0" layoutY="110.0" prefHeight="52.0" prefWidth="221.0" />
+            <Button fx:id="aide" layoutX="1075.0" layoutY="22.0" mnemonicParsing="false" onAction="#aide" prefHeight="39.0" prefWidth="39.0" text="?" />
             <Separator layoutX="166.0" layoutY="5.0" orientation="VERTICAL" prefHeight="187.0" prefWidth="5.0" />
-            <Separator layoutX="424.0" layoutY="5.0" orientation="VERTICAL" prefHeight="187.0" prefWidth="5.0" />
-            <Separator layoutX="574.0" layoutY="5.0" orientation="VERTICAL" prefHeight="187.0" prefWidth="5.0" />
-            <Button layoutX="456.0" layoutY="100.0" mnemonicParsing="false" onAction="#resetGraph" prefHeight="61.0" prefWidth="92.0" text="Efface graphe" />
-            <Separator layoutX="902.0" layoutY="5.0" orientation="VERTICAL" prefHeight="187.0" prefWidth="5.0" />
-            <TextArea fx:id="MatriX" editable="false" layoutX="614.0" layoutY="17.0" prefHeight="163.0" prefWidth="260.0" />
+            <Separator layoutX="443.0" layoutY="5.0" orientation="VERTICAL" prefHeight="187.0" prefWidth="5.0" />
+            <Separator layoutX="633.0" layoutY="5.0" orientation="VERTICAL" prefHeight="187.0" prefWidth="5.0" />
+            <Button layoutX="490.0" layoutY="100.0" mnemonicParsing="false" onAction="#resetGraph" prefHeight="61.0" prefWidth="92.0" text="Efface graphe" />
+            <Separator layoutX="1018.0" layoutY="5.0" orientation="VERTICAL" prefHeight="187.0" prefWidth="5.0" />
+            <TextArea fx:id="MatriX" editable="false" layoutX="682.0" layoutY="17.0" prefHeight="163.0" prefWidth="295.0" />
          </children></Pane>
-      <Pane layoutX="806.0" layoutY="200.0" prefHeight="532.0" prefWidth="235.0" />
+      <Pane layoutX="806.0" layoutY="200.0" prefHeight="532.0" prefWidth="347.0" />
 
     </children>
 </AnchorPane>
