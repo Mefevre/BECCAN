@@ -498,7 +498,7 @@ public class PanelPlan implements Initializable, ChangeListener {
         textFlow.clear();
         dijkstra = false;
         WelABoolean=false;
-        matriceBellman = new int[ValueNBsommet][];
+        matriceBellman = new int[nNode][nNode];
         playing = false;
         paused = false;
 
@@ -546,15 +546,18 @@ public class PanelPlan implements Initializable, ChangeListener {
     //
     //Appel le constructeur de BEllmanford
     //
-    public void AppelBellmanFord(int[][] matriceBellman) {
+    public void AppelBellmanFord() {
         int numberofvertices = 0;
         System.out.println("Enter the number of vertices");
-        numberofvertices = ValueNBsommet;//nb de sommet
+        numberofvertices = nNode;//nb de sommet
         int adjacencymatrix[][] = new int[numberofvertices + 1][numberofvertices + 1];
         System.out.println("Enter the adjacency matrix");
         for (int sourcenode = 1; sourcenode <= numberofvertices; sourcenode++) {
+
             for (int destinationnode = 1; destinationnode <= numberofvertices; destinationnode++) {
+
                 adjacencymatrix[sourcenode][destinationnode] = matriceBellman[sourcenode][destinationnode];// ICI
+
                 if (sourcenode == destinationnode) {
                     adjacencymatrix[sourcenode][destinationnode] = 0;
                     continue;
@@ -727,15 +730,13 @@ public class PanelPlan implements Initializable, ChangeListener {
     //
     public void MatricePoids() {
         ValueNBsommet  = 0;
-        matriceBellman = new int[nNode][nNode];
+        matriceBellman = new int[nNode+1][nNode+1];
         for (NodeFX u : circles) {
-            ValueNBsommet++;
             for (EEDGE e : u.node.adjacents) {
                 System.out.println(" De "+e.source.Numero+" à "+e.target.Numero+" avec "+(int) e.getWeight());
                 matriceBellman[e.source.circle.Nombre][e.target.circle.Nombre] = (int) e.getWeight();
             }
         }
-
     }
     //
     //Le teste des choix dans la combobox
@@ -773,12 +774,12 @@ public class PanelPlan implements Initializable, ChangeListener {
                     }
                 }
                 MatriX.setText("Resultat de Bellman-Ford  :\n");
-                AppelBellmanFord(matriceBellman);
+                AppelBellmanFord();
 
             } else {
                 MatriX.setText("Resultat de Bellman-Fords\n");
                 MatricePoids();
-                AppelBellmanFord(matriceBellman);
+                AppelBellmanFord();
 
             }
         } else if (List.getSelectionModel().getSelectedItem().equals("Welsh Powell")) //pas besoin de reset ,marche en non orienté
