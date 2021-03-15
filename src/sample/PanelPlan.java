@@ -56,7 +56,7 @@ public class PanelPlan implements Initializable, ChangeListener {
     @FXML
     private ComboBox List;
     @FXML
-    private TextArea MatriX;
+    private TextArea MatriX, areaMatrice, areaListeAdjacents;
     @FXML
     private Slider slider = new Slider();
     private Line edgeLine;
@@ -210,6 +210,7 @@ public class PanelPlan implements Initializable, ChangeListener {
                 tr.play();*/
             }
         }
+        afficheMatricePlan();
     }
 
     //
@@ -326,6 +327,7 @@ public class PanelPlan implements Initializable, ChangeListener {
             {
                 RemoveNode(circle);
             }
+            afficheMatricePlan();
         }
     };
 
@@ -1234,6 +1236,26 @@ public class PanelPlan implements Initializable, ChangeListener {
                 System.out.print(matrice[i][j] + "   ");
             }
             System.out.print("\n");
+        }
+    }
+
+    public void afficheMatricePlan()
+    {
+        areaMatrice.setText("    ");
+        int[][] mat = getMatriceGraph();
+        for (int i=0; i<mat.length; i++)
+        {
+            areaMatrice.appendText("   " + (i+1));
+        }
+        areaMatrice.appendText("\n");
+        for (int i=0; i<mat.length; i++)
+        {
+            areaMatrice.appendText("" + (i+1) + " ||");
+            for (int j=0; j<mat.length;j++)
+            {
+                areaMatrice.appendText("   " + mat[i][j]);
+            }
+            areaMatrice.appendText("\n");
         }
     }
 }
