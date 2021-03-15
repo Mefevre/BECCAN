@@ -816,19 +816,19 @@ public class PanelPlan implements Initializable, ChangeListener {
         }else if (List.getSelectionModel().getSelectedItem().equals("Prim")) {
 
             MST t = new MST();
+            t.setV(nNode);
             //MatricePoids();
-            matriceBellman = new int[5][5];
+            int matriceppoids [][]  = new int[nNode][nNode];
             for (NodeFX u : circles) {
-                ValueNBsommet++;
                 for (EEDGE e : u.node.adjacents) {
                     System.out.println(" De "+e.source.Numero+" à "+e.target.Numero+" avec "+(int) e.getWeight());
-                    matriceBellman[e.source.circle.Nombre][e.target.circle.Nombre] = (int) e.getWeight();
+                    matriceppoids[e.source.circle.Nombre-1][e.target.circle.Nombre-1] = (int) e.getWeight();
                 }
             }
             //int graph[][] = new int[][] {{ 0, 2, 3, 6, 5 },{ 2, 0, 0, 0, 0 },{ 3, 0, 0, 0, 0 },{ 6, 0, 0, 0, 0 },{ 5, 0, 0, 0, 0 }};
             //graph = matriceBellman;
-            // Print the solution
-            t.primMST(matriceBellman);
+            //Print the solution
+            t.primMST(matriceppoids);
 
 
         }
