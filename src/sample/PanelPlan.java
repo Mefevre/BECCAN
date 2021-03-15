@@ -211,6 +211,7 @@ public class PanelPlan implements Initializable, ChangeListener {
             }
         }
         afficheMatricePlan();
+        afficheListeAdjacents();
     }
 
     //
@@ -328,6 +329,7 @@ public class PanelPlan implements Initializable, ChangeListener {
                 RemoveNode(circle);
             }
             afficheMatricePlan();
+            afficheListeAdjacents();
         }
     };
 
@@ -1257,6 +1259,24 @@ public class PanelPlan implements Initializable, ChangeListener {
                 areaMatrice.appendText("   " + mat[i][j]);
             }
             areaMatrice.appendText("\n");
+        }
+    }
+
+    public void afficheListeAdjacents()
+    {
+        areaListeAdjacents.setText("Liste des adjacents des sommets :\n");
+        int[][] mat = getMatriceGraph();
+        for (int i=0; i<mat.length; i++)
+        {
+            areaListeAdjacents.appendText("Sommet " + (i+1) + " : ");
+            for (int j=0; j<mat.length; j++)
+            {
+                if (mat[i][j] == 1)
+                {
+                    areaListeAdjacents.appendText((j+1) + ", ");
+                }
+            }
+            areaListeAdjacents.appendText("\n");
         }
     }
 }
