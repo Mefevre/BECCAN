@@ -1244,6 +1244,7 @@ public class PanelPlan implements Initializable, ChangeListener {
 
     public void afficheMatricePlan()
     {
+        /*
         areaMatrice.setText("    ");
         int[][] mat = getMatriceGraph();
         for (int i=0; i<mat.length; i++)
@@ -1259,6 +1260,12 @@ public class PanelPlan implements Initializable, ChangeListener {
                 areaMatrice.appendText("   " + mat[i][j]);
             }
             areaMatrice.appendText("\n");
+        }*/
+        areaMatrice.setText("");
+        int[][] mat = getMatriceGraph();
+        for (int i=0; i<mat.length; i++)
+        {
+            areaMatrice.appendText(java.util.Arrays.toString(mat[i]) + "\n");
         }
     }
 
