@@ -11,11 +11,13 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.*;
 import javafx.scene.effect.BlendMode;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
@@ -113,10 +115,6 @@ public class PanelPlan implements Initializable, ChangeListener {
         //Togglebutton
         edge.setDisable(false);
         node.setDisable(false);
-        //SLider
-        //Image img = new Image("sample/vitesse.png");
-        //ImageView view = new ImageView(img);
-        //vitesse.setGraphic(view);
         slider.setMin(10);
         slider.setMax(1000);
         slider.setValue(500);

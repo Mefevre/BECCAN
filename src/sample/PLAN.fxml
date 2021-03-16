@@ -11,8 +11,8 @@
          <children>
             <ComboBox fx:id="List" layoutX="204.0" layoutY="41.0" onAction="#ListALgo" prefHeight="39.0" prefWidth="200.0" promptText="Liste d'algorithmes" />
                 <Button layoutX="490.0" layoutY="19.0" mnemonicParsing="false" onAction="#ResetHandle" prefHeight="61.0" prefWidth="92.0" text="Efface algo" />
-                <ToggleButton fx:id="node" layoutX="40.0" layoutY="105.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#AddNodeHandle" prefHeight="61.0" prefWidth="92.0" text="Sommet" />
-                <ToggleButton fx:id="edge" layoutX="40.0" layoutY="28.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#AddEdgeHandle" prefHeight="61.0" prefWidth="92.0" text="Arret / Arc" />
+                <ToggleButton fx:id="node" layoutX="40.0" layoutY="119.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#AddNodeHandle" prefHeight="61.0" prefWidth="92.0" text="Sommet" />
+                <ToggleButton fx:id="edge" layoutX="40.0" layoutY="41.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#AddEdgeHandle" prefHeight="61.0" prefWidth="92.0" text="Arret / Arc" />
                 <Slider fx:id="slider" layoutX="195.0" layoutY="110.0" prefHeight="52.0" prefWidth="221.0" />
             <Button fx:id="aide" layoutX="1075.0" layoutY="22.0" mnemonicParsing="false" onAction="#aide" prefHeight="39.0" prefWidth="39.0" text="?" />
             <Separator layoutX="166.0" layoutY="5.0" orientation="VERTICAL" prefHeight="187.0" prefWidth="5.0" />
