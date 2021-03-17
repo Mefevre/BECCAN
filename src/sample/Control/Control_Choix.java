@@ -78,7 +78,10 @@ public class Control_Choix {
                     "\n" +
                     "Il y a 2 caractéristique principales à un graphe :\n" +
                     "   - la première est ces arrets / arcs sont valués ou non.\n" +
-                    "   - la deuxième est si un graphe est orienté ou non. \n     C'est a dire si le graph comporte des arcs où il y a une source et une destination.");
+                    "   - la deuxième est si un graphe est orienté ou non. \n     C'est a dire si le graph comporte des arcs où il y a une source et une destination.\n" +
+                    "\n" +
+                    "Puis, quand vous avez determinez vos 2 caratériqtiques, vous devez choisir si votre graphe\n" +
+                    "vous voulez le construire sommets par sommets ou via une matrice.");
 
             StackPane secondaryLayout = new StackPane();
             secondaryLayout.getChildren().add(secondLabel);
