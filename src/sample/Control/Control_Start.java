@@ -28,17 +28,15 @@ public class Control_Start {
 
             Label secondLabel;
 
-            secondLabel = new Label("Page d'aide pour Premiere page :"+"\n"
-            +"Page D'accueil : Le button centrale lance le logicile ."+"\n"+"\n"
-
-            +"Page de choix : Vous devais decidé les type de votre graph un choix possible pour les poids"+"\n"
-            +"et pour l'orientation."+"\n"+"\n"
-
-            +"Page de la matrice : Vous deviez tout d'abord mettre le Nb de sommet puis remplir la matrice"+"\n"
-            +"avec passe à l'etape du plan pour mettre en meouvre les algo."+"\n"+"\n"
-
-            +"Page de plan : Cette page affiche le graph et sert a le modifier , on peut applique des algorithme"+"\n"
-            +"sur le graph afficher."+"\n");
+            secondLabel = new Label("Cette application a été developper par les étudiants de l'iut Lyon 1, dans le cadre d'un projet tutoré.\n" +
+                    "Ce projet a été dirigé par Mr. Stephane LEROUX. \nEt developper par : \n" +
+                    "   - Coralie BOUHANA, \n" +
+                    "   - Antonin PEZIERE, \n" +
+                    "   - Nathan LEFEVRE, \n" +
+                    "   - Clément Furbault \n" +
+                    "   - Bastien PERRIN.\n" +
+                    "\n" +
+                    "Ce projet a été developpé en Java, JavaFX et FXML. Avec comme environement de développement IntelliJ");
 
             StackPane secondaryLayout = new StackPane();
             secondaryLayout.getChildren().add(secondLabel);
