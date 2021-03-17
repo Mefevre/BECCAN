@@ -74,17 +74,11 @@ public class Control_Choix {
 
             Label secondLabel;
 
-            secondLabel = new Label("Page d'aide pour Premiere page :"+"\n"
-                    +"Page D'accueil : Le button centrale lance le logicile ."+"\n"+"\n"
-
-                    +"Page de choix : Vous devais decidé les type de votre graph un choix possible pour les poids"+"\n"
-                    +"et pour l'orientation."+"\n"+"\n"
-
-                    +"Page de la matrice : Vous deviez tout d'abord mettre le Nb de sommet puis remplir la matrice"+"\n"
-                    +"avec passe à l'etape du plan pour mettre en meouvre les algo."+"\n"+"\n"
-
-                    +"Page de plan : Cette page affiche le graph et sert a le modifier , on peut applique des algorithme"+"\n"
-                    +"sur le graph afficher."+"\n");
+            secondLabel = new Label("Sur cette page vous allez devoir choisir le type de graphe que vous voulez crée.\n" +
+                    "\n" +
+                    "Il y a 2 caractéristique principales à un graphe :\n" +
+                    "   - la première est ces arrets / arcs sont valués ou non.\n" +
+                    "   - la deuxième est si un graphe est orienté ou non. \n     C'est a dire si le graph comporte des arcs où il y a une source et une destination.");
 
             StackPane secondaryLayout = new StackPane();
             secondaryLayout.getChildren().add(secondLabel);
