@@ -77,7 +77,7 @@ public class Control_Matrix_one {
             secondLabel = new Label("Ici, vous allez pouvoir générer un graph via une matrice que vous allez compléter.\n" +
                     "\n" +
                     "Commencé par rentrée un nombre de sommet pour générer la matrice, puis cliquez sur valider.\n" +
-                    "Compléter votre matrice avec les poids des arretes. Pour sinifier qu'il n'y a pas d'arrete entrée ............... .\n" +
+                    "Compléter votre matrice avec des 1 (=arret presqente) et 0 (=arret inexistant).\n" +
                     "Pour générer votre graphe cliquez sur 'PLAN'.");
 
             StackPane secondaryLayout = new StackPane();
