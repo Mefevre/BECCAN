@@ -183,14 +183,11 @@ public class Control_Matrix {
 
             Label secondLabel;
 
-            secondLabel = new Label("Page d'aide pour Premiere page :"+"\n"
-                    +"Page D'accueil : Le button centrale lance le logicile ."+"\n"+"\n"
-                    +"Page de choix : Vous devais decidé les type de votre graph un choix possible pour les poids"+"\n"
-                    +"et pour l'orientation."+"\n"+"\n"
-                    +"Page de la matrice : Vous deviez tout d'abord mettre le Nb de sommet puis remplir la matrice"+"\n"
-                    +"avec passe à l'etape du plan pour mettre en meouvre les algo."+"\n"+"\n"
-                    +"Page de plan : Cette page affiche le graph et sert a le modifier , on peut applique des algorithme"+"\n"
-                    +"sur le graph afficher."+"\n");
+            secondLabel = new Label("Ici, vous allez pouvoir générer un graph via une matrice que vous allez compléter.\n" +
+                    "\n" +
+                    "Commencé par rentrée un nombre de sommet pour générer la matrice, puis cliquez sur valider.\n" +
+                    "Compléter votre matrice avec des 1 (=arret presqente) et 0 (=arret inexistant).\n" +
+                    "Pour générer votre graphe cliquez sur 'PLAN'.");
 
             StackPane secondaryLayout = new StackPane();
             secondaryLayout.getChildren().add(secondLabel);
