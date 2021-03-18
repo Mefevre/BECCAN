@@ -9,7 +9,9 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -43,9 +45,12 @@ import sample.Control.Control_Matrix;
 import sample.Control.Control_Matrix_one;
 
 import java.awt.*;
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class PanelPlan implements Initializable, ChangeListener {
 
@@ -153,7 +158,18 @@ public class PanelPlan implements Initializable, ChangeListener {
     public void changed(ObservableValue observable, Object oldValue, Object newValue) {
 
     }
+    public void Retour()
+    {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/sample/Fxml/CHOIX.fxml"));
+            Parent root = loader.load();
+            Scene newScene = new Scene(root);
 
+            Main.primaryStage.setScene(newScene);
+        } catch (IOException ex) {
+            Logger.getLogger(Control_Choix.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     //
     //Fonction qui gere la fenetre AIDE
     //
@@ -754,6 +770,7 @@ public class PanelPlan implements Initializable, ChangeListener {
     //
     public void ListALgo() {
         if (List.getSelectionModel().getSelectedItem().equals("Dijkstra")) {
+
 //            dijkstra = true;
 //            Bfs = false;
             /*       TU METS TON APPEL ICI       */
