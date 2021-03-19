@@ -66,6 +66,8 @@ public class PanelPlan implements Initializable, ChangeListener {
     private TextArea MatriX, areaMatrice, areaListeAdjacents;
     @FXML
     private Slider slider = new Slider();
+    @FXML
+    private Button exe;
     private Line edgeLine;
     public static TextArea textFlow = new TextArea();
     List<Label> distances = new ArrayList<Label>(), visitTime = new ArrayList<>(), lowTime = new ArrayList<Label>();
