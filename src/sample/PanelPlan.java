@@ -63,7 +63,7 @@ public class PanelPlan implements Initializable, ChangeListener {
     @FXML
     private ComboBox List;
     @FXML
-    private TextArea MatriX, areaMatrice, areaListeAdjacents;
+    private TextArea MatriX, areaMatriceListAdjacents, areaInfo;
     @FXML
     private Slider slider = new Slider();
     @FXML
@@ -1289,29 +1289,30 @@ public class PanelPlan implements Initializable, ChangeListener {
             }
             areaMatrice.appendText("\n");
         }*/
-        areaMatrice.setText("");
+        areaMatriceListAdjacents.setText("");
         int[][] mat = getMatriceGraph();
         for (int i=0; i<mat.length; i++)
         {
-            areaMatrice.appendText(java.util.Arrays.toString(mat[i]) + "\n");
+            areaMatriceListAdjacents.appendText(java.util.Arrays.toString(mat[i]) + "\n");
         }
     }
 
     public void afficheListeAdjacents()
     {
-        areaListeAdjacents.setText("Liste des adjacents des sommets :\n");
+        areaMatriceListAdjacents.appendText("\n");
+        areaMatriceListAdjacents.appendText("Liste des adjacents des sommets :\n");
         int[][] mat = getMatriceGraph();
         for (int i=0; i<mat.length; i++)
         {
-            areaListeAdjacents.appendText("Sommet " + (i+1) + " : ");
+            areaMatriceListAdjacents.appendText("   Sommet " + (i+1) + " : ");
             for (int j=0; j<mat.length; j++)
             {
                 if (mat[i][j] == 1)
                 {
-                    areaListeAdjacents.appendText((j+1) + ", ");
+                    areaMatriceListAdjacents.appendText((j+1) + ", ");
                 }
             }
-            areaListeAdjacents.appendText("\n");
+            areaMatriceListAdjacents.appendText("\n");
         }
     }
 }
