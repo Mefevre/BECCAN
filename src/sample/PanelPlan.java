@@ -1289,7 +1289,7 @@ public class PanelPlan implements Initializable, ChangeListener {
             }
             areaMatrice.appendText("\n");
         }*/
-        areaMatriceListAdjacents.setText("");
+        areaMatriceListAdjacents.setText("Matrice du graph : \n ");
         int[][] mat = getMatriceGraph();
         for (int i=0; i<mat.length; i++)
         {
