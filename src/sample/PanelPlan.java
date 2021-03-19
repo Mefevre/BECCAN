@@ -481,7 +481,7 @@ public class PanelPlan implements Initializable, ChangeListener {
     //
     //Reset a etat au demarage
     //
-    public void ResetHandle(ActionEvent event) //a faire
+    public void ResetHandle() //a faire
     {
         selectedNode = null;
         addNode = true;
@@ -771,99 +771,101 @@ public class PanelPlan implements Initializable, ChangeListener {
     //Le teste des choix dans la combobox
     //
     public void ListALgo() {
-        if (List.getSelectionModel().getSelectedItem().equals("Dijkstra")) {
+        ResetHandle();
+        exe.setOnMouseClicked(event ->
+        {
+            if (List.getSelectionModel().getSelectedItem().equals("Dijkstra")) {
 
 //            dijkstra = true;
 //            Bfs = false;
-            /*       TU METS TON APPEL ICI       */
+                /*       TU METS TON APPEL ICI       */
 
 
 
-            /*       LLLLLLLLLLLLAAAAAAAAA       */
-        } else if (List.getSelectionModel().getSelectedItem().equals("Bellman Ford")) {
-            if (etat_matrice_one) {
-                // matrice_true matrice_nb  matriceBellman
+                /*       LLLLLLLLLLLLAAAAAAAAA       */
+            } else if (List.getSelectionModel().getSelectedItem().equals("Bellman Ford")) {
+                if (etat_matrice_one) {
+                    // matrice_true matrice_nb  matriceBellman
 
-                for (int i = 0; i < matrice_true.length; i++) {
-                    for (int j = 0; j < matrice_true.length; j++) {
-                        if (matrice_true[i][j] == true && etat_matrice_one)
-                            matriceBellman[i][j] = 1;
-                        else if (etat_matrice)
-                            matriceBellman[i][j] = Integer.parseInt(matrice_nb[i][j]);
-                    }
-                }
-            } else if (etat_matrice) {
-                for (int i = 0; i < matrice_nb.length; i++) {
-                    for (int j = 0; j < matrice_nb.length; j++) {
-                        if (matrice_nb[i][j] == "") {
-                            matriceBellman[i][j] = 0;
-                        } else {
-                            System.out.println("eee" + matrice_nb[i][j] + "eee");
-                            matriceBellman[i][j] = Integer.parseInt(matrice_nb[i][j]);
+                    for (int i = 0; i < matrice_true.length; i++) {
+                        for (int j = 0; j < matrice_true.length; j++) {
+                            if (matrice_true[i][j] == true && etat_matrice_one)
+                                matriceBellman[i][j] = 1;
+                            else if (etat_matrice)
+                                matriceBellman[i][j] = Integer.parseInt(matrice_nb[i][j]);
                         }
                     }
+                } else if (etat_matrice) {
+                    for (int i = 0; i < matrice_nb.length; i++) {
+                        for (int j = 0; j < matrice_nb.length; j++) {
+                            if (matrice_nb[i][j] == "") {
+                                matriceBellman[i][j] = 0;
+                            } else {
+                                System.out.println("eee" + matrice_nb[i][j] + "eee");
+                                matriceBellman[i][j] = Integer.parseInt(matrice_nb[i][j]);
+                            }
+                        }
+                    }
+                    MatriX.setText("Resultat de Bellman-Ford  :\n");
+                    AppelBellmanFord();
+
+                } else {
+                    MatriX.setText("Resultat de Bellman-Fords\n");
+                    MatricePoids();
+                    AppelBellmanFord();
+
                 }
-                MatriX.setText("Resultat de Bellman-Ford  :\n");
-                AppelBellmanFord();
-
-            } else {
-                MatriX.setText("Resultat de Bellman-Fords\n");
-                MatricePoids();
-                AppelBellmanFord();
-
-            }
-        } else if (List.getSelectionModel().getSelectedItem().equals("Welsh Powell")) //pas besoin de reset ,marche en non orienté
-        {
-            //WelshPowell();
-            tempcoloriage = new int[circles.size()][2];
-            SequentialTransition stcolor2 = new SequentialTransition();
-            tempcoloriage = Welsh();
-            MatriX.setText("Tableau de coloration Welsh Powell\n");
-
-            for (int i = 0;i < circles.size();i++)
+            } else if (List.getSelectionModel().getSelectedItem().equals("Welsh Powell")) //pas besoin de reset ,marche en non orienté
             {
-                FillTransition ftcolor = new FillTransition(Duration.millis(slider.getValue()),circles.get(tempcoloriage[i][0]-1) );
-                ftcolor.setToValue(colorName.get(tempcoloriage[i][1]));
-                stcolor2.getChildren().add(ftcolor);
-                MatriX.appendText("Sommet : "+circles.get(tempcoloriage[i][0]-1).Nombre + " à  la couleur : "+tempcoloriage[i][1]+"\n");
-            }
-            stcolor2.play();
-        } else if (List.getSelectionModel().getSelectedItem().equals("Kruskal")) {
-            Krus();
-        } else if (List.getSelectionModel().getSelectedItem().equals("Aucun")) {
-            for (NodeFX n : circles) {
-                FillTransition unftcolor = new FillTransition(Duration.millis(slider.getValue()), n);
-                unftcolor.setToValue(Color.BLACK);
-                unftcolor.play();
-            }
+                //WelshPowell();
+                tempcoloriage = new int[circles.size()][2];
+                SequentialTransition stcolor2 = new SequentialTransition();
+                tempcoloriage = Welsh();
+                MatriX.setText("Tableau de coloration Welsh Powell\n");
 
-        } else if (List.getSelectionModel().getSelectedItem().equals("Dsatur")) {
-            COLOR();
-            //dsatur
-        } else if (List.getSelectionModel().getSelectedItem().equals("Hamiltonien")) {
-            System.out.println("Le graph est : " + directed);
-            afficheMatrice(getMatriceGraph());
-            new Hamiltonien(getMatriceGraph(), MatriX);
-        }else if (List.getSelectionModel().getSelectedItem().equals("Prim")) {
-
-            MST t = new MST();
-            t.setV(nNode);
-            //MatricePoids();
-            int matriceppoids [][]  = new int[nNode][nNode];
-            for (NodeFX u : circles) {
-                for (EEDGE e : u.node.adjacents) {
-                    System.out.println(" De "+e.source.Numero+" à "+e.target.Numero+" avec "+(int) e.getWeight());
-                    matriceppoids[e.source.circle.Nombre-1][e.target.circle.Nombre-1] = (int) e.getWeight();
+                for (int i = 0; i < circles.size(); i++) {
+                    FillTransition ftcolor = new FillTransition(Duration.millis(slider.getValue()), circles.get(tempcoloriage[i][0] - 1));
+                    ftcolor.setToValue(colorName.get(tempcoloriage[i][1]));
+                    stcolor2.getChildren().add(ftcolor);
+                    MatriX.appendText("Sommet : " + circles.get(tempcoloriage[i][0] - 1).Nombre + " à  la couleur : " + tempcoloriage[i][1] + "\n");
                 }
+                stcolor2.play();
+            } else if (List.getSelectionModel().getSelectedItem().equals("Kruskal")) {
+                Krus();
+            } else if (List.getSelectionModel().getSelectedItem().equals("Aucun")) {
+                for (NodeFX n : circles) {
+                    FillTransition unftcolor = new FillTransition(Duration.millis(slider.getValue()), n);
+                    unftcolor.setToValue(Color.BLACK);
+                    unftcolor.play();
+                }
+
+            } else if (List.getSelectionModel().getSelectedItem().equals("Dsatur")) {
+                COLOR();
+                //dsatur
+            } else if (List.getSelectionModel().getSelectedItem().equals("Hamiltonien")) {
+                System.out.println("Le graph est : " + directed);
+                afficheMatrice(getMatriceGraph());
+                new Hamiltonien(getMatriceGraph(), MatriX);
+            } else if (List.getSelectionModel().getSelectedItem().equals("Prim")) {
+
+                MST t = new MST();
+                t.setV(nNode);
+                //MatricePoids();
+                int matriceppoids[][] = new int[nNode][nNode];
+                for (NodeFX u : circles) {
+                    for (EEDGE e : u.node.adjacents) {
+                        System.out.println(" De " + e.source.Numero + " à " + e.target.Numero + " avec " + (int) e.getWeight());
+                        matriceppoids[e.source.circle.Nombre - 1][e.target.circle.Nombre - 1] = (int) e.getWeight();
+                    }
+                }
+                //int graph[][] = new int[][] {{ 0, 2, 3, 6, 5 },{ 2, 0, 0, 0, 0 },{ 3, 0, 0, 0, 0 },{ 6, 0, 0, 0, 0 },{ 5, 0, 0, 0, 0 }};
+                //graph = matriceBellman;
+                //Print the solution
+                t.primMST(matriceppoids);
+
+
             }
-            //int graph[][] = new int[][] {{ 0, 2, 3, 6, 5 },{ 2, 0, 0, 0, 0 },{ 3, 0, 0, 0, 0 },{ 6, 0, 0, 0, 0 },{ 5, 0, 0, 0, 0 }};
-            //graph = matriceBellman;
-            //Print the solution
-            t.primMST(matriceppoids);
-
-
-        }
-
+        });
     }
 
     //
