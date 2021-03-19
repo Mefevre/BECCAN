@@ -771,9 +771,9 @@ public class PanelPlan implements Initializable, ChangeListener {
     //Le teste des choix dans la combobox
     //
     public void ListALgo() {
-        ResetHandle();
         exe.setOnMouseClicked(event ->
         {
+            ResetHandle();
             if (List.getSelectionModel().getSelectedItem().equals("Dijkstra")) {
 
 //            dijkstra = true;
@@ -866,6 +866,34 @@ public class PanelPlan implements Initializable, ChangeListener {
 
             }
         });
+        if (List.getSelectionModel().getSelectedItem().equals("Aucun"))
+        {
+            areaInfo.setText("");
+        } else if (List.getSelectionModel().getSelectedItem().equals("Dsatur"))
+        {
+            areaInfo.setText("Dsatur");
+        } else if (List.getSelectionModel().getSelectedItem().equals("Welsh Powell"))
+        {
+            areaInfo.setText("Welsh Powell");
+        } else if (List.getSelectionModel().getSelectedItem().equals("Dijkstra"))
+        {
+            areaInfo.setText("Dijkstra");
+        } else if (List.getSelectionModel().getSelectedItem().equals("Eulérien"))
+        {
+            areaInfo.setText("Eulérien");
+        } else if (List.getSelectionModel().getSelectedItem().equals("Hamiltonien"))
+        {
+            areaInfo.setText("Hamiltonien");
+        } else if (List.getSelectionModel().getSelectedItem().equals("Kruskal"))
+        {
+            areaInfo.setText("Kruskal");
+        } else if (List.getSelectionModel().getSelectedItem().equals("Prim"))
+        {
+            areaInfo.setText("Prim");
+        }else if (List.getSelectionModel().getSelectedItem().equals("Bellman Ford"))
+        {
+            areaInfo.setText("Bellman Ford");
+        }
     }
 
     //
