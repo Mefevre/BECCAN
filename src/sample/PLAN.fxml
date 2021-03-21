@@ -6,7 +6,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="725.0" prefWidth="1149.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.PanelPlan">
     <children>
-        <Pane fx:id="canvasGroup" layoutY="200.0" onMouseClicked="#handle" prefHeight="525.0" prefWidth="808.0" style="-fx-background-color: #dee1ec;" stylesheets="@style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="341.0" AnchorPane.topAnchor="200.0" />
+        <Pane fx:id="canvasGroup" layoutY="200.0" onMouseClicked="#handle" prefHeight="525.0" prefWidth="771.0" style="-fx-background-color: #dee1ec;" stylesheets="@style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="378.0" AnchorPane.topAnchor="200.0" />
       <Pane prefHeight="200.0" prefWidth="1149.0" style="-fx-background-color: #6a737b#6a737b;">
          <children>
             <ComboBox fx:id="List" layoutX="185.0" layoutY="42.0" onAction="#ListALgo" prefHeight="39.0" prefWidth="147.0" promptText="Liste d'algorithmes" />
@@ -24,13 +24,13 @@
             <Button mnemonicParsing="false" onAction="#Retour" prefHeight="39.0" prefWidth="99.0" style="-fx-background-color: #6a737b#6a737b; -fx-background-image: url('arrow_back.png' );" stylesheets="@style.css" text="Retour" />
             <Button fx:id="exe" layoutX="350.0" layoutY="41.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="78.0" text="Executer" />
          </children></Pane>
-      <Pane layoutX="806.0" layoutY="200.0" prefHeight="532.0" prefWidth="347.0">
+      <Pane layoutX="772.0" layoutY="200.0" prefHeight="532.0" prefWidth="381.0">
          <children>
-            <TextArea fx:id="areaMatriceListAdjacents" editable="false" layoutX="37.0" layoutY="14.0" prefHeight="219.0" prefWidth="279.0">
+            <TextArea fx:id="areaMatriceListAdjacents" editable="false" layoutX="21.0" layoutY="14.0" prefHeight="246.0" prefWidth="344.0">
                <font>
                   <Font size="13.0" />
                </font></TextArea>
-            <TextArea fx:id="areaInfo" editable="false" layoutX="37.0" layoutY="299.0" prefHeight="219.0" prefWidth="279.0" />
+            <TextArea fx:id="areaInfo" editable="false" layoutX="21.0" layoutY="272.0" prefHeight="246.0" prefWidth="344.0" />
          </children></Pane>
 
     </children>
