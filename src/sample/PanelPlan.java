@@ -543,9 +543,14 @@ public class PanelPlan implements Initializable, ChangeListener {
     {
         int X = 100 , Y = 100;
         int i;
-        if (etat_matrice)
+        int nb;
+        nb = ValueNBsommet_one;
+        if (ValueNBsommet > 0)
+            nb = ValueNBsommet;
+
+        if (etat_matrice || etat_matrice_one)
         {
-            for (i  = 1 ; i <= matrice_nb.length;i++)
+            for (i  = 1 ; i <=nb ;i++)
             {
                 if (i == 2)
                 {
@@ -568,9 +573,63 @@ public class PanelPlan implements Initializable, ChangeListener {
                 }
                 NodeFX circle = new NodeFX(X, Y, 10, String.valueOf(i), i);
                 canvasGroup.getChildren().add(circle);
+                circle.setOnMousePressed(mouseHandler);
 
             }
             nNode = i;
+            for (int j = 0;j< nb;j++ )
+            {
+                for (int k =0 ;k<nb;k++)
+                {
+                    System.out.println("deja "+j+" puis "+k+" et la val "+matrice_nb[j][k]);
+
+                    if (etat_matrice)
+                    {
+                        if (Integer.parseInt(matrice_nb[j][k]) > -900 && matrice_nb[j][k] != "")
+                        {
+                            if (undirected)
+                            {
+                                edgeLine = new Line(circles.get(k).point.x, circles.get(k).point.y, circles.get(j).point.x, circles.get(j).point.y);
+                                canvasGroup.getChildren().add(edgeLine);
+                                edgeLine.setId("line");
+                                g.ajouterArret(new Arret(circles.get(k).nodeBIS, circles.get(j).nodeBIS));
+                            }
+                            else if (directed)
+                            {
+                                arrow = new ARROW(circles.get(k).point.x, circles.get(k).point.y, circles.get(j).point.x, circles.get(j).point.y);
+                                canvasGroup.getChildren().add(arrow);
+                                arrow.setId("arrow");
+                                g.ajouterArret(new Arret(circles.get(k).nodeBIS, circles.get(j).nodeBIS));
+                            }
+                        }
+                    }
+                    else if (etat_matrice_one)
+                    {
+                        if (matrice_true[j][k] == true)
+                        {
+                            if (undirected)
+                            {
+                                edgeLine = new Line(circles.get(k).point.x, circles.get(k).point.y, circles.get(j).point.x, circles.get(j).point.y);
+                                canvasGroup.getChildren().add(edgeLine);
+                                edgeLine.setId("line");
+                                g.ajouterArret(new Arret(circles.get(k).nodeBIS, circles.get(j).nodeBIS));
+                            }
+                            else if (directed)
+                            {
+                                arrow = new ARROW(circles.get(k).point.x, circles.get(k).point.y, circles.get(j).point.x, circles.get(j).point.y);
+                                canvasGroup.getChildren().add(arrow);
+                                arrow.setId("arrow");
+                                g.ajouterArret(new Arret(circles.get(k).nodeBIS, circles.get(j).nodeBIS));
+                            }
+                        }
+                    }
+                    if (etat_matrice_one && matrice_true[j][k])
+                        System.out.println("C'est un");
+                    else if(Integer.parseInt(matrice_nb[j][k]) <= 0 || Integer.parseInt(matrice_nb[j][k]) >=0)
+                        System.out.println("C'est "+matrice_nb[j][k]);
+
+                }
+            }
         }
     }
 
