@@ -777,14 +777,8 @@ public class PanelPlan implements Initializable, ChangeListener {
         {
             ResetHandle();
             if (List.getSelectionModel().getSelectedItem().equals("Dijkstra")) {
-
-//            dijkstra = true;
-//            Bfs = false;
-                /*       TU METS TON APPEL ICI       */
-
-
-
-                /*       LLLLLLLLLLLLAAAAAAAAA       */
+                dijkstra = true;
+                Bfs = false;
             } else if (List.getSelectionModel().getSelectedItem().equals("Bellman Ford")) {
                 if (etat_matrice_one) {
                     // matrice_true matrice_nb  matriceBellman
