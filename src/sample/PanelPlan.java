@@ -139,16 +139,29 @@ public class PanelPlan implements Initializable, ChangeListener {
         //Combobox
         if (true)//teste de la combobox
         {
+            if (Control_Choix.undirected == false && Control_Choix.unweighted == false){
+            ListALgo.add("Aucun");
+            ListALgo.add("Bellman Ford");
+            ListALgo.add("Dijkstra");
+            List.getItems().addAll(ListALgo);}
+            
+            else if(Control_Choix.directed == false && Control_Choix.weighted == false) {
             ListALgo.add("Aucun");
             ListALgo.add("Dsatur");
             ListALgo.add("Welsh Powell");
-            ListALgo.add("Dijkstra");
             ListALgo.add("Eulérien");
             ListALgo.add("Hamiltonien");
+            List.getItems().addAll(ListALgo);}
+            
+            else if(Control_Choix.undirected == false && Control_Choix.weighted == false) {
+            ListALgo.add("Aucun");
+            List.getItems().addAll(ListALgo);}
+            
+            else if(Control_Choix.directed == false && Control_Choix.unweighted == false) {
+            ListALgo.add("Aucun");
             ListALgo.add("Kruskal");
             ListALgo.add("Prim");
-            ListALgo.add("Bellman Ford");
-            List.getItems().addAll(ListALgo);
+            List.getItems().addAll(ListALgo);}
         }
         if (etat_matrice || etat_matrice_one)
             creationGraph();
