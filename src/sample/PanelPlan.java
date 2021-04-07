@@ -533,6 +533,8 @@ public class PanelPlan implements Initializable, ChangeListener {
         playing = false;
         paused = false;
 
+        MatriX.setText("");
+
     }
 
 
