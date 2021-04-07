@@ -28,8 +28,8 @@ public class Control_Start {
 
             Label secondLabel;
 
-            secondLabel = new Label("Cette application a été developper par les étudiants de l'iut Lyon 1, dans le cadre d'un projet tutoré.\n" +
-                    "Ce projet a été dirigé par Mr. Stephane LEROUX. \nEt developper par : \n" +
+            secondLabel = new Label("Cette application a été developpé par les étudiants de l'iut Lyon 1, dans le cadre d'un projet tutoré.\n" +
+                    "Ce projet a été dirigé par Mr. Stephane LEROUX. \nEt developpé par : \n" +
                     "   - Coralie BOUHANA, \n" +
                     "   - Antonin PEZIERE, \n" +
                     "   - Nathan LEFEVRE, \n" +

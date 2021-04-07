@@ -74,7 +74,7 @@ public class Control_Choix {
 
             Label secondLabel;
 
-            secondLabel = new Label("Sur cette page vous allez devoir choisir le type de graphe que vous voulez crée.\n" +
+            secondLabel = new Label("Sur cette page vous allez devoir choisir le type de graphe que vous souhaitez créer.\n" +
                     "\n" +
                     "Il y a 2 caractéristique principales à un graphe :\n" +
                     "   - la première est ces arrets / arcs sont valués ou non.\n" +
