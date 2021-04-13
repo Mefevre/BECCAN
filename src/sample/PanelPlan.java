@@ -942,11 +942,11 @@ public class PanelPlan implements Initializable, ChangeListener {
         } else if (List.getSelectionModel().getSelectedItem().equals("Dsatur"))
         {
             areaInfo.setText("Description Dsatur : \n" +
-                    "C'est un algorithmes de de coloration de grpahe par des sommets. " +
+                    "C'est un algorithme de coloration de graphe par des sommets. " +
                     "On considère un graphe G=(V,E) simple connexe et non orienté. " +
-                    "Pour chaque sommet v de V, on calcule le degré de saturation DSAT(v) " +
-                    "et l'on utilisera ce nombre ainsi que le degré des sommets pour déterminer l'ordre de coloration du graphe. " +
-                    "L'algorithme s'arrête lorsque tous les sommets de G sont colorés.");
+                    "Pour chaque sommet v de V, on calcule le degrés de saturation DSAT(v) " +
+                    "et l'on utilisera ce nombre ainsi que le degrés des sommets pour déterminer l'ordre de coloration du graphe. " +
+                    "L'algorithme s'arrête lorsque tout les sommets de G sont colorés.");
         } else if (List.getSelectionModel().getSelectedItem().equals("Welsh Powell"))
         {
             areaInfo.setText("Description Welsh Powell : \n" +
@@ -955,34 +955,34 @@ public class PanelPlan implements Initializable, ChangeListener {
         {
             areaInfo.setText("Description Dijkstra : \n" +
                     "En théorie des graphes, l'algorithme de Dijkstra (prononcé [dɛɪkstra]) sert à résoudre le problème du plus court chemin. " +
-                    "Il permet, par exemple, de déterminer un plus court chemin pour se rendre d'une ville à une autre connaissant le réseau routier d'une région." +
+                    "Il permet, par exemple, de déterminer le chemin le plus court pour se rendre d'une ville à une autre en connaissant le réseau routier d'une région." +
                     "L'algorithme prend en entrée un graphe orienté pondéré par des réels positifs et un sommet source. " +
-                    "Il s'agit de construire progressivement un sous-graphe dans lequel sont classés les différents sommets par ordre croissant de leur distance minimale au sommet de départ. " +
+                    "Il s'agit de construire progressivement un sous-graphe dans lequels sont classés les différents sommets par ordre croissant de leur distance minimale au sommet de départ. " +
                     "La distance correspond à la somme des poids des arcs empruntés.");
         } else if (List.getSelectionModel().getSelectedItem().equals("Eulérien"))
         {
             areaInfo.setText("Description Eulérien : \n" +
-                    "Son principe est très simple, il consiste à parcourir tous le graphe en passant par toutes les arrets/arcs une et une seule fois." +
-                    "On dit qu'un graphe possède un cycle heurérien si il est possible de parcourir toutes les arrets/arcs une et une seule fois, et de revenir au sommet de départ." +
-                    "On dit qu'un graphe possède une chaine heulériene si il est possible de parcourir toutes les arrets/arcs une et une seule fois, et que le sommet de départ soit différent de celui de l'arrivé.");
+                    "Son principe est très simple, il consiste à parcourir tout le graphe en passant par tout les arrets/arcs une et une seule fois." +
+                    "On dit qu'un graphe possède un cycle heurérien si il est possible de parcourir toutes les arrets/arcs une seule fois, et de revenir au sommet de départ." +
+                    "On dit qu'un graphe possède une chaine heulériene si il est possible de parcourir toutes les arrets/arcs une seule fois, et que le sommet de départ soit différent de celui de l'arrivé.");
         } else if (List.getSelectionModel().getSelectedItem().equals("Hamiltonien"))
         {
             areaInfo.setText("Description Hamiltonien : \n" +
-                    "L'algorithmes consite a parcourir tous le graphe en passant par tout les sommets, une et une seul fois." +
-                    "On dit qu'un graphe possède un cycle hamiltonien si il est possible de parcourir tout les sommets une et une seule fois, et si le sommet de départ est identique a celui d'arrivé." +
-                    "On dit qu'un graphe possède un chemin hamiltonien si il est possible de parcourir tout les sommets une et une seule fois, et si le sommet de départ est différent de celui d'arrivé.");
+                    "L'algorithmes consite à parcourir tout le graphe en passant par tout les sommets en une et une seul fois." +
+                    "On dit qu'un graphe possède un cycle hamiltonien si il est possible de parcourir tout les sommets en une et une seule fois, et si le sommet de départ est identique a celui d'arrivé." +
+                    "On dit qu'un graphe possède un chemin hamiltonien si il est possible de parcourir tout les sommets en une et une seule fois, et si le sommet de départ est différent de celui d'arrivé.");
         } else if (List.getSelectionModel().getSelectedItem().equals("Kruskal"))
         {
             areaInfo.setText("Description Kruskal : \n" +
                     "L'algorithme de Kruskal est un algorithme de recherche d'arbre recouvrant de poids minimum." +
                     "L'algorithme construit un arbre couvrant minimum en sélectionnant des arêtes par poids croissant. " +
                     "Plus précisément, l'algorithme considère toutes les arêtes du graphe par poids croissant (en pratique, " +
-                    "on trie d'abord les arêtes du graphe par poids croissant) et pour chacune d'elles, il la sélectionne si elle ne crée pas un cycle.");
+                    "on trie d'abord les arêtes du graphe par poids croissant) et pour chacune d'elles, il la sélectionne si elle ne créee pas un cycle.");
         } else if (List.getSelectionModel().getSelectedItem().equals("Prim"))
         {
             areaInfo.setText("Description Prim : \n" +
-                    "L'algorithme de Prim est un algorithme glouton qui calcule un arbre couvrant minimal dans un graphe connexe valué et non orienté." +
-                    "L'algorithme7 consiste à faire croître un arbre depuis un sommet. " +
+                    "L'algorithme de Prim est un algorithme glouton qui calcule un arbre couvrant minimum dans un graphe connexe valué et non orienté." +
+                    "L'algorithme consiste à faire croître un arbre depuis un sommet. " +
                     "On part d'un sous-ensemble contenant un sommet unique. A chaque itération, " +
                     "on agrandit ce sous-ensemble en prenant l'arête incidente à ce sous-ensemble de coût minimum. " +
                     "En effet, si l'on prend une arête dont les deux extrémités appartiennent déjà à l'arbre, " +
