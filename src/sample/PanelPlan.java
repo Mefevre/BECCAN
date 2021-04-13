@@ -946,11 +946,13 @@ public class PanelPlan implements Initializable, ChangeListener {
                     "On considère un graphe G=(V,E) simple connexe et non orienté. " +
                     "Pour chaque sommet v de V, on calcule le degrés de saturation DSAT(v) " +
                     "et l'on utilisera ce nombre ainsi que le degrés des sommets pour déterminer l'ordre de coloration du graphe. " +
-                    "L'algorithme s'arrête lorsque tout les sommets de G sont colorés.");
+                    "L'algorithme s'arrête lorsque tout les sommets de G sont colorés.\n\n" +
+                    "Plus d'information sur la page Wikipédia : https://fr.wikipedia.org/wiki/DSATUR");
         } else if (List.getSelectionModel().getSelectedItem().equals("Welsh Powell"))
         {
             areaInfo.setText("Description Welsh Powell : \n" +
-                    "");
+                    "" +
+                    "\n\nPlus d'information sur : https://m6colorationgraphes.wordpress.com/2015/11/30/partie-iii-la-coloration-par-welsh-powel/");
         } else if (List.getSelectionModel().getSelectedItem().equals("Dijkstra"))
         {
             areaInfo.setText("Description Dijkstra : \n" +
@@ -958,26 +960,30 @@ public class PanelPlan implements Initializable, ChangeListener {
                     "Il permet, par exemple, de déterminer le chemin le plus court pour se rendre d'une ville à une autre en connaissant le réseau routier d'une région." +
                     "L'algorithme prend en entrée un graphe orienté pondéré par des réels positifs et un sommet source. " +
                     "Il s'agit de construire progressivement un sous-graphe dans lequels sont classés les différents sommets par ordre croissant de leur distance minimale au sommet de départ. " +
-                    "La distance correspond à la somme des poids des arcs empruntés.");
+                    "La distance correspond à la somme des poids des arcs empruntés.\n\n" +
+                    "Plus d'information sur la page Wikipédia : https://fr.wikipedia.org/wiki/Algorithme_de_Dijkstra");
         } else if (List.getSelectionModel().getSelectedItem().equals("Eulérien"))
         {
             areaInfo.setText("Description Eulérien : \n" +
                     "Son principe est très simple, il consiste à parcourir tout le graphe en passant par tout les arrets/arcs une et une seule fois." +
                     "On dit qu'un graphe possède un cycle heurérien si il est possible de parcourir toutes les arrets/arcs une seule fois, et de revenir au sommet de départ." +
-                    "On dit qu'un graphe possède une chaine heulériene si il est possible de parcourir toutes les arrets/arcs une seule fois, et que le sommet de départ soit différent de celui de l'arrivé.");
+                    "On dit qu'un graphe possède une chaine heulériene si il est possible de parcourir toutes les arrets/arcs une seule fois, et que le sommet de départ soit différent de celui de l'arrivé.\n\n" +
+                    "Plus d'information sur la page Wikipédia : https://fr.wikipedia.org/wiki/Graphe_eul%C3%A9rien");
         } else if (List.getSelectionModel().getSelectedItem().equals("Hamiltonien"))
         {
             areaInfo.setText("Description Hamiltonien : \n" +
                     "L'algorithmes consite à parcourir tout le graphe en passant par tout les sommets en une et une seul fois." +
                     "On dit qu'un graphe possède un cycle hamiltonien si il est possible de parcourir tout les sommets en une et une seule fois, et si le sommet de départ est identique a celui d'arrivé." +
-                    "On dit qu'un graphe possède un chemin hamiltonien si il est possible de parcourir tout les sommets en une et une seule fois, et si le sommet de départ est différent de celui d'arrivé.");
+                    "On dit qu'un graphe possède un chemin hamiltonien si il est possible de parcourir tout les sommets en une et une seule fois, et si le sommet de départ est différent de celui d'arrivé.\n\n" +
+                    "Plus d'information sur la page Wikipédia : https://fr.wikipedia.org/wiki/Graphe_hamiltonien");
         } else if (List.getSelectionModel().getSelectedItem().equals("Kruskal"))
         {
             areaInfo.setText("Description Kruskal : \n" +
                     "L'algorithme de Kruskal est un algorithme de recherche d'arbre recouvrant de poids minimum." +
                     "L'algorithme construit un arbre couvrant minimum en sélectionnant des arêtes par poids croissant. " +
                     "Plus précisément, l'algorithme considère toutes les arêtes du graphe par poids croissant (en pratique, " +
-                    "on trie d'abord les arêtes du graphe par poids croissant) et pour chacune d'elles, il la sélectionne si elle ne créee pas un cycle.");
+                    "on trie d'abord les arêtes du graphe par poids croissant) et pour chacune d'elles, il la sélectionne si elle ne créee pas un cycle.\n\n" +
+                    "Plus d'information sur la page Wikipédia : https://fr.wikipedia.org/wiki/Algorithme_de_Kruskal");
         } else if (List.getSelectionModel().getSelectedItem().equals("Prim"))
         {
             areaInfo.setText("Description Prim : \n" +
@@ -987,12 +993,13 @@ public class PanelPlan implements Initializable, ChangeListener {
                     "on agrandit ce sous-ensemble en prenant l'arête incidente à ce sous-ensemble de coût minimum. " +
                     "En effet, si l'on prend une arête dont les deux extrémités appartiennent déjà à l'arbre, " +
                     "l'ajout de cette arête créerait un deuxième chemin entre les deux sommets " +
-                    "dans l'arbre en cours de construction et le résultat contiendrait un cycle.");
+                    "dans l'arbre en cours de construction et le résultat contiendrait un cycle.\n\n" +
+                    "Plus d'information sur la page Wikipédia : https://fr.wikipedia.org/wiki/Algorithme_de_Prim");
         }else if (List.getSelectionModel().getSelectedItem().equals("Bellman Ford"))
         {
             areaInfo.setText("Description Bellman Ford : \n" +
                     "C'est un algorithme qui calcule des plus courts chemins depuis un sommet source donné dans un graphe orienté pondéré.\n" +
-                    "");
+                    "\n\nPlus d'information sur la page Wikipédia : https://fr.wikipedia.org/wiki/Algorithme_de_Bellman-Ford");
         }
     }
 
