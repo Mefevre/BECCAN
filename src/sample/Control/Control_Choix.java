@@ -74,14 +74,13 @@ public class Control_Choix {
 
             Label secondLabel;
 
-            secondLabel = new Label("Sur cette page vous allez devoir choisir le type de graphe que vous souhaitez créer.\n" +
+            secondLabel = new Label("Sur cette page, vous allez devoir choisir le type de graphe que vous souhaitez créer.\n" +
                     "\n" +
                     "Il y a 2 caractéristique principales à un graphe :\n" +
-                    "   - la première est ces arrets / arcs sont valués ou non.\n" +
-                    "   - la deuxième est si un graphe est orienté ou non. \n     C'est a dire si le graph comporte des arcs où il y a une source et une destination.\n" +
+                    "   - si les arêtes sont valuées ou non valuées.\n" +
+                    "   - si un graphe est orienté ou non. \n       l'arête a une source et une destination, et un sens.\n" +
                     "\n" +
-                    "Puis, quand vous avez determinez vos 2 caratériqtiques, vous devez choisir si votre graphe\n" +
-                    "vous voulez le construire sommets par sommets ou via une matrice.");
+                    "Puis, quand vous avez determiné vos 2 caratéristiques, vous pouvez construire votre graphe \nen plaçant des sommets sur un plan, ou le construire à partir d'une matrice.");
 
             StackPane secondaryLayout = new StackPane();
             secondaryLayout.getChildren().add(secondLabel);
