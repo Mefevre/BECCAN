@@ -185,7 +185,7 @@ public class Control_Matrix {
 
             secondLabel = new Label("Ici, vous allez pouvoir générer un graph via une matrice que vous allez compléter.\n" +
                     "\n" +
-                    "Commencez par rentrér un nombre de sommets pour générer la matrice, puis cliquez sur valider.\n" +
+                    "Commencez par entrér un nombre de sommets pour générer la matrice, puis cliquez sur valider.\n" +
                     "Complétez votre matrice avec les poids des arêtes. Pour sinifier qu'il n'y a pas d'arête entrée ............... .\n" +
                     "Pour générer votre graphe cliquez sur 'PLAN'.");
 
