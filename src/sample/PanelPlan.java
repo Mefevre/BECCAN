@@ -36,8 +36,8 @@ import sample.Algo.BellmanFord.BellmanFord;
 import sample.Algo.Dsatur.Arret;
 import sample.Algo.Dsatur.GrapheDSat;
 import sample.Algo.Dsatur.Sommet;
-import sample.Algo.Hamiltonien.Hamiltonien;
 import sample.Algo.EULERIAN.ELEURIAN;
+import sample.Algo.Hamiltonien.Hamiltonien;
 //import sample.Algo.Kruskal.Kruskal;
 import sample.Algo.Kruskal.Graph;
 import sample.Algo.Prim.MST;
@@ -855,17 +855,49 @@ public class PanelPlan implements Initializable, ChangeListener {
                 dijkstra = true;
                 Bfs = false;
             } else if (List.getSelectionModel().getSelectedItem().equals("Eulérien")) {
-                ELEURIAN.EulerianPath g1 = new ELEURIAN.EulerianPath(nNode-1);
+                adj = new LinkedList[circles.size()+1];
+                ArrayList<Integer> sommetImpair = new ArrayList<Integer>();
+                int[] tabImpair = new int[circles.size()];
+                int nb = 0;
+                for (NodeFX u : circles)
+                {
+                    adj[u.Nombre] = new LinkedList();
+                }
+
                 for (NodeFX u : circles) {
                     for (EEDGE e : u.node.adjacents) {
-                        System.out.println(e.target.Numero+"oui"+ e.source.Numero);g1.addEdge(e.target.Numero-1, e.source.Numero-1);
+                        System.out.println("ici"+e.source.Numero+" ici "+e.target.Numero);
+                        adj[e.source.Numero].add(e.target.Numero);
                     }
                 }
-                g1.test();
-            }
-            
-            
-            else if (List.getSelectionModel().getSelectedItem().equals("Bellman Ford")) {
+                for (int j=1; j<adj.length; j++)
+                {
+                    if (adj[j].size() % 2 == 0)
+                    {
+                        nb++;
+                    }
+                    else
+                        sommetImpair.add(j);
+
+                }
+                MatriX.setText("Resultat de Eulerien  :\n");
+                if (nb == circles.size())
+                    MatriX.appendText("Il y a un cycle eulerien :\n");
+                    //System.out.println("cycle eulerian");
+                else if (circles.size()-2 ==nb)
+                    MatriX.appendText("Il y a un semi-cycle eulerien  :\n"+"Vous deviez commencer ou finir par "+sommetImpair.get(0)+" et finir ou commencer par "+sommetImpair.get(1));
+                    //System.out.println("semi  cycle");
+                else
+                {
+                    MatriX.appendText("Il y n'a pas de cycle eulerien DOMMAGE  :\n");
+                    for (int i = 0;i<circles.size()-nb;i++)
+                    {
+                        MatriX.appendText("Vous deviez commencer par "+sommetImpair.get(0)+" et "+sommetImpair.get(1));
+                    }
+                }
+
+                    //System.out.println("rien ici");
+            } else if (List.getSelectionModel().getSelectedItem().equals("Bellman Ford")) {
                 if (etat_matrice_one) {
                     // matrice_true matrice_nb  matriceBellman
 
