@@ -37,6 +37,7 @@ import sample.Algo.Dsatur.Arret;
 import sample.Algo.Dsatur.GrapheDSat;
 import sample.Algo.Dsatur.Sommet;
 import sample.Algo.Hamiltonien.Hamiltonien;
+import sample.Algo.EULERIAN.ELEURIAN;
 //import sample.Algo.Kruskal.Kruskal;
 import sample.Algo.Kruskal.Graph;
 import sample.Algo.Prim.MST;
@@ -853,7 +854,18 @@ public class PanelPlan implements Initializable, ChangeListener {
             if (List.getSelectionModel().getSelectedItem().equals("Dijkstra")) {
                 dijkstra = true;
                 Bfs = false;
-            } else if (List.getSelectionModel().getSelectedItem().equals("Bellman Ford")) {
+            } else if (List.getSelectionModel().getSelectedItem().equals("Eulérien")) {
+                ELEURIAN.EulerianPath g1 = new ELEURIAN.EulerianPath(nNode-1);
+                for (NodeFX u : circles) {
+                    for (EEDGE e : u.node.adjacents) {
+                        System.out.println(e.target.Numero+"oui"+ e.source.Numero);g1.addEdge(e.target.Numero-1, e.source.Numero-1);
+                    }
+                }
+                g1.test();
+            }
+            
+            
+            else if (List.getSelectionModel().getSelectedItem().equals("Bellman Ford")) {
                 if (etat_matrice_one) {
                     // matrice_true matrice_nb  matriceBellman
 
