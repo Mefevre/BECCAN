@@ -1,5 +1,6 @@
-Cette application a été developpée par les étudiants de l'IUT Lyon 1, dans le cadre d'un projet tutoré.
-Ce projet a été dirigé par Mr. Stephane LEROUX. \nEt developpé par :
+Cette application a été developpée par les étudiants de l'IUT Lyon 1 dans un but éducatif dans le cadre d'un projet tutoré.
+Le public visés sont les enseignants et les élèves pour apprendre à comprendre les algorythmes de la théorie des graphes.
+Ce projet a été dirigé par Mr. Stephane LEROUX, et developpé par :
    - Coralie BOUHANA
    - Antonin PEZIERE
    - Nathan LEFEVRE
