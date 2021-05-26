@@ -199,7 +199,7 @@ public class PanelPlan implements Initializable, ChangeListener {
                 "   - Sommet : sert a placer des sommets sur le plan.\n" +
                 "   - Arête / Arc : sert à placer des arêtes ou des acrs entre les sommets placés au préalable.\n" +
                 "   - Liste d'algorithmes : vous permet de selectionner un algorithme à executer.\n" +
-                "   - Exécuter : ce bouton vous permet d'exécuter l'aglorithme selectionné sur la gauche." +
+                "   - Exécuter : ce bouton vous permet d'exécuter l'aglorithme selectionné sur la gauche.\n" +
                 "   - Slider : sert à gérer la vitesse d'exécution de certains algorithmes: 0 = très rapide, 1000 = très lent.\n" +
                 "   - Efface algo : vous permet d'effacer les colorations sur un graphe.\n" +
                 "   - Efface graphe : vous permet d'effacer un graphe du plan.\n" +
@@ -209,8 +209,8 @@ public class PanelPlan implements Initializable, ChangeListener {
                 "\n" +
                 "Résultats et informations : \n" +
                 "   - La zone de texte en haut à droite vous affichera les resultats des algorithmes.\n" +
-                "   - La zone en dessous vous donne la matrice et les listes d'adjacents du graphe actuel." +
-                "   - La zone en bas à droite vous affiche,  lors de la selection d'un algorithme, des explications sur son utilité et son fonctionnement.");
+                "   - La zone en dessous vous donne la matrice et les listes d'adjacents du graphe actuel.\n" +
+                "   - La zone en bas à droite vous affiche,  lors de la selection d'un algorithme, des explications \n      sur son utilité et son fonctionnement.");
 
         StackPane secondaryLayout = new StackPane();
         secondaryLayout.getChildren().add(secondLabel);
