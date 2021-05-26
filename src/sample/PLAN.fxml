@@ -14,22 +14,20 @@
                 <ToggleButton fx:id="node" layoutX="147.0" layoutY="106.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#AddNodeHandle" prefHeight="61.0" prefWidth="112.0" text="Sommet" />
                 <ToggleButton fx:id="edge" layoutX="147.0" layoutY="22.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#AddEdgeHandle" prefHeight="61.0" prefWidth="112.0" text="Arret / Arc" />
                 <Slider fx:id="slider" layoutX="332.0" layoutY="111.0" prefHeight="52.0" prefWidth="235.0" />
-            <Button fx:id="aide" layoutX="36.0" layoutY="108.0" mnemonicParsing="false" onAction="#aide" prefHeight="39.0" prefWidth="63.0" text="?" />
-            <Separator layoutX="275.0" layoutY="10.0" orientation="VERTICAL" prefHeight="187.0" prefWidth="5.0" />
+            <Button fx:id="aide" layoutX="12.0" layoutY="107.0" mnemonicParsing="false" onAction="#aide" prefHeight="61.0" prefWidth="112.0" text="Aide" />
+            <Separator layoutX="135.0" layoutY="7.0" orientation="VERTICAL" prefHeight="187.0" prefWidth="5.0" />
             <Separator layoutX="624.0" layoutY="5.0" orientation="VERTICAL" prefHeight="187.0" prefWidth="5.0" />
             <Separator layoutX="803.0" layoutY="7.0" orientation="VERTICAL" prefHeight="187.0" prefWidth="5.0" />
             <Button layoutX="677.0" layoutY="106.0" mnemonicParsing="false" onAction="#resetGraph" prefHeight="61.0" prefWidth="92.0" text="Efface graphe" />
             <TextArea fx:id="MatriX" editable="false" layoutX="841.0" layoutY="19.0" prefHeight="163.0" prefWidth="295.0" wrapText="true" />
-            <Button layoutX="24.0" layoutY="23.0" mnemonicParsing="false" onAction="#Retour" prefHeight="61.0" prefWidth="112.0" stylesheets="@style.css" text="Retour">
-               <font>
-                  <Font size="21.0" />
-               </font></Button>
+            <Button layoutX="12.0" layoutY="22.0" mnemonicParsing="false" onAction="#Retour" prefHeight="61.0" prefWidth="112.0" stylesheets="@style.css" text="Retour" />
             <Button fx:id="exe" layoutX="515.0" layoutY="33.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="78.0" text="Executer" />
             <Label layoutX="338.0" layoutY="103.0" text="Gere la vitesse " textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
+            <Separator layoutX="279.0" layoutY="7.0" orientation="VERTICAL" prefHeight="200.0" />
          </children></Pane>
       <Pane layoutX="772.0" layoutY="200.0" prefHeight="532.0" prefWidth="381.0">
          <children>
