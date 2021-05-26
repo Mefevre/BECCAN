@@ -21,7 +21,7 @@ public class Control_Choix {
     public static boolean directed = false, undirected = false, weighted = false, unweighted = false;
     public static boolean etat_choix = false;
     @FXML
-    public Button panelNext,NextMatrix , aide;
+    public Button panelNext,RETOUR , aide;
     @FXML
     private ToggleButton dButton, udButton, wButton, uwButton;
 
@@ -57,9 +57,10 @@ public class Control_Choix {
             System.out.println("no_poids_Button");
         });
         panelNext.setOnAction(event -> {etat_choix = true; loadNextScene("/sample/PLAN.fxml") ; });
-        NextMatrix.setOnAction(e -> {
+        RETOUR.setOnAction(e -> {
+            loadNextScene("/sample/START.fxml") ;
 
-            if (directed || undirected && weighted || unweighted)
+            /*if (directed || undirected && weighted || unweighted)
                 {
                     if (weighted)
                         loadNextScene("/sample/Fxml/MATRI.fxml");
@@ -68,6 +69,7 @@ public class Control_Choix {
                 }
             else
                 showAlertWithoutHeaderText();
+             */
 
         });
         aide.setOnAction(event -> {
@@ -131,6 +133,8 @@ public class Control_Choix {
             Scene newScene = new Scene(root);
 
             Main.primaryStage.setScene(newScene);
+            Main.primaryStage.setResizable(false);
+
         } catch (IOException ex) {
             Logger.getLogger(Control_Choix.class.getName()).log(Level.SEVERE, null, ex);
         }

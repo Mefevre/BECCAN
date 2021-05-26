@@ -183,6 +183,8 @@ public class PanelPlan implements Initializable, ChangeListener {
             Scene newScene = new Scene(root);
 
             Main.primaryStage.setScene(newScene);
+            Main.primaryStage.setResizable(false);
+
         } catch (IOException ex) {
             Logger.getLogger(Control_Choix.class.getName()).log(Level.SEVERE, null, ex);
         }
