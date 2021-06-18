@@ -887,7 +887,7 @@ public class PanelPlan implements Initializable, ChangeListener {
                     MatriX.appendText("Il y a un cycle eulerien :\n");
                     //System.out.println("cycle eulerian");
                 else if (circles.size()-2 ==nb)
-                    MatriX.appendText("Il y a un semi-cycle eulerien  :\n"+"Vous deviez commencer ou finir par "+sommetImpair.get(0)+" et finir ou commencer par "+sommetImpair.get(1));
+                    MatriX.appendText("Il y a un semi-cycle eulerien(s)  :\n"+"Vous deviez commencer ou finir par "+sommetImpair.get(0)+" et finir ou commencer par "+sommetImpair.get(1));
                     //System.out.println("semi  cycle");
                 else
                 {
