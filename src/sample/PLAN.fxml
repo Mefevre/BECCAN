@@ -12,7 +12,7 @@
             <ComboBox fx:id="List" layoutX="185.0" layoutY="42.0" onAction="#ListALgo" prefHeight="39.0" prefWidth="147.0" promptText="Liste d'algorithmes" />
                 <Button layoutX="490.0" layoutY="19.0" mnemonicParsing="false" onAction="#ResetHandle" prefHeight="61.0" prefWidth="92.0" text="Efface algo" />
                 <ToggleButton fx:id="node" layoutX="20.0" layoutY="119.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#AddNodeHandle" prefHeight="61.0" prefWidth="112.0" text="Sommet" />
-                <ToggleButton fx:id="edge" layoutX="20.0" layoutY="41.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#AddEdgeHandle" prefHeight="61.0" prefWidth="112.0" text="Arret / Arc" />
+                <ToggleButton fx:id="edge" layoutX="20.0" layoutY="41.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#AddEdgeHandle" prefHeight="61.0" prefWidth="112.0" text="Arêtes / Arc" />
                 <Slider fx:id="slider" layoutX="190.0" layoutY="110.0" prefHeight="52.0" prefWidth="235.0" />
             <Button fx:id="aide" layoutX="1051.0" layoutY="22.0" mnemonicParsing="false" onAction="#aide" prefHeight="39.0" prefWidth="63.0" text="?" />
             <Separator layoutX="166.0" layoutY="5.0" orientation="VERTICAL" prefHeight="187.0" prefWidth="5.0" />

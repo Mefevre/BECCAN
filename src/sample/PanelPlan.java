@@ -1000,7 +1000,7 @@ public class PanelPlan implements Initializable, ChangeListener {
         } else if (List.getSelectionModel().getSelectedItem().equals("Dijkstra"))
         {
             areaInfo.setText("Description Dijkstra : \n" +
-                    "En théorie des graphes, l'algorithme de Dijkstra (prononcé [dɛɪkstra]) sert à résoudre le problème du plus court chemin. " +
+                    "En théorie des graphes, l'algorithme de Dijkstra sert à résoudre le problème du plus court chemin. " +
                     "Il permet, par exemple, de déterminer le chemin le plus court pour se rendre d'une ville à une autre en connaissant le réseau routier d'une région." +
                     "L'algorithme prend en entrée un graphe orienté pondéré par des réels positifs et un sommet source. " +
                     "Il s'agit de construire progressivement un sous-graphe dans lequels sont classés les différents sommets par ordre croissant de leur distance minimale au sommet de départ. " +
