@@ -10,11 +10,11 @@
       <Pane prefHeight="568.0" prefWidth="786.0" style="-fx-background-color: #caccd1;">
          <children>
 
-            <Button fx:id="panelNext" layoutX="428.0" layoutY="460.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="125.0" style="-fx-background-color: #52565e;" text="PLAN" textFill="#dddddd">
+            <Button fx:id="panelNext" layoutX="616.0" layoutY="460.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="125.0" style="-fx-background-color: #52565e;" text="PLAN" textFill="#dddddd">
                <font>
                   <Font size="18.0" />
                </font></Button>
-            <Button fx:id="NextMatrix" layoutX="236.0" layoutY="460.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="125.0" style="-fx-background-color: #52565e;" text="MATRICE" textFill="WHITE">
+            <Button fx:id="RETOUR" layoutX="49.0" layoutY="460.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="125.0" style="-fx-background-color: #52565e;" text="RETOUR" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font></Button>

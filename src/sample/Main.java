@@ -18,6 +18,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("Fxml/START.fxml"));
         primaryStage.setTitle("LOGICIEL DE GRAPH");
         primaryStage.setScene(new Scene(root, 786, 568));
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 }
