@@ -210,7 +210,7 @@ public class PanelPlan implements Initializable, ChangeListener {
                 "   - Vous pouvez faire un clique droit sur un sommet, puis cliquez sur supprimer pour le supprimer.\n" +
                 "\n" +
                 "Résultats et informations : \n" +
-                "   - La zone de texte en haut à droite vous affichera les resultats des algorithmes.\n" +
+                "   - La zone de texte en haut à droite vous affichera les résultats des algorithmes.\n" +
                 "   - La zone en dessous vous donne la matrice et les listes d'adjacents du graphe actuel.\n" +
                 "   - La zone en bas à droite vous affiche,  lors de la selection d'un algorithme, des explications \n      sur son utilité et son fonctionnement.");
 
@@ -302,7 +302,7 @@ public class PanelPlan implements Initializable, ChangeListener {
 
                                 TextInputDialog dialog = new TextInputDialog("1");
                                 dialog.setTitle(null);
-                                dialog.setHeaderText("Enter Weight of the Edge :");
+                                dialog.setHeaderText("Entrer le poids de votre arête :");
                                 dialog.setContentText(null);
 
                                 Optional<String> result = dialog.showAndWait();
@@ -462,7 +462,7 @@ public class PanelPlan implements Initializable, ChangeListener {
             }
         });
         // Add MenuItem to ContextMenu
-        contextMenu.getItems().addAll(item1, item2);
+        contextMenu.getItems().addAll(item1);
         // When user right-click on Circle
         sourceFX.setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {
             @Override
@@ -882,7 +882,7 @@ public class PanelPlan implements Initializable, ChangeListener {
                         sommetImpair.add(j);
 
                 }
-                MatriX.setText("Resultat de Eulerien  :\n");
+                MatriX.setText("Résultat de Eulerien  :\n");
                 if (nb == circles.size())
                     MatriX.appendText("Il y a un cycle eulerien :\n");
                     //System.out.println("cycle eulerian");
@@ -922,11 +922,11 @@ public class PanelPlan implements Initializable, ChangeListener {
                             }
                         }
                     }
-                    MatriX.setText("Resultat de Bellman-Ford  :\n");
+                    MatriX.setText("Résultat de Bellman-Ford  :\n");
                     AppelBellmanFord();
 
                 } else {
-                    MatriX.setText("Resultat de Bellman-Fords\n");
+                    MatriX.setText("Résultat de Bellman-Fords\n");
                     MatricePoids();
                     AppelBellmanFord();
 
@@ -959,7 +959,7 @@ public class PanelPlan implements Initializable, ChangeListener {
                 COLOR();
                 //dsatur
             } else if (List.getSelectionModel().getSelectedItem().equals("Hamiltonien")) {
-                System.out.println("Le graph est : " + directed);
+                System.out.println("Le graphe est : " + directed);
                 afficheMatrice(getMatriceGraph());
                 new Hamiltonien(getMatriceGraph(), MatriX);
             } else if (List.getSelectionModel().getSelectedItem().equals("Prim")) {
@@ -1470,7 +1470,7 @@ public class PanelPlan implements Initializable, ChangeListener {
             }
             areaMatrice.appendText("\n");
         }*/
-        areaMatriceListAdjacents.setText("Matrice du graph : \n ");
+        areaMatriceListAdjacents.setText("Matrice du graphe : \n ");
         int[][] mat = getMatriceGraph();
         for (int i=0; i<mat.length; i++)
         {
