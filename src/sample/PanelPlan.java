@@ -990,9 +990,9 @@ public class PanelPlan implements Initializable, ChangeListener {
             areaInfo.setText("Description Dsatur : \n" +
                     "C'est un algorithme de coloration de graphe par des sommets. " +
                     "On considère un graphe G=(V,E) simple connexe et non orienté. " +
-                    "Pour chaque sommet v de V, on calcule le degrés de saturation DSAT(v) " +
-                    "et l'on utilisera ce nombre ainsi que le degrés des sommets pour déterminer l'ordre de coloration du graphe. " +
-                    "L'algorithme s'arrête lorsque tout les sommets de G sont colorés.\n\n" +
+                    "Pour chaque sommet v de V, on calcule le degré de saturation DSAT(v) " +
+                    "et l'on utilisera ce nombre ainsi que le degré des sommets pour déterminer l'ordre de coloration du graphe. " +
+                    "L'algorithme s'arrête lorsque tous les sommets de G sont colorés.\n\n" +
                     "Plus d'information sur la page Wikipédia : https://fr.wikipedia.org/wiki/DSATUR");
         } else if (List.getSelectionModel().getSelectedItem().equals("Welsh Powell"))
         {
@@ -1011,16 +1011,16 @@ public class PanelPlan implements Initializable, ChangeListener {
         } else if (List.getSelectionModel().getSelectedItem().equals("Eulérien"))
         {
             areaInfo.setText("Description Eulérien : \n" +
-                    "Son principe est très simple, il consiste à parcourir tout le graphe en passant par tout les arrets/arcs une et une seule fois." +
-                    "On dit qu'un graphe possède un cycle heurérien si il est possible de parcourir toutes les arrets/arcs une seule fois, et de revenir au sommet de départ." +
-                    "On dit qu'un graphe possède une chaine heulériene si il est possible de parcourir toutes les arrets/arcs une seule fois, et que le sommet de départ soit différent de celui de l'arrivé.\n\n" +
+                    "Son principe est très simple, il consiste à parcourir tout le graphe en passant par tout les arêtes/arcs une et une seule fois." +
+                    "On dit qu'un graphe possède un cycle eurérien si il est possible de parcourir toutes les arêtes/arcs une seule fois, et de revenir au sommet de départ." +
+                    "On dit qu'un graphe possède une chaîne eulérienne  si il est possible de parcourir toutes les arrets/arcs une seule fois, et que le sommet de départ soit différent de celui de l'arrivé.\n\n" +
                     "Plus d'information sur la page Wikipédia : https://fr.wikipedia.org/wiki/Graphe_eul%C3%A9rien");
         } else if (List.getSelectionModel().getSelectedItem().equals("Hamiltonien"))
         {
             areaInfo.setText("Description Hamiltonien : \n" +
-                    "L'algorithmes consite à parcourir tout le graphe en passant par tout les sommets en une et une seul fois." +
-                    "On dit qu'un graphe possède un cycle hamiltonien si il est possible de parcourir tout les sommets en une et une seule fois, et si le sommet de départ est identique a celui d'arrivé." +
-                    "On dit qu'un graphe possède un chemin hamiltonien si il est possible de parcourir tout les sommets en une et une seule fois, et si le sommet de départ est différent de celui d'arrivé.\n\n" +
+                    "L'algorithme consite à parcourir tout le graphe en passant par tout les sommets en une et une seul fois." +
+                    "On dit qu'un graphe possède un cycle hamiltonien si le sommet de départ est identique a celui d'arrivé." +
+                    "On dit qu'un graphe possède un chemin hamiltonien si  le sommet de départ est différent de celui d'arrivé.\n\n" +
                     "Plus d'information sur la page Wikipédia : https://fr.wikipedia.org/wiki/Graphe_hamiltonien");
         } else if (List.getSelectionModel().getSelectedItem().equals("Kruskal"))
         {
