@@ -164,8 +164,6 @@ public class PanelPlan implements Initializable, ChangeListener {
             ListALgo.add("Prim");
             List.getItems().addAll(ListALgo);}
         }
-        if (etat_matrice || etat_matrice_one)
-            creationGraph();
     }
 
     @Override
@@ -189,6 +187,8 @@ public class PanelPlan implements Initializable, ChangeListener {
             Logger.getLogger(Control_Choix.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    //<editor-fold defaultstate="collapsed" desc="Button help">
     //
     //Fonction qui gere la fenetre AIDE
     //
@@ -231,6 +231,7 @@ public class PanelPlan implements Initializable, ChangeListener {
 
         newWindow.show();
     }
+    //</editor-fold>
 
     //
     //Fonction quand clique sur le pane , Gere le dessin des circle et appel la fonction des ARC ARRET
@@ -270,7 +271,7 @@ public class PanelPlan implements Initializable, ChangeListener {
     }
 
     //
-    //Fonction qui gere l'affichage des line et le label poids
+    //Fonction qui gere l'affichage des line , sommet et le label poids
     //
     EventHandler<MouseEvent> mouseHandler = new EventHandler<MouseEvent>() {
 
@@ -401,9 +402,8 @@ public class PanelPlan implements Initializable, ChangeListener {
         //Algo annulation
         WelABoolean = false;
     }
-    //
-    //Supprime une node et les arc attacher à cela.
-    //
+
+    //<editor-fold defaultstate="collapsed" desc="Part suppression Node, algo, graph">
     public void RemoveNode(NodeFX sourceFX)
     {
         List<EEDGE> tempEdges2 = new ArrayList<>();
@@ -472,14 +472,6 @@ public class PanelPlan implements Initializable, ChangeListener {
             }
         });
 
-    }
-
-    //
-    //Modifier la valeur Boolean en cliquand sur button
-    //
-    public void BFSHandle(ActionEvent actionEvent) {
-        Bfs = true;
-        dijkstra = false;
     }
 
     public void resetGraph(ActionEvent event)
@@ -552,12 +544,13 @@ public class PanelPlan implements Initializable, ChangeListener {
         MatriX.setText("");
 
     }
+    //</editor-fold>
 
-
+    //<editor-fold defaultstate="collapsed" desc="Part creation graph">
     //
     //Crée les nodes depuis la matrice
     //
-    public void creationGraph()
+    /*public void creationGraph()
     {
         int X = 100 , Y = 100;
         int i;
@@ -649,14 +642,15 @@ public class PanelPlan implements Initializable, ChangeListener {
                 }
             }
         }
-    }
+    }*/
+    //</editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc="Part algo start BellmanFord">
     //
-    //Appel le constructeur de BEllmanford
+    //Appel le constructeur de Bellmanford , creation de la matrice
     //
     public void AppelBellmanFord() {
         int numberofvertices = 0;
-        System.out.println("Enter the number of vertices");
         numberofvertices = nNode;//nb de sommet
         int adjacencymatrix[][] = new int[numberofvertices + 1][numberofvertices + 1];
         System.out.println("Enter the adjacency matrix");
@@ -675,9 +669,6 @@ public class PanelPlan implements Initializable, ChangeListener {
                 }
             }
         }
-        //ICI
-        System.out.println("Enter the source vertex [1 -- " + numberofvertices + "]");
-        //source = scanner.nextInt();// on veut tout le tableau .
         MatriX.appendText("     ");
         for (int o = 1; o <= numberofvertices; o++) {
             MatriX.appendText("  " + o + "   ");
@@ -702,8 +693,10 @@ public class PanelPlan implements Initializable, ChangeListener {
             MatriX.appendText("\n");
 
         }
-
     }
+    //</editor-fold>
+
+    //<editor-fold defaultstate="collapsed" desc="Part algo Welsh Powel">
     public int[][] Welsh()
     {
         tabcolor = new int[circles.size()][2];
@@ -768,7 +761,9 @@ public class PanelPlan implements Initializable, ChangeListener {
         System.out.println("Welsh-Powell Fini");
         return tabcolor;
     }
+    //</editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc="Part Krus init, coloration">
     public void Krus()
     {
         int V,E=0,i=0;
@@ -826,12 +821,11 @@ public class PanelPlan implements Initializable, ChangeListener {
                     }
                 }
             }
-            //System.out.println((chemin[k][0]+1)+" -- "+(chemin[k][1]+1)+" = "+chemin[k][2]);
         }
         stcolorkru.onFinishedProperty();
         stcolorkru.play();
-
     }
+    //</editor-fold>
     //calcule la matrice du graph dans le plan
     //
     //Fonction de calcule de la matrice du graph dessiner utilisé pour Bellman FORD
