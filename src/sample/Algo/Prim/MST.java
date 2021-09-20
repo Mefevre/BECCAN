@@ -30,17 +30,25 @@ public class MST {
 
     // A utility function to print the constructed MST stored in
     // parent[]
-    void printMST(int parent[], int graph[][])
+    int[][] printMST(int parent[], int graph[][])
     {
+        int[][] tab = new int[V+1][V+1];
         System.out.println("Edge \tWeight");
         for (int i = 1; i < V; i++)
+        {
+            tab[parent[i]+1][(i+1)] = graph[i][parent[i]];
             System.out.println(parent[i]+1 + " - " + (i+1) + "\t" + graph[i][parent[i]]);
+        }
+        return tab;
+
     }
 
     // Function to construct and print MST for a graph represented
     // using adjacency matrix representation
-    public void primMST(int graph[][])
+    public int[][] primMST(int[][] graph)
     {
+        int[][] tab = new int[0][];
+
         // Array to store constructed MST
         int parent[] = new int[V];
 
@@ -85,7 +93,7 @@ public class MST {
         }
 
         // print the constructed MST
-        printMST(parent, graph);
+        return tab = printMST(parent, graph);
     }
 
     /*public static void main(String[] args)

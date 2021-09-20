@@ -144,6 +144,7 @@ public class PanelPlan implements Initializable, ChangeListener {
             ListALgo.add("Aucun");
             ListALgo.add("Bellman Ford");
             ListALgo.add("Dijkstra");
+            ListALgo.add("Hamiltonien");
             List.getItems().addAll(ListALgo);}
             
             else if(Control_Choix.directed == false && Control_Choix.weighted == false) {
@@ -156,12 +157,18 @@ public class PanelPlan implements Initializable, ChangeListener {
             
             else if(Control_Choix.undirected == false && Control_Choix.weighted == false) {
             ListALgo.add("Aucun");
+                ListALgo.add("Dsatur");
+                ListALgo.add("Hamiltonien");
             List.getItems().addAll(ListALgo);}
             
             else if(Control_Choix.directed == false && Control_Choix.unweighted == false) {
             ListALgo.add("Aucun");
             ListALgo.add("Kruskal");
             ListALgo.add("Prim");
+                ListALgo.add("Bellman Ford");
+                ListALgo.add("Dijkstra");
+                ListALgo.add("Eulérien");
+                ListALgo.add("Hamiltonien");
             List.getItems().addAll(ListALgo);}
         }
         if (etat_matrice || etat_matrice_one)
@@ -454,11 +461,14 @@ public class PanelPlan implements Initializable, ChangeListener {
                 }
             }
         });
-        MenuItem item2 = new MenuItem("ANTONIN");
+        //
+        // Déplace un sommet
+        //
+        MenuItem item2 = new MenuItem("Déplacer");
         item2.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("Pourquoi tu clique ici");
+                //
             }
         });
         // Add MenuItem to ContextMenu
@@ -963,7 +973,7 @@ public class PanelPlan implements Initializable, ChangeListener {
                 afficheMatrice(getMatriceGraph());
                 new Hamiltonien(getMatriceGraph(), MatriX);
             } else if (List.getSelectionModel().getSelectedItem().equals("Prim")) {
-
+                int[][] tab = new int[0][];
                 MST t = new MST();
                 t.setV(nNode);
                 //MatricePoids();
@@ -977,7 +987,16 @@ public class PanelPlan implements Initializable, ChangeListener {
                 //int graph[][] = new int[][] {{ 0, 2, 3, 6, 5 },{ 2, 0, 0, 0, 0 },{ 3, 0, 0, 0, 0 },{ 6, 0, 0, 0, 0 },{ 5, 0, 0, 0, 0 }};
                 //graph = matriceBellman;
                 //Print the solution
-                t.primMST(matriceppoids);
+                 tab = t.primMST(matriceppoids);
+                MatriX.setText("Resutltat de PRIM\n");
+                for (int i = 0 ; i<= circles.size();i++)
+                {
+                    for (int j = 0 ; j<= circles.size();j++)
+                    {
+                        if (tab[i][j] > 0)
+                            MatriX.appendText(i+" -- "+j+" == "+String.valueOf(tab[i][j])+"\n");
+                    }
+                }
 
 
             }

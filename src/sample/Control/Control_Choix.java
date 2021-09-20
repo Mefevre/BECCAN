@@ -56,7 +56,12 @@ public class Control_Choix {
             unweighted = true;
             System.out.println("no_poids_Button");
         });
-        panelNext.setOnAction(event -> {etat_choix = true; loadNextScene("/sample/PLAN.fxml") ; });
+        panelNext.setOnAction(event -> {
+            etat_choix = true;
+            if (weighted || unweighted && directed||undirected)
+                loadNextScene("/sample/PLAN.fxml") ;
+
+        });
         RETOUR.setOnAction(e -> {
             loadNextScene("/sample/START.fxml") ;
 

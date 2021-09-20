@@ -22,7 +22,7 @@
             <TextArea fx:id="MatriX" editable="false" layoutX="841.0" layoutY="19.0" prefHeight="163.0" prefWidth="295.0" wrapText="true" />
             <Button layoutX="12.0" layoutY="22.0" mnemonicParsing="false" onAction="#Retour" prefHeight="61.0" prefWidth="112.0" stylesheets="@style.css" text="Retour" />
             <Button fx:id="exe" layoutX="544.0" layoutY="35.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="78.0" text="Executer" />
-            <Label layoutX="367.0" layoutY="105.0" text="Gere la vitesse " textFill="WHITE">
+            <Label layoutX="367.0" layoutY="97.0" text="Gere la vitesse " textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
