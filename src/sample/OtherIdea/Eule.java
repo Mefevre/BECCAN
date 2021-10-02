@@ -1,4 +1,4 @@
-package sample.Other;
+package sample.OtherIdea;
 
 import java.util.*;
 

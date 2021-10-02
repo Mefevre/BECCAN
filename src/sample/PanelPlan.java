@@ -171,8 +171,6 @@ public class PanelPlan implements Initializable, ChangeListener {
                 ListALgo.add("Hamiltonien");
             List.getItems().addAll(ListALgo);}
         }
-        if (etat_matrice || etat_matrice_one)
-            creationGraph();
     }
 
     @Override
@@ -196,6 +194,8 @@ public class PanelPlan implements Initializable, ChangeListener {
             Logger.getLogger(Control_Choix.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    //<editor-fold defaultstate="collapsed" desc="Button help">
     //
     //Fonction qui gere la fenetre AIDE
     //
@@ -217,7 +217,7 @@ public class PanelPlan implements Initializable, ChangeListener {
                 "   - Vous pouvez faire un clique droit sur un sommet, puis cliquez sur supprimer pour le supprimer.\n" +
                 "\n" +
                 "Résultats et informations : \n" +
-                "   - La zone de texte en haut à droite vous affichera les resultats des algorithmes.\n" +
+                "   - La zone de texte en haut à droite vous affichera les résultats des algorithmes.\n" +
                 "   - La zone en dessous vous donne la matrice et les listes d'adjacents du graphe actuel.\n" +
                 "   - La zone en bas à droite vous affiche,  lors de la selection d'un algorithme, des explications \n      sur son utilité et son fonctionnement.");
 
@@ -238,6 +238,7 @@ public class PanelPlan implements Initializable, ChangeListener {
 
         newWindow.show();
     }
+    //</editor-fold>
 
     //
     //Fonction quand clique sur le pane , Gere le dessin des circle et appel la fonction des ARC ARRET
@@ -277,7 +278,7 @@ public class PanelPlan implements Initializable, ChangeListener {
     }
 
     //
-    //Fonction qui gere l'affichage des line et le label poids
+    //Fonction qui gere l'affichage des line , sommet et le label poids
     //
     EventHandler<MouseEvent> mouseHandler = new EventHandler<MouseEvent>() {
 
@@ -309,7 +310,7 @@ public class PanelPlan implements Initializable, ChangeListener {
 
                                 TextInputDialog dialog = new TextInputDialog("1");
                                 dialog.setTitle(null);
-                                dialog.setHeaderText("Enter Weight of the Edge :");
+                                dialog.setHeaderText("Entrer le poids de votre arête :");
                                 dialog.setContentText(null);
 
                                 Optional<String> result = dialog.showAndWait();
@@ -408,9 +409,8 @@ public class PanelPlan implements Initializable, ChangeListener {
         //Algo annulation
         WelABoolean = false;
     }
-    //
-    //Supprime une node et les arc attacher à cela.
-    //
+
+    //<editor-fold defaultstate="collapsed" desc="Part suppression Node, algo, graph">
     public void RemoveNode(NodeFX sourceFX)
     {
         List<EEDGE> tempEdges2 = new ArrayList<>();
@@ -472,7 +472,7 @@ public class PanelPlan implements Initializable, ChangeListener {
             }
         });
         // Add MenuItem to ContextMenu
-        contextMenu.getItems().addAll(item1, item2);
+        contextMenu.getItems().addAll(item1);
         // When user right-click on Circle
         sourceFX.setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {
             @Override
@@ -482,14 +482,6 @@ public class PanelPlan implements Initializable, ChangeListener {
             }
         });
 
-    }
-
-    //
-    //Modifier la valeur Boolean en cliquand sur button
-    //
-    public void BFSHandle(ActionEvent actionEvent) {
-        Bfs = true;
-        dijkstra = false;
     }
 
     public void resetGraph(ActionEvent event)
@@ -562,12 +554,13 @@ public class PanelPlan implements Initializable, ChangeListener {
         MatriX.setText("");
 
     }
+    //</editor-fold>
 
-
+    //<editor-fold defaultstate="collapsed" desc="Part creation graph">
     //
     //Crée les nodes depuis la matrice
     //
-    public void creationGraph()
+    /*public void creationGraph()
     {
         int X = 100 , Y = 100;
         int i;
@@ -659,14 +652,15 @@ public class PanelPlan implements Initializable, ChangeListener {
                 }
             }
         }
-    }
+    }*/
+    //</editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc="Part algo start BellmanFord">
     //
-    //Appel le constructeur de BEllmanford
+    //Appel le constructeur de Bellmanford , creation de la matrice
     //
     public void AppelBellmanFord() {
         int numberofvertices = 0;
-        System.out.println("Enter the number of vertices");
         numberofvertices = nNode;//nb de sommet
         int adjacencymatrix[][] = new int[numberofvertices + 1][numberofvertices + 1];
         System.out.println("Enter the adjacency matrix");
@@ -685,9 +679,6 @@ public class PanelPlan implements Initializable, ChangeListener {
                 }
             }
         }
-        //ICI
-        System.out.println("Enter the source vertex [1 -- " + numberofvertices + "]");
-        //source = scanner.nextInt();// on veut tout le tableau .
         MatriX.appendText("     ");
         for (int o = 1; o <= numberofvertices; o++) {
             MatriX.appendText("  " + o + "   ");
@@ -712,8 +703,10 @@ public class PanelPlan implements Initializable, ChangeListener {
             MatriX.appendText("\n");
 
         }
-
     }
+    //</editor-fold>
+
+    //<editor-fold defaultstate="collapsed" desc="Part algo Welsh Powel">
     public int[][] Welsh()
     {
         tabcolor = new int[circles.size()][2];
@@ -778,7 +771,9 @@ public class PanelPlan implements Initializable, ChangeListener {
         System.out.println("Welsh-Powell Fini");
         return tabcolor;
     }
+    //</editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc="Part Krus init, coloration">
     public void Krus()
     {
         int V,E=0,i=0;
@@ -836,12 +831,11 @@ public class PanelPlan implements Initializable, ChangeListener {
                     }
                 }
             }
-            //System.out.println((chemin[k][0]+1)+" -- "+(chemin[k][1]+1)+" = "+chemin[k][2]);
         }
         stcolorkru.onFinishedProperty();
         stcolorkru.play();
-
     }
+    //</editor-fold>
     //calcule la matrice du graph dans le plan
     //
     //Fonction de calcule de la matrice du graph dessiner utilisé pour Bellman FORD
@@ -892,12 +886,12 @@ public class PanelPlan implements Initializable, ChangeListener {
                         sommetImpair.add(j);
 
                 }
-                MatriX.setText("Resultat de Eulerien  :\n");
+                MatriX.setText("Résultat de Eulerien  :\n");
                 if (nb == circles.size())
                     MatriX.appendText("Il y a un cycle eulerien :\n");
                     //System.out.println("cycle eulerian");
                 else if (circles.size()-2 ==nb)
-                    MatriX.appendText("Il y a un semi-cycle eulerien  :\n"+"Vous deviez commencer ou finir par "+sommetImpair.get(0)+" et finir ou commencer par "+sommetImpair.get(1));
+                    MatriX.appendText("Il y a un semi-cycle eulerien(s)  :\n"+"Vous deviez commencer ou finir par "+sommetImpair.get(0)+" et finir ou commencer par "+sommetImpair.get(1));
                     //System.out.println("semi  cycle");
                 else
                 {
@@ -932,11 +926,11 @@ public class PanelPlan implements Initializable, ChangeListener {
                             }
                         }
                     }
-                    MatriX.setText("Resultat de Bellman-Ford  :\n");
+                    MatriX.setText("Résultat de Bellman-Ford  :\n");
                     AppelBellmanFord();
 
                 } else {
-                    MatriX.setText("Resultat de Bellman-Fords\n");
+                    MatriX.setText("Résultat de Bellman-Fords\n");
                     MatricePoids();
                     AppelBellmanFord();
 
@@ -969,7 +963,7 @@ public class PanelPlan implements Initializable, ChangeListener {
                 COLOR();
                 //dsatur
             } else if (List.getSelectionModel().getSelectedItem().equals("Hamiltonien")) {
-                System.out.println("Le graph est : " + directed);
+                System.out.println("Le graphe est : " + directed);
                 afficheMatrice(getMatriceGraph());
                 new Hamiltonien(getMatriceGraph(), MatriX);
             } else if (List.getSelectionModel().getSelectedItem().equals("Prim")) {
@@ -1009,9 +1003,9 @@ public class PanelPlan implements Initializable, ChangeListener {
             areaInfo.setText("Description Dsatur : \n" +
                     "C'est un algorithme de coloration de graphe par des sommets. " +
                     "On considère un graphe G=(V,E) simple connexe et non orienté. " +
-                    "Pour chaque sommet v de V, on calcule le degrés de saturation DSAT(v) " +
-                    "et l'on utilisera ce nombre ainsi que le degrés des sommets pour déterminer l'ordre de coloration du graphe. " +
-                    "L'algorithme s'arrête lorsque tout les sommets de G sont colorés.\n\n" +
+                    "Pour chaque sommet v de V, on calcule le degré de saturation DSAT(v) " +
+                    "et l'on utilisera ce nombre ainsi que le degré des sommets pour déterminer l'ordre de coloration du graphe. " +
+                    "L'algorithme s'arrête lorsque tous les sommets de G sont colorés.\n\n" +
                     "Plus d'information sur la page Wikipédia : https://fr.wikipedia.org/wiki/DSATUR");
         } else if (List.getSelectionModel().getSelectedItem().equals("Welsh Powell"))
         {
@@ -1021,7 +1015,7 @@ public class PanelPlan implements Initializable, ChangeListener {
         } else if (List.getSelectionModel().getSelectedItem().equals("Dijkstra"))
         {
             areaInfo.setText("Description Dijkstra : \n" +
-                    "En théorie des graphes, l'algorithme de Dijkstra (prononcé [dɛɪkstra]) sert à résoudre le problème du plus court chemin. " +
+                    "En théorie des graphes, l'algorithme de Dijkstra sert à résoudre le problème du plus court chemin. " +
                     "Il permet, par exemple, de déterminer le chemin le plus court pour se rendre d'une ville à une autre en connaissant le réseau routier d'une région." +
                     "L'algorithme prend en entrée un graphe orienté pondéré par des réels positifs et un sommet source. " +
                     "Il s'agit de construire progressivement un sous-graphe dans lequels sont classés les différents sommets par ordre croissant de leur distance minimale au sommet de départ. " +
@@ -1030,16 +1024,16 @@ public class PanelPlan implements Initializable, ChangeListener {
         } else if (List.getSelectionModel().getSelectedItem().equals("Eulérien"))
         {
             areaInfo.setText("Description Eulérien : \n" +
-                    "Son principe est très simple, il consiste à parcourir tout le graphe en passant par tout les arrets/arcs une et une seule fois." +
-                    "On dit qu'un graphe possède un cycle heurérien si il est possible de parcourir toutes les arrets/arcs une seule fois, et de revenir au sommet de départ." +
-                    "On dit qu'un graphe possède une chaine heulériene si il est possible de parcourir toutes les arrets/arcs une seule fois, et que le sommet de départ soit différent de celui de l'arrivé.\n\n" +
+                    "Son principe est très simple, il consiste à parcourir tout le graphe en passant par tout les arêtes/arcs une et une seule fois." +
+                    "On dit qu'un graphe possède un cycle eurérien si il est possible de parcourir toutes les arêtes/arcs une seule fois, et de revenir au sommet de départ." +
+                    "On dit qu'un graphe possède une chaîne eulérienne  si il est possible de parcourir toutes les arrets/arcs une seule fois, et que le sommet de départ soit différent de celui de l'arrivé.\n\n" +
                     "Plus d'information sur la page Wikipédia : https://fr.wikipedia.org/wiki/Graphe_eul%C3%A9rien");
         } else if (List.getSelectionModel().getSelectedItem().equals("Hamiltonien"))
         {
             areaInfo.setText("Description Hamiltonien : \n" +
-                    "L'algorithmes consite à parcourir tout le graphe en passant par tout les sommets en une et une seul fois." +
-                    "On dit qu'un graphe possède un cycle hamiltonien si il est possible de parcourir tout les sommets en une et une seule fois, et si le sommet de départ est identique a celui d'arrivé." +
-                    "On dit qu'un graphe possède un chemin hamiltonien si il est possible de parcourir tout les sommets en une et une seule fois, et si le sommet de départ est différent de celui d'arrivé.\n\n" +
+                    "L'algorithme consite à parcourir tout le graphe en passant par tout les sommets en une et une seul fois." +
+                    "On dit qu'un graphe possède un cycle hamiltonien si le sommet de départ est identique a celui d'arrivé." +
+                    "On dit qu'un graphe possède un chemin hamiltonien si  le sommet de départ est différent de celui d'arrivé.\n\n" +
                     "Plus d'information sur la page Wikipédia : https://fr.wikipedia.org/wiki/Graphe_hamiltonien");
         } else if (List.getSelectionModel().getSelectedItem().equals("Kruskal"))
         {
@@ -1489,7 +1483,7 @@ public class PanelPlan implements Initializable, ChangeListener {
             }
             areaMatrice.appendText("\n");
         }*/
-        areaMatriceListAdjacents.setText("Matrice du graph : \n ");
+        areaMatriceListAdjacents.setText("Matrice du graphe : \n ");
         int[][] mat = getMatriceGraph();
         for (int i=0; i<mat.length; i++)
         {

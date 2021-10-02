@@ -63,7 +63,7 @@ public class Control_Choix {
 
         });
         RETOUR.setOnAction(e -> {
-            loadNextScene("/sample/START.fxml") ;
+            loadNextScene("/sample/FXml/START.fxml") ;
 
             /*if (directed || undirected && weighted || unweighted)
                 {

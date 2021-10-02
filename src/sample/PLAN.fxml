@@ -7,13 +7,14 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="725.0" prefWidth="1149.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.PanelPlan">
     <children>
         <Pane fx:id="canvasGroup" layoutY="200.0" onMouseClicked="#handle" prefHeight="525.0" prefWidth="771.0" style="-fx-background-color: #dee1ec;" stylesheets="@style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="378.0" AnchorPane.topAnchor="200.0" />
-      <Pane prefHeight="200.0" prefWidth="1149.0" style="-fx-background-color: #6a737b#6a737b;">
-         <children>
-            <ComboBox fx:id="List" layoutX="335.0" layoutY="36.0" onAction="#ListALgo" prefHeight="39.0" prefWidth="195.0" promptText="Liste d'algorithmes" />
+        <Pane prefHeight="200.0" prefWidth="1149.0" style="-fx-background-color: #6a737b#6a737b;">
+            <children>
+                <ComboBox fx:id="List" layoutX="335.0" layoutY="36.0" onAction="#ListALgo" prefHeight="39.0" prefWidth="195.0" promptText="Liste d'algorithmes" />
                 <Button layoutX="677.0" layoutY="22.0" mnemonicParsing="false" onAction="#ResetHandle" prefHeight="61.0" prefWidth="92.0" text="Efface algo" />
                 <ToggleButton fx:id="node" layoutX="169.0" layoutY="106.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#AddNodeHandle" prefHeight="61.0" prefWidth="112.0" text="Sommet" />
-                <ToggleButton fx:id="edge" layoutX="169.0" layoutY="22.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#AddEdgeHandle" prefHeight="61.0" prefWidth="112.0" text="Arret / Arc" />
+                <ToggleButton fx:id="edge" layoutX="169.0" layoutY="22.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#AddEdgeHandle" prefHeight="61.0" prefWidth="112.0" text="Arêtes / Arc" />
                 <Slider fx:id="slider" layoutX="361.0" layoutY="113.0" prefHeight="52.0" prefWidth="235.0" />
+<<<<<<< HEAD
             <Button fx:id="aide" layoutX="12.0" layoutY="107.0" mnemonicParsing="false" onAction="#aide" prefHeight="61.0" prefWidth="112.0" text="Aide" />
             <Separator layoutX="141.0" layoutY="7.0" orientation="VERTICAL" prefHeight="187.0" prefWidth="5.0" />
             <Separator layoutX="650.0" layoutY="7.0" orientation="VERTICAL" prefHeight="187.0" prefWidth="5.0" />
@@ -37,6 +38,31 @@
                </font></TextArea>
             <TextArea fx:id="areaInfo" editable="false" layoutX="21.0" layoutY="272.0" prefHeight="246.0" prefWidth="344.0" />
          </children></Pane>
+=======
+                <Button fx:id="aide" layoutX="12.0" layoutY="107.0" mnemonicParsing="false" onAction="#aide" prefHeight="61.0" prefWidth="112.0" text="Aide" />
+                <Separator layoutX="141.0" layoutY="7.0" orientation="VERTICAL" prefHeight="187.0" prefWidth="5.0" />
+                <Separator layoutX="650.0" layoutY="7.0" orientation="VERTICAL" prefHeight="187.0" prefWidth="5.0" />
+                <Separator layoutX="803.0" layoutY="7.0" orientation="VERTICAL" prefHeight="187.0" prefWidth="5.0" />
+                <Button layoutX="677.0" layoutY="106.0" mnemonicParsing="false" onAction="#resetGraph" prefHeight="61.0" prefWidth="92.0" text="Efface graphe" />
+                <TextArea fx:id="MatriX" editable="false" layoutX="841.0" layoutY="19.0" prefHeight="163.0" prefWidth="295.0" wrapText="true" />
+                <Button layoutX="12.0" layoutY="22.0" mnemonicParsing="false" onAction="#Retour" prefHeight="61.0" prefWidth="112.0" stylesheets="@style.css" text="Retour" />
+                <Button fx:id="exe" layoutX="544.0" layoutY="35.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="78.0" text="Exécuter" />
+                <Label layoutX="367.0" layoutY="105.0" text="Gère la vitesse du plus vite ou moins vite " textFill="WHITE">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Label>
+                <Separator layoutX="306.0" layoutY="7.0" orientation="VERTICAL" prefHeight="187.0" prefWidth="6.0" />
+            </children></Pane>
+        <Pane layoutX="772.0" layoutY="200.0" prefHeight="532.0" prefWidth="381.0">
+            <children>
+                <TextArea fx:id="areaMatriceListAdjacents" editable="false" layoutX="21.0" layoutY="14.0" prefHeight="246.0" prefWidth="344.0">
+                    <font>
+                        <Font size="13.0" />
+                    </font></TextArea>
+                <TextArea fx:id="areaInfo" editable="false" layoutX="21.0" layoutY="272.0" prefHeight="246.0" prefWidth="344.0" />
+            </children></Pane>
+>>>>>>> 2af3a5693e559ae5282c07a50da72642b18b2e23
 
     </children>
 </AnchorPane>

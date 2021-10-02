@@ -1,4 +1,4 @@
-package sample.Other;
+package sample.OtherIdea;
 // Efficient Java program to
 // find out Eulerian path
 import java.util.*;
